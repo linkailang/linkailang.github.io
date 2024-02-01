@@ -4,13 +4,57 @@
   
     
     <entry>
-      <title>s</title>
-      <link href="/2024/01/20/s/"/>
-      <url>/2024/01/20/s/</url>
+      <title>蓝桥总结</title>
+      <link href="/2024/01/31/%E8%93%9D%E6%A1%A5%E6%80%BB%E7%BB%93/"/>
+      <url>/2024/01/31/%E8%93%9D%E6%A1%A5%E6%80%BB%E7%BB%93/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h1 id="输入模板"><a href="#输入模板" class="headerlink" title="输入模板"></a>输入模板</h1><pre><code class="java">import java.util.Scanner;public class Oj &#123;    public static void main(String[] args) &#123;        Scanner scanner = new Scanner(System.in);        // 输入字符串        String str = scanner.next(); // 读取输入的字符串        // 读取整行输入        String line = scanner.nextLine();        // 输入基本类型        int num = scanner.nextInt(); // 读取输入的整数    &#125;&#125;</code></pre><h1 id="输出模板"><a href="#输出模板" class="headerlink" title="输出模板"></a>输出模板</h1><pre><code class="java">public static void main(String[] args) &#123;        Scanner scanner = new Scanner(System.in);        int num = scanner.nextInt();        //输出//使用System.out.println()方法：        System.out.println(&quot;Hello, World!&quot;);//使用System.out.print()方法：        System.out.print(&quot;Hello, World!&quot;);//使用System.out.printf()方法进行格式化输出：        System.out.printf(&quot;The number is: %d&quot;, num);    &#125;&#125;</code></pre><h1 id="格式化输出详细介绍"><a href="#格式化输出详细介绍" class="headerlink" title="格式化输出详细介绍"></a>格式化输出详细介绍</h1><p>System.out.format(); System.out.printf();<br>俩者用法一致，下面以format举例说明。<br>当我们需要格式化输出一些数据，只是使用System.out.println();就有点不够用了，这时就需要用到format方法了</p><p>System.out提供了格式化的输出方法format，format的第一个参数是一个模板，模板面有一些占位符，再通过后面的参数替换模板中的占位符完成整个信息的输出</p><h2 id="占位符"><a href="#占位符" class="headerlink" title="占位符"></a>占位符</h2><p>常用占位符：</p><table><thead><tr><th>占位符</th><th>说明</th></tr></thead><tbody><tr><td>%d</td><td>格式化输出整数</td></tr><tr><td>%f</td><td>格式化输出浮点数</td></tr><tr><td>%e</td><td>格式化科学计数法的浮点数</td></tr><tr><td>%s</td><td>格式化输出字符串</td></tr></tbody></table><pre><code class="java">        int x=5;        System.out.println(&quot;x=&quot;+x);        String name=&quot;LiLi&quot;;        int age=8;        char sex=&#39;男&#39;;        double grade=28.8;        System.out.format(&quot;姓名:%s, 年龄:%d, 性别:%c, 成绩:%.1f\n&quot;, name, age, sex, grade);</code></pre><p>其中%c,%s等就叫做占位符，分别代表字符和字符串，它们将被后边出现的对应的变量的值替换掉。像%.1f是%f中又添加了.f 表示输出一个1位的小数。</p><h3 id="fomat"><a href="#fomat" class="headerlink" title="fomat"></a>fomat</h3><p>format 是一个用于格式化字符串的函数或方法，它可以在程序中将变量的值插入到字符串中，从而得到一个格式化后的字符串。</p><h3 id="格式化整数"><a href="#格式化整数" class="headerlink" title="格式化整数"></a>格式化整数</h3><p>既可以格式化基本数据类型，也可以格式化它们的包装类</p><pre><code>%d :格式化十进制整数%o :格式化八进制整数%x :格式化小写十六进制整数，如：abc58%X :格式化大写十六进制整数，如：ABC58</code></pre><p>修饰符</p><pre><code>“+”：格式化正整数时强制添加上正好，如%+d可将123格式化位+123“,”：格式化整数时按“千”分组，例如：%,d可将1234567890格式化位1,234,567,890它俩可以组合使用，如：%+,d</code></pre><p>数据的宽度</p><pre><code>%md或%-md指定格式化整数的长度最少为m如%6d可将123格式化为“ 123”，左边三个空格，即如果数字的长度不足6，则在格式化的数字左边添加空格使得整体长度为6（左边添加空格即右对齐）%-6d使得结果左对齐，即在右边添加空格，如%-6d可将123格式化为“123 ”，右边三个空格</code></pre><h3 id="格式化浮点数"><a href="#格式化浮点数" class="headerlink" title="格式化浮点数"></a>格式化浮点数</h3><p>既可以格式化基本数据类型，也可以格式化它们的包装类</p><p>修饰符</p><pre><code>“+” ：格式化正数时添加正号“,”：将正数部分按千分位它俩可以组合使用，如：%+,f</code></pre><p>限制小数位数与宽度</p><pre><code>“%.nf”可以限制小数的位数为n（遵循四舍五入）“%mf”可以规定数据的宽度为m，长度不足补空格，默认居右（%-mf，居左）组合使用：System.out.printf(&quot;%7.3f&quot;,0.1235);1结果：0.124 （还有俩个空格，“.”也占一个长度）</code></pre><h1 id="二、基本数据类型和字符串"><a href="#二、基本数据类型和字符串" class="headerlink" title="二、基本数据类型和字符串"></a>二、基本数据类型和字符串</h1><p>1.常用基本数据类型<br>数据类型</p><p>内存</p><p>取值（十进制）</p><p>int</p><p>32位</p><p>-10^10~10^10</p><p>long</p><p>64位</p><p>-10^19~10^19</p><p>double</p><p>64位</p><p>4.9<em>10^-324~1.79</em>10^308</p><p>4.9E-324~1.79E308</p><p>char</p><p>16位</p><p>boolean</p><p>1位</p><p>2.字符串（String类）</p>]]></content>
       
       
+      
+        <tags>
+            
+            <tag> --蓝桥杯 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>搜索模板</title>
+      <link href="/2024/01/25/%E6%90%9C%E7%B4%A2%E6%A8%A1%E6%9D%BF/"/>
+      <url>/2024/01/25/%E6%90%9C%E7%B4%A2%E6%A8%A1%E6%9D%BF/</url>
+      
+        <content type="html"><![CDATA[<h1 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h1><pre><code>（1）剪枝（2）双向广搜（3）记忆化搜索（4）迭代加深（5）启发式搜索</code></pre><h2 id="BFS-和-DFS"><a href="#BFS-和-DFS" class="headerlink" title="BFS 和 DFS"></a>BFS 和 DFS</h2><ul><li>BFS：广度优先搜索</li><li>DFS：深度优先搜索</li></ul><p>这两种搜索算法在图论和树结构中常被使用，用于遍历或搜索图或树的节点。广度优先搜索按层次逐层扩展，而深度优先搜索则通过沿着树的深度尽可能远的搜索。这两种算法在不同的情况下有不同的应用场景</p><h2 id="搜索是暴力法的具体实现"><a href="#搜索是暴力法的具体实现" class="headerlink" title="搜索是暴力法的具体实现"></a>搜索是暴力法的具体实现</h2><table><thead><tr><th>DFS</th><th>BFS</th></tr></thead><tbody><tr><td>适合求方案总数</td><td>适合求解最短路，连通性问题</td></tr><tr><td>利用递归来实现</td><td>利用队列来实现</td></tr><tr><td>试探搜索</td><td>地毯搜索</td></tr><tr><td>沿着一条路走到黑</td><td>总是先w试距离初始状态最近的状态</td></tr></tbody></table><h2 id="DFS-递归实现"><a href="#DFS-递归实现" class="headerlink" title="DFS (递归实现)"></a>DFS (递归实现)</h2><p>递归思想：不断重复调用自己</p><p>俩个过程：递归前进和递归后退（回溯）</p><p>大问题拆分小问题 求小问题的解载返回大问题上直到求出大问题的解</p><h3 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h3><h4 id=""><a href="#" class="headerlink" title=""></a><img src="/./%E6%90%9C%E7%B4%A2%E6%A8%A1%E6%9D%BF/image-20240125154246556.png" alt="image-20240125154246556"></h4><h4 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h4><pre><code class="java">x</code></pre><h2 id="BFS-最短路径"><a href="#BFS-最短路径" class="headerlink" title="BFS(最短路径)"></a>BFS(最短路径)</h2>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> -- 蓝桥杯 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>蓝桥杯寒假模板总结</title>
+      <link href="/2024/01/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/"/>
+      <url>/2024/01/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/</url>
+      
+        <content type="html"><![CDATA[<p><img src="/./%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/image-20240120092756517.png" alt="image-20240120092756517"></p><p><img src="/./%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/image-20240120101629096.png" alt="image-20240120101629096"><img src="/2024/01/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/image-20240120101630012.png" alt="image-20240120101630012"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> -- 蓝桥杯 </tag>
+            
+        </tags>
       
     </entry>
     
