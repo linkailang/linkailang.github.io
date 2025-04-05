@@ -1,0 +1,315 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>ROS2机器人开发 | 涂良湘</title><meta name="author" content="涂良湘,2698508226@qq.com"><meta name="copyright" content="涂良湘"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="ROS1和ROS2 ROS（Robot Operating System，机器人操作系统），但 ROS 本身并不是一个操作系统，而是可以安装在现在已有的操作系统上（Linux、Windows、Mac）的软件库和工具集。 现在的 ROS 功能已经变得非常的丰富和强大。但随着对 ROS 功能上要求越来越多，一些原始的架构和设计不能够满足目前的使用需求，这也是 ROS2 出现的原因。  ROS的作用 做">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ROS2机器人开发">
+<meta property="og:url" content="https://linkailang.github.io/2025/02/07/ROS2%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%BC%80%E5%8F%91/index.html">
+<meta property="og:site_name" content="涂良湘">
+<meta property="og:description" content="ROS1和ROS2 ROS（Robot Operating System，机器人操作系统），但 ROS 本身并不是一个操作系统，而是可以安装在现在已有的操作系统上（Linux、Windows、Mac）的软件库和工具集。 现在的 ROS 功能已经变得非常的丰富和强大。但随着对 ROS 功能上要求越来越多，一些原始的架构和设计不能够满足目前的使用需求，这也是 ROS2 出现的原因。  ROS的作用 做">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://linkailang.github.io/img/QQ%E5%9B%BE%E7%89%8720230422000755.jpg">
+<meta property="article:published_time" content="2025-02-07T10:53:36.000Z">
+<meta property="article:modified_time" content="2025-02-10T05:17:12.497Z">
+<meta property="article:author" content="涂良湘">
+<meta property="article:tag" content="ROS2 嵌入式">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://linkailang.github.io/img/QQ%E5%9B%BE%E7%89%8720230422000755.jpg"><link rel="shortcut icon" href="/img/avatar.png"><link rel="canonical" href="https://linkailang.github.io/2025/02/07/ROS2%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%BC%80%E5%8F%91/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'ROS2机器人开发',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-02-10 13:17:12'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/mouse.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='screen'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (false) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="/css/progress_bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/loading.gif" data-original="/img/QQ%E5%9B%BE%E7%89%8720230422000755.jpg" onerror="onerror=null;src='/img/avatar.png'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/Message/"><i class="fa-fw fas fa-comment"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/Snipaste_2024-01-12_01-49-04.png')"><nav id="nav"><span id="blog-info"><a href="/" title="涂良湘"><span class="site-name">涂良湘</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/Message/"><i class="fa-fw fas fa-comment"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">ROS2机器人开发</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-02-07T10:53:36.000Z" title="发表于 2025-02-07 18:53:36">2025-02-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-02-10T05:17:12.497Z" title="更新于 2025-02-10 13:17:12">2025-02-10</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="ROS2机器人开发"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="ROS1和ROS2"><a href="#ROS1和ROS2" class="headerlink" title="ROS1和ROS2"></a>ROS1和ROS2</h1><ol>
+<li>ROS（Robot Operating System，机器人操作系统），但 ROS 本身并不是一个操作系统，而是可以安装在现在已有的操作系统上（Linux、Windows、Mac）的软件库和工具集。</li>
+<li>现在的 ROS 功能已经变得非常的丰富和强大。但随着对 ROS 功能上要求越来越多，<strong>一些原始的架构和设计不能够满足目前的使用需求，这也是 ROS2 出现的原因</strong>。</li>
+</ol>
+<h2 id="ROS的作用"><a href="#ROS的作用" class="headerlink" title="ROS的作用"></a>ROS的作用</h2><ol>
+<li>做一个机器人需要涉及到多个部分，而且这些部分之间还要进行通信，如果想要整个机器人可以跑起来，那么必须要有一个东西将下面的几个部分合理的连接到一起，这个东西就是 ROS</li>
+</ol>
+<ul>
+<li>感知部分：激光雷达、深度相机、IMU、里程计、碰撞感知、建图</li>
+<li>决策部分：路径规划（navigation）算法、定位算法</li>
+<li>控制部分：轮子驱动</li>
+</ul>
+<h2 id="ROS-和-ROS2-对比"><a href="#ROS-和-ROS2-对比" class="headerlink" title="ROS 和 ROS2 对比"></a>ROS 和 ROS2 对比</h2><p>1.<br>   ROS 的设计目标是简化机器人的开发，ROS 为此设计了一整套通信机制（话题、服务、参数、动作）</p>
+<ul>
+<li>通过这些通信机制，ROS 实现了将机器人的各个组件给的连接起来，在设计这套通信机制的时候就设计了一个叫做 ROS Master 的主节点，所有节点（可以理解为某一个组件，比如：激光雷达）的通信建立必须经过这个主节点</li>
+<li>一旦 ROS Master 主节点挂掉后，就会造成整个系统通信的异常，ROS 的不稳定这个问题，如果是想基于 ROS 做商业化机器人（比如无人驾驶汽车），就会造成非常严重的后果</li>
+<li>ROS 还存在以下问题：1、通信基于 TCP 实现，实时性差、系统开销大；2、对 Python3 支持不友好，需要重新编译；3、消息机制不兼容；4、没有加密机制、安全性不高</li>
+</ul>
+<p><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202502091701356.png" alt="image-20250209170153244"></p>
+<blockquote>
+<p>[!TIP]</p>
+<p>网络传输可靠性对比</p>
+<ul>
+<li>ROS1 是基于 TCP&#x2F;IP 构建的，TCP&#x2F;IP 很难在无线通信中传输数据，因为中断可能会导致回退、重传和延迟</li>
+<li>ROS2 中的 DDS 使用 UDP 传送数据，不会尝试重新传输数据，相反，DDS 决定在不可靠的条件下何时以及如何重新传输，DDS 引入了服务质量 (QoS) 来公开这些设置，以优化可用带宽和延迟</li>
+</ul>
+</blockquote>
+<h2 id="ROS-与-ROS2-架构对比"><a href="#ROS-与-ROS2-架构对比" class="headerlink" title="ROS 与 ROS2 架构对比"></a>ROS 与 ROS2 架构对比</h2><ol>
+<li><p>OS 层</p>
+<p>ROS：只支持 linux 平台</p>
+<p>ROS2：支持 windows、mac 甚至是嵌入式 RTOS 平台</p>
+</li>
+<li><p>中间件层（中间件就是介于某两个或者多个节点中间的组件，提供多个节点间通信用的）</p>
+<p>去中心化 master：ROS 和 ROS2 中间件不同之处在于，ROS2 取消了 master 节点，去中心化后，各个节点之间可以通过 DDS 的节点相互发现，各个节点都是平等的，且可以 1 对 1、1 对 n、n 对 n 进行互相通信</p>
+<p>不造通信的轮子：通信直接更换为 DDS 进行实现，采用 DDS 通信，使得 ROS2 的实时性、可靠性和连续性上都有了增强</p>
+</li>
+<li><p>应用层</p>
+<p>Python2 到 Python3 的支持</p>
+<p>编译系统的改进（catkin 到 ament）</p>
+<p>C++ 标准更新到 C++11</p>
+<p>可以使用相同 API 的进程间和进程内通信</p>
+</li>
+</ol>
+<p><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202502091709884.png" alt="image-20250209170944771"></p>
+<h3 id="ROS2系统架构可以分为5层"><a href="#ROS2系统架构可以分为5层" class="headerlink" title="ROS2系统架构可以分为5层"></a>ROS2系统架构可以分为5层</h3><ol>
+<li><p>操作系统层</p>
+</li>
+<li><p>DDS实现层</p>
+</li>
+<li><p>DDS接口层</p>
+</li>
+<li><p>ROS 2客户端层</p>
+</li>
+<li><p>ROS 2 应用层</p>
+</li>
+</ol>
+<p>什么是 DDS？</p>
+<p>DDS（Data Distribution Service，数据分发服务），是 OMG（Object Management Group，对象管理组织）发布的分布式通信规范&#x2F;协议，采用订阅发布模型，以中间件的形式提供通信服务，并提供 QoS（Quality of Service）策略，保障数据实时、高效、灵活的分发<br>DDS 协议大致流程是多对多的单向数据交互，通信模型为分布式结构，没有中心节点，同一个数据空间任何两个节点之间都能直接通信，DDS 采用以数据为中心的发布-订阅模型 DCPS（Data-Centric Publish-Subscribe）<br>分布式实时通信-DDS 概述</p>
+<h1 id="1-环境准备"><a href="#1-环境准备" class="headerlink" title="1.环境准备"></a>1.环境准备</h1><p>虚拟机 版本ubuntu22.02</p>
+<p>鱼香ros2一键安装</p>
+<p><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202502092011690.png" alt="image-20250209201136544"></p>
+<p>软件 vscode &#x2F; anconda </p>
+<pre><code>终端输入code. 打开vscode
+</code></pre>
+<p>版本管理工具 git</p>
+<p><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202502071927639.png" alt="image-20250207192748580"></p>
+<p><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202502071927152.png" alt="image-20250207192717490"></p>
+<h1 id="2-常用指令"><a href="#2-常用指令" class="headerlink" title="2.常用指令"></a>2.常用指令</h1><pre><code>Ctrl+Alt+T 打开终端 默认打开当前用户的主目录 用符号 ~
+</code></pre>
+<p><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202502071915988.png"></p>
+<p>在liunx里面 &#x2F;表示整个文件系统的根目录</p>
+<pre><code>ls #表示当前目录下的文件
+</code></pre>
+<pre><code>mkdir #创建文件夹
+touch #创建文件
+nano / vim 文本编辑器
+cat #对文件里面文本进行控制台打印输出
+rm  删除文件
+rm -r 递归删除
+</code></pre>
+<p><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202502071915204.png" alt="image-20250207191542128"></p>
+<pre><code>dpkg -i 包安装管理工具
+</code></pre>
+<h1 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h1><p>有g++ 和 cmake 俩种方法</p>
+<h1 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h1><p>linux 里面环境变量是一种全局变量 用于存储用户和系统的配置信息</p>
+<h1 id="编写节点"><a href="#编写节点" class="headerlink" title="编写节点"></a>编写节点</h1></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://linkailang.github.io">涂良湘</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://linkailang.github.io/2025/02/07/ROS2%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%BC%80%E5%8F%91/">https://linkailang.github.io/2025/02/07/ROS2%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%BC%80%E5%8F%91/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://linkailang.github.io" target="_blank">涂良湘</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/ROS2-%E5%B5%8C%E5%85%A5%E5%BC%8F/">ROS2 嵌入式</a></div><div class="post_share"><div class="social-share" data-image="/img/QQ%E5%9B%BE%E7%89%8720230422000755.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/03/22/%E6%96%B0%E7%94%B5%E8%84%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" title="新电脑环境配置"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">新电脑环境配置</div></div></a></div><div class="next-post pull-right"><a href="/2025/01/18/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/" title="算法刷题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">算法刷题</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/loading.gif" data-original="/img/QQ%E5%9B%BE%E7%89%8720230422000755.jpg" onerror="this.onerror=null;this.src='/img/avatar.png'" alt="avatar"/></div><div class="author-info__name">涂良湘</div><div class="author-info__description">涂良湘的个人博客</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:2698508226@qq.com" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">涂良湘的博客</div><timing></timing></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ROS1%E5%92%8CROS2"><span class="toc-number">1.</span> <span class="toc-text">ROS1和ROS2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ROS%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">1.1.</span> <span class="toc-text">ROS的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ROS-%E5%92%8C-ROS2-%E5%AF%B9%E6%AF%94"><span class="toc-number">1.2.</span> <span class="toc-text">ROS 和 ROS2 对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ROS-%E4%B8%8E-ROS2-%E6%9E%B6%E6%9E%84%E5%AF%B9%E6%AF%94"><span class="toc-number">1.3.</span> <span class="toc-text">ROS 与 ROS2 架构对比</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ROS2%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%8F%AF%E4%BB%A5%E5%88%86%E4%B8%BA5%E5%B1%82"><span class="toc-number">1.3.1.</span> <span class="toc-text">ROS2系统架构可以分为5层</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-number">2.</span> <span class="toc-text">1.环境准备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4"><span class="toc-number">3.</span> <span class="toc-text">2.常用指令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%96%E8%AF%91"><span class="toc-number">4.</span> <span class="toc-text">编译</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">5.</span> <span class="toc-text">环境变量</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%96%E5%86%99%E8%8A%82%E7%82%B9"><span class="toc-number">6.</span> <span class="toc-text">编写节点</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/27/%E7%A4%BA%E6%B3%A2%E5%99%A8%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/" title="示波器使用方法">示波器使用方法</a><time datetime="2025-03-27T13:45:42.000Z" title="发表于 2025-03-27 21:45:42">2025-03-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/27/%E6%89%8B%E7%AE%97%E9%A2%98/" title="无题">无题</a><time datetime="2025-03-27T13:44:14.935Z" title="发表于 2025-03-27 21:44:14">2025-03-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/22/%E6%96%B0%E7%94%B5%E8%84%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" title="新电脑环境配置">新电脑环境配置</a><time datetime="2025-03-22T02:21:06.000Z" title="发表于 2025-03-22 10:21:06">2025-03-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/07/ROS2%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%BC%80%E5%8F%91/" title="ROS2机器人开发">ROS2机器人开发</a><time datetime="2025-02-07T10:53:36.000Z" title="发表于 2025-02-07 18:53:36">2025-02-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/18/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/" title="算法刷题">算法刷题</a><time datetime="2025-01-18T12:08:44.000Z" title="发表于 2025-01-18 20:08:44">2025-01-18</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 涂良湘</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div><div class="container" id="jsi-flying-fish-container"><script src="js/fish.js"></script></div><style>   @media only screen and (max-width: 767px){
+   #sidebar_search_box input[type=text]{width:calc(100% - 24px)}
+}</style></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/gh/xiabo2/CDN@latest/fish.js"></script><script src="https://cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script><script src="/js/sakura.js"></script><script src="/js/timing.js"></script><script src="/js/yunxing.js"></script><script defer src="https://rmt.dogedoge.com/fetch/~/source/jsdelivr/npm/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="https://cdn.jsdelivr.net/gh/sirxemic/jquery.ripples/dist/jquery.ripples.js"></script><script defer data-pjax src="/js/ripples.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div><div class="pjax-reload"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__fadeInLeft');
+    arr[i].setAttribute('data-wow-duration', '600ms');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__fadeInRightBig');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer="defer" src="https://cdn.jsdelivr.net/gh/graingert/wow@1.3.0/dist/wow.min.js"></script><script defer="defer" src="/js/wow_init.js"></script></div><!-- hexo injector body_end start --><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__fadeInLeft');
+    arr[i].setAttribute('data-wow-duration', '600ms');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__fadeInRightBig');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script>
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body></html>

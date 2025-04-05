@@ -1,0 +1,824 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>操作系统期末复习笔记 | 涂良湘</title><meta name="author" content="涂良湘,2698508226@qq.com"><meta name="copyright" content="涂良湘"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="ros  编译工作空间 CMake  首先在工作空间 catkin_ws&#x2F;src&#x2F; 下递归的查找其中每一个ROS的package。 2.package中会有 package.xml 和 CMakeLists.txt 文件，Catkin(CMake)编译系统依据 CMakeLists.txt 文件,从而生成 makefiles (放在 catkin_ws&#x2F;build&amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统期末复习笔记">
+<meta property="og:url" content="https://linkailang.github.io/2024/06/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="涂良湘">
+<meta property="og:description" content="ros  编译工作空间 CMake  首先在工作空间 catkin_ws&#x2F;src&#x2F; 下递归的查找其中每一个ROS的package。 2.package中会有 package.xml 和 CMakeLists.txt 文件，Catkin(CMake)编译系统依据 CMakeLists.txt 文件,从而生成 makefiles (放在 catkin_ws&#x2F;build&amp;#">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://linkailang.github.io/img/QQ%E5%9B%BE%E7%89%8720230422000755.jpg">
+<meta property="article:published_time" content="2024-06-27T04:09:39.000Z">
+<meta property="article:modified_time" content="2024-06-27T10:19:23.924Z">
+<meta property="article:author" content="涂良湘">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://linkailang.github.io/img/QQ%E5%9B%BE%E7%89%8720230422000755.jpg"><link rel="shortcut icon" href="/img/avatar.png"><link rel="canonical" href="https://linkailang.github.io/2024/06/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '操作系统期末复习笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-06-27 18:19:23'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/mouse.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='screen'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (false) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="/css/progress_bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/loading.gif" data-original="/img/QQ%E5%9B%BE%E7%89%8720230422000755.jpg" onerror="onerror=null;src='/img/avatar.png'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/Message/"><i class="fa-fw fas fa-comment"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/Snipaste_2024-01-12_01-49-04.png')"><nav id="nav"><span id="blog-info"><a href="/" title="涂良湘"><span class="site-name">涂良湘</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/Message/"><i class="fa-fw fas fa-comment"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">操作系统期末复习笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-06-27T04:09:39.000Z" title="发表于 2024-06-27 12:09:39">2024-06-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-06-27T10:19:23.924Z" title="更新于 2024-06-27 18:19:23">2024-06-27</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>21分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="操作系统期末复习笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="ros"><a href="#ros" class="headerlink" title="ros"></a>ros</h1><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202406271227218.png" alt="image-20240627122745164" style="zoom:100%;" />
+
+<p>编译工作空间 CMake</p>
+<p><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202406271400030.png" alt="image-20240627140005928"></p>
+<p>首先在工作空间 catkin_ws&#x2F;src&#x2F; 下递归的查找其中每一个ROS的package。</p>
+<p>2.package中会有 package.xml 和 CMakeLists.txt 文件，Catkin(CMake)编译系统依据 CMakeLists.txt 文件,从而生成 makefiles (放在 catkin_ws&#x2F;build&#x2F;)。</p>
+<p>3.然后 make 刚刚生成的 makefiles 等文件，编译链接生成可执行文件(放在 catkin_ws&#x2F;devel )。</p>
+<p>也就是说，Catkin就是将 cmake 与 make 指令做了一个封装从而完成整个编译过程的工具。catkin有比较突出的优点，主要是：操作更加简单一次配置，多次使用跨依赖项目编译。</p>
+<p>要用catkin编译一个工程或软件包，只需要用 catkin_make 指令。一般当我们写完代码，执行一次 catkin_make 进行编译,调用系统自动完成编译和链接过程，构建生成目标文件</p>
+<pre><code>cd ~/ros_workspace/
+catkin_make
+source ~/ros_workspace/devel/setup.bash
+</code></pre>
+<h2 id="任何ROS程序只有组织成package功能包才能编译"><a href="#任何ROS程序只有组织成package功能包才能编译" class="headerlink" title="任何ROS程序只有组织成package功能包才能编译"></a>任何ROS程序只有组织成package功能包才能编译</h2><h2 id="Package结构："><a href="#Package结构：" class="headerlink" title="Package结构："></a>Package结构：</h2><p>一个package下常见的文件、路径有：</p>
+<p>├── CMakeLists.txt #package的编译规则(必须)</p>
+<p>├── package.xml #package的描述信息(必须)</p>
+<p>├── src&#x2F; #源代码文件</p>
+<p>├── include&#x2F; #C++头文件</p>
+<p>├── scripts&#x2F; #可执行脚本</p>
+<p>├── msg&#x2F; #自定义消息</p>
+<p>├── srv&#x2F; #自定义服务</p>
+<p>├── models&#x2F; #3D模型文件</p>
+<p>├── urdf&#x2F; #urdf文件</p>
+<p>├── launch&#x2F; #launch文件</p>
+<p>其中定义package的是 CMakeLists.txt 和 package.xml ，这两个文件是package中必不可少的。catkin编译系统在编译前，首先就要解析这两个文件。这两个文件就定义了一个package。</p>
+<ol>
+<li>CMakeLists.txt: 定义package的包名、依赖、源文件、目标文件等编译规则，是package不可少的成分；</li>
+<li>package.xml: 描述package的包名、版本号、作者、依赖等信息，是package不可少的成分；</li>
+<li>src&#x2F;: 存放ROS的源代码，包括C++的源码和(.cpp)以及Python的module(.py)；</li>
+<li>include&#x2F;: 存放C++源码对应的头文件；</li>
+<li>scripts&#x2F;: 存放可执行脚本，例如shell脚本(.sh)、Python脚本(.py)；</li>
+<li>msg&#x2F;: 存放自定义格式的消息(.msg)；</li>
+<li>srv&#x2F;: 存放自定义格式的服务(.srv)；</li>
+<li>models&#x2F;: 存放机器人或仿真场景的3D模型(.sda, .stl, .dae等)；</li>
+<li>urdf&#x2F;: 存放机器人的模型描述(.urdf或.xacro)；</li>
+<li>launch&#x2F;: 存放launch文件(.launch或.xml)；</li>
+</ol>
+<h2 id="Package功能包创建"><a href="#Package功能包创建" class="headerlink" title="Package功能包创建"></a>Package功能包创建</h2><pre><code>catkin_create_pkg package depends
+</code></pre>
+<pre><code>cd ~/ros_workspace /src #切到功能包创建目录
+catkin_create_pkg test_pkg roscpp rospy std_msgs #创建名字为test_pkg 的功能包，依赖了roscpp,rospy,std_msgs
+</code></pre>
+<p>这样就会在当前路径下新建 test_pkg 软件包，包括：</p>
+<p>├── CMakeLists.txt</p>
+<p>├── include</p>
+<p>│ └── test_pkg</p>
+<p>├── package.xml</p>
+<p>└── src</p>
+<p>catkin_create_pkg 帮你完成了软件包的初始化，填充好了 CMakeLists.txt 和 package.xml ，并且将依赖项填进了这两个文件中。</p>
+<h3 id="Package相关命令"><a href="#Package相关命令" class="headerlink" title="Package相关命令"></a>Package相关命令</h3><p><strong>rospack</strong>：</p>
+<p>rospack是对package管理的工具，命令的用法如下：</p>
+<p>表2.1 rospack命令</p>
+<table>
+<thead>
+<tr>
+<th>rospack命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>rospack help</td>
+<td>显示rospack的用法</td>
+</tr>
+<tr>
+<td>rospack list</td>
+<td>列出本机所有package</td>
+</tr>
+<tr>
+<td>rospack depends [package]</td>
+<td>显示package的依赖包</td>
+</tr>
+<tr>
+<td>rospack find [package]</td>
+<td>定位某个package</td>
+</tr>
+<tr>
+<td>rospack profile</td>
+<td>刷新所有package的位置记录</td>
+</tr>
+</tbody></table>
+<p><strong>roscd</strong>：</p>
+<p>roscd 命令类似与Linux系统的 cd ，改进之处在于 roscd 可以直接 cd 到ROS的软件包。</p>
+<p>表2.2 roscd命令</p>
+<table>
+<thead>
+<tr>
+<th>roscd命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>roscd [pacakge]</td>
+<td>cd到ROS package所在路径</td>
+</tr>
+</tbody></table>
+<p><strong>rosls:</strong></p>
+<p>rosls 也可以视为Linux指令 ls 的改进版，可以直接 ls ROS软件包的内容。</p>
+<p>表2.3 rosls命令</p>
+<table>
+<thead>
+<tr>
+<th>rosls命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>rosls [pacakge]</td>
+<td>列出ROS package下的文件</td>
+</tr>
+</tbody></table>
+<p><strong>rosdep:</strong></p>
+<p>rosdep 是用于管理ROS package依赖项的命令行工具，用法如下：</p>
+<p>表2.4 rosdep命令</p>
+<p><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202406271407951.gif" alt="img"></p>
+<p>一个较常使用的命令是 rosdep install –from-paths src –ignore-src –rosdistro&#x3D;kinetic -y ,用于安装工作空间中 src 路径下所有package的依赖项（由pacakge.xml文件指定）。</p>
+<h2 id="node"><a href="#node" class="headerlink" title="node"></a>node</h2><p>最小的进程单元就是节点(可执行文件在运行之后就成了一个进程(process)，这个进程在ROS中就叫做节点)</p>
+<p>从程序角度来说，node就是一个可执行文件（通常为C++编译生成的可执行文件、Python脚本）被执行，加载到了内存之中；</p>
+<p>当执行一个ROS程序，就被加载到了内存中，就成为了一个进程，在ROS里叫做节点</p>
+<p>分布式 </p>
+<h2 id="节点管理器master"><a href="#节点管理器master" class="headerlink" title="节点管理器master"></a>节点管理器master</h2><p>ROS为机器人开发者们提供了不同语言的编程接口，比如C++接口叫做roscpp，Python接口叫做rospy，Java接口叫做rosjava。</p>
+<p><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202406271418794.png" alt="image-20240627141840726"></p>
+<h3 id="cpp编写"><a href="#cpp编写" class="headerlink" title="cpp编写"></a>cpp编写</h3><pre><code class="C++">#include &quot;ros/ros.h&quot;
+#include &quot;std_msgs/String.h&quot;
+#include &quot;sstream&quot;
+int main(int argc, char **argv)
+&#123;// 初始化 ROS 节点，节点名为 &quot;talker&quot;
+  ros::init(argc, argv, &quot;talker&quot;);// 创建一个节点句柄
+  ros::NodeHandle n;// 创建一个 Publisher，发布到话题 &quot;chatter&quot;，消息类型为 std_msgs::String，队列大小为 1000
+  ros::Publisher chatter_pub = n.advertise&lt;std_msgs::String&gt;(&quot;chatter&quot;, 1000);// 设置循环频率为 10Hz
+  ros::Rate loop_rate(10);
+  int count = 0;// 当 ROS 节点正常运行时，进入循环
+  while (ros::ok())
+  &#123;// 创建一个 std_msgs::String 类型的消息
+    std_msgs::String msg;
+    std::stringstream ss;// 将 &quot;hello world&quot; 和当前计数值 count 写入字符串流
+    ss &lt;&lt; &quot;hello world &quot; &lt;&lt; count;
+    msg.data = ss.str();// 打印消息内容到终端
+    ROS_INFO(&quot;%s&quot;, msg.data.c_str());// 发布消息到 &quot;chatter&quot; 话题
+    chatter_pub.publish(msg);// 调用一次回调函数，处理所有已经到来的消息
+    ros::spinOnce();// 按照设定的频率休眠
+    loop_rate.sleep();// 计数值加 1
+    ++count;
+  &#125;
+  return 0;
+&#125;
+</code></pre>
+<p>每秒发布 10 条内容为 “hello world x” 的消息，其中 <code>x</code> 是从 0 开始递增的计数值。</p>
+<h3 id="CMakeLists-txt文件修改"><a href="#CMakeLists-txt文件修改" class="headerlink" title="CMakeLists.txt文件修改"></a>CMakeLists.txt文件修改</h3><pre><code>add_executable($&#123;PROJECT_NAME&#125;_node  src/test_pkg_node.cpp)&#123;PROJECT_NAME&#125;_node为生成可执行程序的名字，该名字可以任意指定。
+src/node.cpp:为编译要使用的源码的文件名。
+target_link_libraries($&#123;PROJECT_NAME&#125;_node $&#123;catkin_LIBRARIES&#125;）
+&#123;PROJECT_NAME&#125;_node是在add_executable中生成的可执行文件
+</code></pre>
+<p><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202406271423296.png" alt="image-20240627142349193"></p>
+<p>编译</p>
+<pre><code>roscore//打开Master
+rosrun test_pkg test_pkg_node
+</code></pre>
+<h3 id="rosnode命令"><a href="#rosnode命令" class="headerlink" title="rosnode命令"></a>rosnode命令</h3><p><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202406271425596.png" alt="image-20240627142527534"></p>
+<h3 id="头文件引用"><a href="#头文件引用" class="headerlink" title="头文件引用"></a>头文件引用</h3><p>打开终端输入以下命令进入要创建头文件的目录：</p>
+<p>cd ~&#x2F;ros_workspace&#x2F;src&#x2F;test_pkg&#x2F;include&#x2F;test_pkg</p>
+<p>输入以下命令创建头文件：</p>
+<p>gedit test_pkg.h </p>
+<p>输入以下代码：</p>
+<pre><code>#ifndef _TEST_PKG_
+#define _TEST_PKG_
+#define TEST_PKG_VER &quot;1.0.0&quot;
+#define INIT_COUNT 100
+int addTwoNum(int a,int b);
+#endif
+</code></pre>
+<p><strong>完成后保存关闭头文件，修改test.cpp，如下代码</strong>：</p>
+<pre><code class="c++">#include &quot;ros/ros.h&quot;
+#include &quot;std_msgs/String.h&quot;
+#include &quot;test_pkg/test_pkg.h&quot; //自定义头文件
+#include &lt;sstream&gt;
+int addTwoNum(int a,int b)
+&#123;
+return a+b;
+&#125;//头文件函数实现部分
+int main(int argc, char *argv[])
+&#123;
+ros::init(argc, argv, &quot;talker&quot;);//这个名字是给系统看的
+ros::NodeHandle n;
+ros::Publisher chatter_pub = n.advertise &lt;std_msgs::String &gt;(&quot;chatter&quot;, 1000);
+ros::Rate loop_rate(10);
+int count = INIT_COUNT;//调用了头文件中的宏定义
+ROS_INFO(&quot;test_pkg version:%s&quot;,TEST_PKG_VER);
+while (ros::ok())
+&#123;
+std_msgs::String msg;
+std::stringstream ss;
+ss &lt;&lt; &quot;hello world &quot; &lt;&lt; count;
+msg.data = ss.str();
+ROS_INFO(&quot;%s&quot;, msg.data.c_str());chatter_pub.publish(msg);
+ros::spinOnce();
+loop_rate.sleep();
+++count;
+&#125;
+return 0;
+&#125;
+</code></pre>
+<p>需要修改修改test_pkg 中的 CMakeLists.txt<br><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202406271428838.png" alt="image-20240627142818770"></p>
+<p>此处的include是一个相对路径，指的是当前功能包test_pkg下的include</p>
+<h3 id="引用同一工作空间内其他软件包的头文件"><a href="#引用同一工作空间内其他软件包的头文件" class="headerlink" title="引用同一工作空间内其他软件包的头文件"></a>引用同一工作空间内其他软件包的头文件</h3><p><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202406271430018.png" alt="image-20240627143034917"></p>
+<p>my_pkg的目的是要引用test_pkg中的自定义头文件，因此这里创建my_pkg的时候要对test_pkg进行依赖。</p>
+<p>my_pkg&#x2F;src路径下创建源码文件my_pkg.cpp</p>
+<pre><code class="C++">#include &quot;ros/ros.h&quot;
+#include &quot;std_msgs/String.h&quot;
+#include &lt;sstream&gt;
+#include &quot;test_pkg/test_pkg.h&quot; //自定义头文件
+int main(int argc, char *argv[])
+&#123;
+ros::init(argc, argv, &quot;my_pkg&quot;);
+ros::NodeHandle n;
+ros::Publisher chatter_pub = n.advertise&lt;std_msgs::String&gt;(&quot;my_chatter&quot;, 1000);
+ros::Rate loop_rate(10);
+int count = INIT_COUNT;//调用了头文件中的宏定义
+ROS_INFO(&quot;test_pkg version:%s,init count:%d&quot;,TEST_PKG_VER,INIT_COUNT);//将其他软件包头文件中声明的宏定义打印出来
+while (ros::ok())
+&#123;
+std_msgs::String msg;
+std::stringstream ss;
+ss &lt;&lt; &quot;my_pkg &quot; &lt;&lt; count;
+msg.data = ss.str();
+ROS_INFO(&quot;%s&quot;, msg.data.c_str());
+chatter_pub.publish(msg);
+ros::spinOnce();
+loop_rate.sleep();
+++count;
+&#125;
+return 0;
+&#125;
+</code></pre>
+<p><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202406271432313.png" alt="image-20240627143210185"></p>
+<p><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202406271432582.png" alt="image-20240627143238451"></p>
+<p>对工作空间进行编译：</p>
+<p>cd ~&#x2F;ros_workspace&#x2F;</p>
+<p>catkin_make</p>
+<p>编译完成之后可以运行节点查看结果。</p>
+<p>roscore</p>
+<p>rosrun my_pkg my_pkg_node</p>
+<p><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202406271433139.png" alt="image-20240627143307049"></p>
+<h3 id="launch文件编写"><a href="#launch文件编写" class="headerlink" title="launch文件编写"></a>launch文件编写</h3><p>roslaunch工具来调用launch文件，执行这个脚本文件就一次性启动所有的节点程序。</p>
+<p>launch文件同样也遵循着xml格式规范，是一种标签文本。</p>
+<p><launch> <!--根标签--></p>
+<p><node> <!--需要启动的node及其参数--></p>
+<p><include> <!--包含其他launch--></p>
+<p><machine> <!--指定运行的机器--></p>
+<p><env-loader> <!--设置环境变量--></p>
+<param> <!--定义参数到参数服务器-->
+
+<p><rosparam> <!--启动yaml文件参数到参数服务器--></p>
+<p><arg> <!--定义变量--></p>
+<p><remap> <!--设定参数映射--></p>
+<p><group> <!--设定命名空间--></p>
+<p></launch> <!--根标签--><br>每个XML文件都必须要包含一个根元素，根元素由一对launch标签定义：<br><launch> … </launch>。</p>
+<p><node>标签的上一级根标签为<launch>标签，用于启动一个ROS节点。启动一个节点的写法如下：</p>
+<node pkg="package-name" type="executable-name" name="node-name" />
+
+<p><node>标签下有若干属性，至少要包含三个属性：pkg，type，name。Pkg属性指定了要运行的节点属于哪个功能包，type是指要运行节点的可执行文件的名称，name属性给节点指派了名称，它将覆盖任何通过调用 ros::int来赋 予节点的名称。</p>
+<pre><code class="xml">&lt;launch&gt;
+&lt;node pkg=&quot;test_pkg&quot; type=&quot;test_pkg_node&quot; name=&quot;test_pkg_node&quot; output=&quot;screen&quot;/&gt;
+&lt;node pkg=&quot;my_pkg&quot; type=&quot;my_pkg_node&quot; name=&quot;my_pkg_node&quot; output=&quot;screen&quot;/&gt;
+&lt;/launch&gt;
+</code></pre>
+<p>其中，output&#x3D;“screen”属性可以将单个节点的标准输出到终端而不是存储在日志文件中。</p>
+<p><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202406271437026.png" alt="image-20240627143727913"><br><include> 标签</p>
+<pre><code class="XML">&lt;launch&gt;
+&lt;node pkg=&quot;test_pkg&quot; type=&quot;test_pkg_node&quot; name=&quot;test_pkg_node&quot; respawn=&quot;true&quot; output=&quot;screen&quot;/&gt;
+&lt;node pkg=&quot;my_pkg&quot; type=&quot;my_pkg_node&quot; name=&quot;my_pkg_node&quot; required=&quot;true&quot; output=&quot;screen&quot;/&gt;
+&lt;include file=&quot;$(find third_pkg)/launch/third_pkg.launch&quot;/&gt;
+&lt;/launch&gt;
+</code></pre>
+<pre><code class="C++">#include &quot;ros/ros.h&quot;
+#include &quot;std_msgs/String.h&quot;
+#include &lt;sstream&gt;
+int main(int argc, char **argv)
+&#123;// 初始化 ROS 节点，节点名为 &quot;third_pkg&quot;
+  ros::init(argc, argv, &quot;third_pkg&quot;);
+  // 创建一个节点句柄
+  ros::NodeHandle n;
+  // 创建一个 Publisher，发布到话题 &quot;third_pkg&quot;，消息类型为 std_msgs::String，队列大小为 1000
+  ros::Publisher chatter_pub = n.advertise&lt;std_msgs::String&gt;(&quot;third_pkg&quot;, 1000);
+  // 设置循环频率为 10Hz
+  ros::Rate loop_rate(10);
+  int count = 0;
+  // 当 ROS 节点正常运行时，进入循环
+  while (ros::ok())
+  &#123;// 创建一个 std_msgs::String 类型的消息
+    std_msgs::String msg;
+    std::stringstream ss;
+    // 将 &quot;third pkg:&quot; 和当前计数值 count 写入字符串流
+    ss &lt;&lt; &quot;third pkg: &quot; &lt;&lt; count;
+    msg.data = ss.str();
+    // 打印消息内容到终端
+    ROS_INFO(&quot;%s&quot;, msg.data.c_str());
+    // 发布消息到 &quot;third_pkg&quot; 话题
+    chatter_pub.publish(msg);
+    // 调用一次回调函数，处理所有已经到来的消息
+    ros::spinOnce();
+    // 按照设定的频率休眠
+    loop_rate.sleep();
+    // 计数值加 1
+    ++count;
+  &#125;
+  return 0;
+&#125;
+</code></pre>
+<p><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202406271442153.png" alt="image-20240627144220030"></p>
+<h2 id="话题通讯-话题"><a href="#话题通讯-话题" class="headerlink" title="话题通讯 -话题"></a>话题通讯 -话题</h2><h3 id="topic通讯原理"><a href="#topic通讯原理" class="headerlink" title="topic通讯原理"></a>topic通讯原理</h3><p>topic是一种点对点的单向通信方式，这里的“点”指的是node，也就是说node之间可以通过topic方式来传递信息</p>
+<p>topic要经历下面几步的初始化过程：</p>
+<p>首先publisher节点和subscriber节点都要到节点管理器进行注册；</p>
+<p>然后publisher会发布topic，subscriber在master的指挥下会订阅该topic；</p>
+<p>从而建立起sub-pub之间的通信。</p>
+<p>注意整个过程是单向的。其结构示意图如下。<br><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202406271459643.png" alt="image-20240627145943528"></p>
+<p>Subscriber接收消息会进行处理，一般这个过程叫做回调(Callback)。所谓回调就是提前定义好了一个处理函数（写在代码中），当有消息来就会触发这个处理函数，函数会对消息进行处理。</p>
+<p>topic通信属于一种异步的通信方式  各司其责，不存在协同工作，我们称这样的通信方式是异步的</p>
+<p>ROS是一种分布式的架构，一个topic可以被多个节点同时发布，也可以同时被多个节点接收</p>
+<p>分布式系统通信的好处：扩展性好、软件复用率高</p>
+<ol>
+<li>topic通信方式是异步的，发送时调用publish()方法，发送完成立即返回，不用等待反馈。</li>
+<li>subscriber通过回调函数的方式来处理消息。</li>
+<li>topic可以同时有多个subscribers，也可以同时有多个publishers。</li>
+</ol>
+<h3 id="通讯示例"><a href="#通讯示例" class="headerlink" title="通讯示例"></a>通讯示例</h3><p>输入以下命令在ros_workspace中创建第四个功能包subscribe_pkg。</p>
+<pre><code>cd ~/ros_workspace/src/
+catkin_create_pkg subscribe_pkg rospy roscpp std_msgs
+</code></pre>
+<pre><code class="C++">#include &quot;ros/ros.h&quot;
+#include &quot;std_msgs/Int32.h&quot;
+void chatterCallback(const std_msgs::Int32::ConstPtr&amp; msg)
+  &#123;
+ROS_INFO(&quot;I heard name:[%d]&quot;,msg-&gt;data);
+&#125;
+int main(int argc,char **argv)
+&#123;
+  ros::init(argc,argv,&quot;subscribe_node&quot;);
+  ros::NodeHandle n;
+  ros::Subscriber sub = n.subscribe(&quot;third_pkg_topic&quot;,1000,chatterCallback);
+  ros::spin();
+  return 0;
+&#125;
+</code></pre>
+<p>当有消息发布到该话题时，调用回调函数 <code>chatterCallback</code> 并打印消息的内容</p>
+<pre><code class="C++">#include &quot;ros/ros.h&quot;
+#include &quot;std_msgs/Int32.h&quot;
+int main(int argc, char **argv)
+&#123;
+  // 初始化 ROS 节点，节点名为 &quot;third_pkg&quot;
+  ros::init(argc, argv, &quot;third_pkg&quot;);
+  // 创建一个节点句柄
+  ros::NodeHandle n;
+  // 创建一个 Publisher，发布到话题 &quot;third_pkg_topic&quot;，队列大小为 1000
+  ros::Publisher chatter_pub = n.advertise&lt;std_msgs::Int32&gt;(&quot;third_pkg_topic&quot;, 1000);
+  // 设置循环频率为 2Hz
+  ros::Rate loop_rate(2);
+  // 初始化计数器
+  int count = 0;
+  // 当 ROS 仍在运行时，循环执行以下操作
+  while (ros::ok())
+  &#123;
+    // 创建一个消息对象
+    std_msgs::Int32 msg;
+    // 将计数器的值赋给消息的数据字段
+    msg.data = count;
+    // 打印消息的数据
+    ROS_INFO(&quot;%d&quot;, msg.data);
+    // 将消息发布到话题 &quot;third_pkg_topic&quot;
+    chatter_pub.publish(msg);
+    // 处理回调函数（如果有的话）
+    ros::spinOnce();
+    // 按照设定的频率休眠
+    loop_rate.sleep();
+    // 计数器递增，且在 0 到 4 之间循环
+    count = (++count) % 5;
+  &#125;
+  return 0;
+&#125;
+</code></pre>
+<p>(0 到 4）到 “third_pkg_topic” 话题，并且每秒发布 2 次。<br><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202406271523477.png" alt="image-20240627152313341"></p>
+<h3 id="理解自定义消息类型"><a href="#理解自定义消息类型" class="headerlink" title="理解自定义消息类型"></a>理解自定义消息类型</h3><p>话题是ROS提供的一种重要通讯方式，<strong>话题上传输的信息内容即为消息</strong></p>
+<p><strong>话题的类型由消息的数据类型决定</strong>，ROS提供了组成消息的基本数据类型。</p>
+<p>int8, int16, int32, int64 (plus uint*)</p>
+<p>float32, float64</p>
+<p>string</p>
+<p>time, duration</p>
+<p>other msg files</p>
+<p>variable-length array[] and fixed-length array[C]</p>
+<p><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202406271530809.png" alt="image-20240627153012684"></p>
+<p><strong>在third_pkg功能包下创建msg文件夹并在msg文件夹下新建myTestMsg.msg文件。</strong></p>
+<p>打开myTestMsg.msg文件输入如图4.20内容。</p>
+<p><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202406271531058.gif" alt="img"></p>
+<p>图4.20 myTestMsg.msg文件内容</p>
+<p><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202406271531274.gif" alt="img"></p>
+<p><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202406271531282.gif" alt="img"></p>
+<p><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202406271531288.gif" alt="img"></p>
+<p>图4.21 CMakeLists.txt文件修改内容</p>
+<p><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202406271532672.gif" alt="img"></p>
+<p>图4.22 package.xml文件修改内容</p>
+<p><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202406271532585.png" alt="image-20240627153248478"></p>
+<p>修改third_pkg.cpp</p>
+<pre><code class="C++">#include &quot;ros/ros.h&quot;
+#include &quot;third_pkg/myTestMsg.h&quot;//添加自定义消息的头文件
+int main(int argc,char **argv)
+&#123;
+ros::init(argc,argv,&quot;third_pkg&quot;);
+ros::NodeHandle n;// 更新话题的消息格式为自定义的消息格式
+ros::Publisher chatter_pub = n.advertise&lt;third_pkg::myTestMsg&gt;(&quot;third_pkg_topic&quot;,1000);
+ros::Rate loop_rate(2);
+while(ros::ok())
+&#123;
+third_pkg::myTestMsg msg;//声明一个自定义消息的对象
+msg.name = &quot;corvin&quot;;//填充消息内容
+msg.age = 20;
+msg.handsome = true;
+msg.salary = 123.45;
+chatter_pub.publish(msg);//将消息发布到话题中
+ros::spinOnce();
+loop_rate.sleep();
+&#125;
+return 0;
+&#125;
+</code></pre>
+<p>修改订阅端代码subscribe.cpp如下，黑色字体为修改部分要格外注意：</p>
+<pre><code class="C++">#include &quot;ros/ros.h&quot;
+#include &quot;third_pkg/myTestMsg.h&quot;
+// 回调函数，当接收到消息时调用
+void chatterCallback(const third_pkg::myTestMsg::ConstPtr&amp; msg)
+&#123;
+  // 打印接收到的消息内容
+  ROS_INFO(&quot;I heard - name: %s, age: %d, isHandsome: %d, salary: %f&quot;, 
+           msg-&gt;name.c_str(), msg-&gt;age, msg-&gt;handsome, msg-&gt;salary);
+&#125;
+int main(int argc, char **argv)
+&#123;
+  // 初始化 ROS 节点，节点名为 &quot;subscribe_node&quot;
+  ros::init(argc, argv, &quot;subscribe_node&quot;);
+  // 创建一个节点句柄
+  ros::NodeHandle n;
+  // 创建一个 Subscriber，订阅 &quot;third_pkg_topic&quot; 话题，队列大小为 1000，回调函数为 chatterCallback
+  ros::Subscriber sub = n.subscribe(&quot;third_pkg_topic&quot;, 1000, chatterCallback);
+  // 进入循环等待回调
+  ros::spin();
+  return 0;
+&#125;
+</code></pre>
+<p><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202406271536431.png" alt="image-20240627153615293"></p>
+<h2 id="ROS通讯机制-服务"><a href="#ROS通讯机制-服务" class="headerlink" title="ROS通讯机制-服务"></a>ROS通讯机制-服务</h2><p>service方式在通信模型上与topic做了区别。Service通信是双向的，它不仅可以发送消息，同时还会有反馈。所以service包括两部分，一部分是请求方（Clinet），另一部分是应答方&#x2F;服务提供方（Server）。这时请求方（Client）就会发送一个request，要等待server处理，反馈回一个reply，这样通过类似“请求-应答”的机制完成整个服务通信。</p>
+<p>Node B是server（应答方），提供了一个服务的接口，叫做 &#x2F;Service ，我们一般都会用string类型来指定service的名称，类似于topic。Node A向Node B发起了请求，经过处理后得到了反馈。</p>
+<p><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202406271555278.png" alt="image-20240627155508120"><br>Service是同步通信方式，所谓同步就是说，此时Node A发布请求后会在原地等待reply，直到Node B处理完了请求并且完成了reply，Node A才会继续执行。Node A等待过程中，是处于阻塞状态的成通信。这样的通信模型没有频繁的消息传递，没有冲突与高系统资源的占用，只有接受请求才执行服务，简单而且高效。</p>
+<p>表5.1 topic与service的对比</p>
+<p><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202406271559910.gif" alt="img"></p>
+<p>注意：远程过程调用(Remote Procedure Call，RPC),可以简单通俗的理解为在一个进程里调用另一个进程的函数。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>在third_pkg功能包下创建srv工作目录并在该目录下创建myTestSrv.srv文件</p>
+<p>打开myTestSrv.srv文件输入以下内容：</p>
+<pre><code>int32 index
+
+---
+
+int32 result
+</code></pre>
+<p>两个部分用“—”分开修改third_pkg功能包的CMakeLists.txt</p>
+<p>这里和自定义消息的修改方法类似：</p>
+<ol>
+<li>添加message_generation依赖</li>
+</ol>
+<p><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202406271604457.gif" alt="img"></p>
+<ol start="2">
+<li>添加.srv服务文件</li>
+</ol>
+<p><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202406271604459.gif" alt="img"></p>
+<ol start="3">
+<li>添加消息生成依赖</li>
+</ol>
+<p><img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202406271604169.gif" alt="img"></p>
+<p>修改third_pkg.cpp</p>
+<pre><code>int main(int argc, char **argv)
+&#123;// 初始化 ROS 节点，节点名为 &quot;third_pkg&quot;
+    ros::init(argc, argv, &quot;third_pkg&quot;);// 创建一个节点句柄
+    ros::NodeHandle n;// 创建一个 Publisher，发布自定义消息到 &quot;third_pkg_topic&quot; 话题，队列大小为1000
+    ros::Publisher chatter_pub = n.advertise&lt;third_pkg::myTestMsg&gt;(&quot;third_pkg_topic&quot;, 1000);// 定义并初始化服务端，服务名为 &quot;batteryStatus&quot;，服务回调函数为 checkBattery
+    ros::ServiceServer service = n.advertiseService(&quot;batteryStatus&quot;, checkBattery);// 设置发送话题的频率为 2Hz，即每0.5秒发送一条消息
+    ros::Rate loop_rate(2);// 循环运行，直到 ROS 关闭
+    while (ros::ok())
+    &#123;// 电池电量减少
+        battery--;// 如果电池电量小于10，则重置为100
+        if (battery &lt; 10) battery = 100;// 声明一个自定义消息对象
+        third_pkg::myTestMsg msg;// 填充消息数据
+        msg.name = &quot;corvin&quot;;
+        msg.age = 20;
+        msg.handsome = true;
+        msg.salary = 123.45;// 将消息发布到话题中
+        chatter_pub.publish(msg);// 处理回调函数
+        ros::spinOnce();// 休眠以维持循环频率
+        loop_rate.sleep();
+    &#125;
+    return 0;
+&#125;
+</code></pre>
+<p>修改订阅者subscribe.cpp</p>
+<pre><code class="C++">#include &quot;ros/ros.h&quot;
+#include &quot;third_pkg/myTestMsg.h&quot;  // 自定义消息的头文件
+#include &quot;third_pkg/myTestSrv.h&quot;  // 自定义服务的头文件
+// 订阅者的回调函数，用于处理接收到的消息
+void chatterCallback(const third_pkg::myTestMsg::ConstPtr&amp; msg)
+&#123;
+    ROS_INFO(&quot;I heard-name:%s,age:%d,ishandsome:%d,salary:%f&quot;, 
+             msg-&gt;name.c_str(), msg-&gt;age, msg-&gt;handsome, msg-&gt;salary);&#125;
+int main(int argc, char **argv)
+&#123;// ROS 初始化，节点名为 &quot;subscribe_node&quot;
+    ros::init(argc, argv, &quot;subscribe_node&quot;);// 创建节点句柄
+    ros::NodeHandle n;// 设置循环频率为 1Hz
+    ros::Rate loop_rate(1);// 创建一个订阅者，订阅 &quot;third_pkg_topic&quot; 话题，队列大小为 1000，回调函数为 chatterCallback
+    ros::Subscriber sub = n.subscribe(&quot;third_pkg_topic&quot;, 1000, chatterCallback);
+    // 创建一个服务客户端，连接到 &quot;batteryStatus&quot; 服务
+    ros::ServiceClient client = n.serviceClient&lt;third_pkg::myTestSrv&gt;(&quot;batteryStatus&quot;);// 创建一个服务请求对象
+    third_pkg::myTestSrv mySrv;
+    mySrv.request.index = 1;  // 设置服务请求的参数
+    while (ros::ok())
+    &#123;// 调用服务并处理响应
+        if (client.call(mySrv))
+        &#123;
+            ROS_WARN(&quot;Client Get Battery: %d&quot;, mySrv.response.result);  // 打印获得的电
+        &#125;
+        else
+        &#123;
+            ROS_ERROR(&quot;Failed to call batteryStatus service&quot;);  // 打印错误信息
+            return 1;  // 返回错误码
+        &#125;// 处理回调函数
+        ros::spinOnce();// 休眠以保持循环频率
+        loop_rate.sleep();&#125;
+    return 0;&#125;
+</code></pre>
+<p><strong>1****服务端的定义与初始化</strong></p>
+<p>ros::ServiceServer service &#x3D; n.advertiseService(“batteryStatus”,checkBattery);</p>
+<p>参数1：”batteryStatus”:发布服务的名称，类型：字符串，可以任意指定；</p>
+<p>参数2：checkBattery:指定回调函数，类型：函数指针；</p>
+<p><strong>2</strong> <strong>服务回调函数写法</strong></p>
+<p>bool checkBattery(third_pkg::myTestSrv::Request &amp;req,third_pkg::myTestSrv::Response &amp;res)</p>
+<p>参数1：third_pkg::myTestSrv::Request &amp;req，请求部分参数.</p>
+<p>​         <img src="/img/loading.gif" data-original="C:/Users/%E6%B6%82%E8%89%AF%E6%B9%98/AppData/Local/Temp/msohtmlclip1/01/clip_image001.gif" alt="img"></p>
+<p>如上图所示：</p>
+<p>1部分：服务的类型，写上要发布的服务类型。</p>
+<p>2部分：固定写法，表征此部分为请求部分；</p>
+<p>3部分：变量名称，可以随便写；</p>
+<p>在此处，由于服务类型third_pkg::myTestSrv的定义如下：</p>
+<p>​           <img src="/img/loading.gif" data-original="C:/Users/%E6%B6%82%E8%89%AF%E6%B9%98/AppData/Local/Temp/msohtmlclip1/01/clip_image002.gif" alt="文本框: int32 index --- int32 result  "></p>
+<p>因此，req的成员变量只有一个为index,即：req.index</p>
+<p>参数2：third_pkg::myTestSrv::Response &amp;res，响应部分参数。</p>
+<p>​         <img src="/img/loading.gif" data-original="C:/Users/%E6%B6%82%E8%89%AF%E6%B9%98/AppData/Local/Temp/msohtmlclip1/01/clip_image003.gif" alt="img"></p>
+<p>1部分：服务的类型，写上要发布的服务类型。</p>
+<p>2部分：固定写法，表征此部分为响应部分；</p>
+<p>3部分：变量名称，可以随便写；</p>
+<p>在此处，由于服务类型third_pkg::myTestSrv的定义如下：</p>
+<p>​           <img src="/img/loading.gif" data-original="C:/Users/%E6%B6%82%E8%89%AF%E6%B9%98/AppData/Local/Temp/msohtmlclip1/01/clip_image004.gif" alt="文本框: int32 index --- int32 result  "></p>
+<p>因此res的成员变量只有一个为：result，即：res.result。</p>
+<p><strong>3</strong> <strong>客户端定义</strong></p>
+<p>ros::ServiceClient client &#x3D; n.serviceClient&lt;third_pkg::myTestSrv&gt;(“batteryStatus”);</p>
+<p>​         <img src="/img/loading.gif" data-original="https://cdn.jsdelivr.net/gh/linkailang/bolg_img/img/202406271614626.gif" alt="img"></p>
+<p>其中：</p>
+<p>ros::ServiceClient为客户端定义类；</p>
+<p>1部分：客户端初始化函数；</p>
+<p>2部分：服务类型，这里为：third_pkg::myTestSrv；</p>
+<p>3部分：要调用的服务名字，类型为字符串；</p>
+<p><strong>4</strong> <strong>服务调用：</strong></p>
+<p>third_pkg::myTestSrv mySrv;&#x2F;&#x2F;定义变量</p>
+<p>mySrv.request.index &#x3D; 1;&#x2F;&#x2F;填充数据</p>
+<p>client.call(mySrv)；&#x2F;&#x2F;调用服务</p>
+<h1 id="移动机器人"><a href="#移动机器人" class="headerlink" title="移动机器人"></a>移动机器人</h1><p> 四大组成部分：执行机构 驱动系统 传感系统 控制系统</p>
+<p>控制 - 驱动 -执行 -对象 -传感器 - 控制 </p>
+<p>   |            |</p>
+<p>   传感器</p>
+<h1 id="ros组成"><a href="#ros组成" class="headerlink" title="ros组成"></a>ros组成</h1><p>ros &#x3D; 通信机制 + 开发工具 + 应用功能 + 生态系统</p>
+<p>分布式通信框架 功能独立又相互联系</p>
+<p>节点 功能的执行单元 </p>
+<p>节点 节点管理器</p>
+<p>话题和消息</p>
+<p>服务</p>
+<p>参数</p>
+<p>topic通信属于一种异步的通信方式  各司其责，不存在协同工作，我们称这样的通信方式是异步的</p>
+<p>ROS是一种分布式的架构，一个topic可以被多个节点同时发布，也可以同时被多个节点接收</p>
+<p>分布式系统通信的好处：扩展性好、软件复用率高</p>
+<ol>
+<li>topic通信方式是异步的，发送时调用publish()方法，发送完成立即返回，不用等待反馈。</li>
+<li>subscriber通过回调函数的方式来处理消息。</li>
+<li>topic可以同时有多个subscribers，也可以同时有多个publishers。</li>
+</ol>
+<h1 id="ros常用工具"><a href="#ros常用工具" class="headerlink" title="ros常用工具"></a>ros常用工具</h1><ol>
+<li>rostopic  话题相关</li>
+<li>rosservice   服务</li>
+<li>rosnode    节点</li>
+<li>rosparam   参数</li>
+<li>rosmsg  话题消息</li>
+<li>rossrv   服务消息</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://linkailang.github.io">涂良湘</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://linkailang.github.io/2024/06/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/">https://linkailang.github.io/2024/06/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://linkailang.github.io" target="_blank">涂良湘</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/QQ%E5%9B%BE%E7%89%8720230422000755.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/07/14/%E6%97%A0%E4%BA%BA%E5%B7%A1%E6%A3%80%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0/" title="无人巡检系统实现"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">无人巡检系统实现</div></div></a></div><div class="next-post pull-right"><a href="/2024/06/15/ros%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/" title="ros操作系统实验报告"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">ros操作系统实验报告</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/loading.gif" data-original="/img/QQ%E5%9B%BE%E7%89%8720230422000755.jpg" onerror="this.onerror=null;this.src='/img/avatar.png'" alt="avatar"/></div><div class="author-info__name">涂良湘</div><div class="author-info__description">涂良湘的个人博客</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:2698508226@qq.com" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">涂良湘的博客</div><timing></timing></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ros"><span class="toc-number">2.</span> <span class="toc-text">ros</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BB%E4%BD%95ROS%E7%A8%8B%E5%BA%8F%E5%8F%AA%E6%9C%89%E7%BB%84%E7%BB%87%E6%88%90package%E5%8A%9F%E8%83%BD%E5%8C%85%E6%89%8D%E8%83%BD%E7%BC%96%E8%AF%91"><span class="toc-number">2.1.</span> <span class="toc-text">任何ROS程序只有组织成package功能包才能编译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Package%E7%BB%93%E6%9E%84%EF%BC%9A"><span class="toc-number">2.2.</span> <span class="toc-text">Package结构：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Package%E5%8A%9F%E8%83%BD%E5%8C%85%E5%88%9B%E5%BB%BA"><span class="toc-number">2.3.</span> <span class="toc-text">Package功能包创建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Package%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4"><span class="toc-number">2.3.1.</span> <span class="toc-text">Package相关命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#node"><span class="toc-number">2.4.</span> <span class="toc-text">node</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8A%82%E7%82%B9%E7%AE%A1%E7%90%86%E5%99%A8master"><span class="toc-number">2.5.</span> <span class="toc-text">节点管理器master</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cpp%E7%BC%96%E5%86%99"><span class="toc-number">2.5.1.</span> <span class="toc-text">cpp编写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CMakeLists-txt%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9"><span class="toc-number">2.5.2.</span> <span class="toc-text">CMakeLists.txt文件修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rosnode%E5%91%BD%E4%BB%A4"><span class="toc-number">2.5.3.</span> <span class="toc-text">rosnode命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%B4%E6%96%87%E4%BB%B6%E5%BC%95%E7%94%A8"><span class="toc-number">2.5.4.</span> <span class="toc-text">头文件引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E5%90%8C%E4%B8%80%E5%B7%A5%E4%BD%9C%E7%A9%BA%E9%97%B4%E5%86%85%E5%85%B6%E4%BB%96%E8%BD%AF%E4%BB%B6%E5%8C%85%E7%9A%84%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="toc-number">2.5.5.</span> <span class="toc-text">引用同一工作空间内其他软件包的头文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#launch%E6%96%87%E4%BB%B6%E7%BC%96%E5%86%99"><span class="toc-number">2.5.6.</span> <span class="toc-text">launch文件编写</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%9D%E9%A2%98%E9%80%9A%E8%AE%AF-%E8%AF%9D%E9%A2%98"><span class="toc-number">2.6.</span> <span class="toc-text">话题通讯 -话题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#topic%E9%80%9A%E8%AE%AF%E5%8E%9F%E7%90%86"><span class="toc-number">2.6.1.</span> <span class="toc-text">topic通讯原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%AE%AF%E7%A4%BA%E4%BE%8B"><span class="toc-number">2.6.2.</span> <span class="toc-text">通讯示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%90%86%E8%A7%A3%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B6%88%E6%81%AF%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.6.3.</span> <span class="toc-text">理解自定义消息类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ROS%E9%80%9A%E8%AE%AF%E6%9C%BA%E5%88%B6-%E6%9C%8D%E5%8A%A1"><span class="toc-number">2.7.</span> <span class="toc-text">ROS通讯机制-服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-number">2.7.1.</span> <span class="toc-text">示例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E6%9C%BA%E5%99%A8%E4%BA%BA"><span class="toc-number">3.</span> <span class="toc-text">移动机器人</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ros%E7%BB%84%E6%88%90"><span class="toc-number">4.</span> <span class="toc-text">ros组成</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ros%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7"><span class="toc-number">5.</span> <span class="toc-text">ros常用工具</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/27/%E7%A4%BA%E6%B3%A2%E5%99%A8%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/" title="示波器使用方法">示波器使用方法</a><time datetime="2025-03-27T13:45:42.000Z" title="发表于 2025-03-27 21:45:42">2025-03-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/27/%E6%89%8B%E7%AE%97%E9%A2%98/" title="无题">无题</a><time datetime="2025-03-27T13:44:14.935Z" title="发表于 2025-03-27 21:44:14">2025-03-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/22/%E6%96%B0%E7%94%B5%E8%84%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" title="新电脑环境配置">新电脑环境配置</a><time datetime="2025-03-22T02:21:06.000Z" title="发表于 2025-03-22 10:21:06">2025-03-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/07/ROS2%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%BC%80%E5%8F%91/" title="ROS2机器人开发">ROS2机器人开发</a><time datetime="2025-02-07T10:53:36.000Z" title="发表于 2025-02-07 18:53:36">2025-02-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/18/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/" title="算法刷题">算法刷题</a><time datetime="2025-01-18T12:08:44.000Z" title="发表于 2025-01-18 20:08:44">2025-01-18</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 涂良湘</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div><div class="container" id="jsi-flying-fish-container"><script src="js/fish.js"></script></div><style>   @media only screen and (max-width: 767px){
+   #sidebar_search_box input[type=text]{width:calc(100% - 24px)}
+}</style></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/gh/xiabo2/CDN@latest/fish.js"></script><script src="https://cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script><script src="/js/sakura.js"></script><script src="/js/timing.js"></script><script src="/js/yunxing.js"></script><script defer src="https://rmt.dogedoge.com/fetch/~/source/jsdelivr/npm/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="https://cdn.jsdelivr.net/gh/sirxemic/jquery.ripples/dist/jquery.ripples.js"></script><script defer data-pjax src="/js/ripples.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div><div class="pjax-reload"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__fadeInLeft');
+    arr[i].setAttribute('data-wow-duration', '600ms');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__fadeInRightBig');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer="defer" src="https://cdn.jsdelivr.net/gh/graingert/wow@1.3.0/dist/wow.min.js"></script><script defer="defer" src="/js/wow_init.js"></script></div><!-- hexo injector body_end start --><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__fadeInLeft');
+    arr[i].setAttribute('data-wow-duration', '600ms');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__fadeInRightBig');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script>
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body></html>

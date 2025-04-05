@@ -1,0 +1,2013 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>蓝桥杯寒假模板总结 | 涂良湘</title><meta name="author" content="涂良湘,2698508226@qq.com"><meta name="copyright" content="涂良湘"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="APIArrays排序：当我们使用 Scanner 类的 nextInt() 方法读取整数时，会在输入缓冲区留下换行符。这会导致接下来使用 nextLine() 方法时直接读取到这个换行符，而不是我们想要的输入。 让我用代码演示一下这种情况： import java.util.Scanner;  public class Main &amp;#123;     public static void">
+<meta property="og:type" content="article">
+<meta property="og:title" content="蓝桥杯寒假模板总结">
+<meta property="og:url" content="https://linkailang.github.io/2024/01/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="涂良湘">
+<meta property="og:description" content="APIArrays排序：当我们使用 Scanner 类的 nextInt() 方法读取整数时，会在输入缓冲区留下换行符。这会导致接下来使用 nextLine() 方法时直接读取到这个换行符，而不是我们想要的输入。 让我用代码演示一下这种情况： import java.util.Scanner;  public class Main &amp;#123;     public static void">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://linkailang.github.io/img/QQ%E5%9B%BE%E7%89%8720230422000755.jpg">
+<meta property="article:published_time" content="2024-01-20T01:22:38.000Z">
+<meta property="article:modified_time" content="2024-05-09T09:26:45.387Z">
+<meta property="article:author" content="涂良湘">
+<meta property="article:tag" content="-- 蓝桥杯">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://linkailang.github.io/img/QQ%E5%9B%BE%E7%89%8720230422000755.jpg"><link rel="shortcut icon" href="/img/avatar.png"><link rel="canonical" href="https://linkailang.github.io/2024/01/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '蓝桥杯寒假模板总结',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-05-09 17:26:45'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/mouse.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='screen'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (false) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="/css/progress_bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/loading.gif" data-original="/img/QQ%E5%9B%BE%E7%89%8720230422000755.jpg" onerror="onerror=null;src='/img/avatar.png'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/Message/"><i class="fa-fw fas fa-comment"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/Snipaste_2024-01-12_01-49-04.png')"><nav id="nav"><span id="blog-info"><a href="/" title="涂良湘"><span class="site-name">涂良湘</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/Message/"><i class="fa-fw fas fa-comment"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">蓝桥杯寒假模板总结</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-01-20T01:22:38.000Z" title="发表于 2024-01-20 09:22:38">2024-01-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-05-09T09:26:45.387Z" title="更新于 2024-05-09 17:26:45">2024-05-09</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">13.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>59分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="蓝桥杯寒假模板总结"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><img src="/img/loading.gif" data-original="/./%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/image-20240120092756517.png" alt="image-20240120092756517"></p>
+<p><img src="/img/loading.gif" data-original="/2024/01/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/image-20240120092756517.png" alt="image-20240120092756517"></p>
+<p><img src="/img/loading.gif" data-original="/./%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/image-20240120101629096.png" alt="image-20240120101629096"><img src="/img/loading.gif" data-original="/2024/01/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/image-20240120101630012.png" alt="image-20240120101630012"></p>
+<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><h2 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h2><h1 id="排序："><a href="#排序：" class="headerlink" title="排序："></a>排序：</h1><h2 id=""><a href="#" class="headerlink" title=""></a></h2><p>当我们使用 <code>Scanner</code> 类的 <code>nextInt()</code> 方法读取整数时，会在输入缓冲区留下换行符。这会导致接下来使用 <code>nextLine()</code> 方法时直接读取到这个换行符，而不是我们想要的输入。</p>
+<p>让我用代码演示一下这种情况：</p>
+<pre><code class="java">import java.util.Scanner;
+
+public class Main &#123;
+    public static void main(String[] args) &#123;
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println(&quot;请输入一个整数：&quot;);
+        int num = scanner.nextInt(); // 读取整数
+        System.out.println(&quot;你输入的整数是：&quot; + num);
+
+        System.out.println(&quot;请输入一行字符串：&quot;);
+        String str = scanner.nextLine(); // 本来想读取一行字符串，但实际上会读取到之前的换行符
+        System.out.println(&quot;你输入的字符串是：&quot; + str);
+
+        scanner.close();
+    &#125;
+&#125;
+</code></pre>
+<p>如果我们输入如下内容：</p>
+<pre><code>123
+hello
+</code></pre>
+<p>输出结果将会是：</p>
+<pre><code class="markdown">请输入一个整数：
+你输入的整数是：123
+请输入一行字符串：
+你输入的字符串是：
+</code></pre>
+<p>可以看到，由于之前的 <code>nextInt()</code> 留下了一个换行符，导致接下来的 <code>nextLine()</code> 直接读取到了这个换行符，而不是我们期望的输入 “hello”。</p>
+<p>为了解决这个问题，可以在 <code>nextInt()</code> 后面加上一个 <code>nextLine()</code> 来消耗掉这个换行符，保证接下来的 <code>nextLine()</code> 可以正确读取到我们想要的输入。</p>
+<h1 id="归并排序模板"><a href="#归并排序模板" class="headerlink" title="归并排序模板"></a>归并排序模板</h1><pre><code class="java">static void mergeSort(int[] a, int[] aa, int x, int y) &#123;
+    // 如果数组只有一个元素，则返回，不需要排序
+    if (x == y) return;
+    // 找到数组的中间位置
+    int mid = (x + y) &gt;&gt; 1;
+    // 递归地对左半部分进行排序
+    mergeSort(a, aa, x, mid);
+    // 递归地对右半部分进行排序
+    mergeSort(a, aa, mid + 1, y);
+    // 合并左右两部分并排序
+    int i = x, j = mid + 1, k = x;
+    while (i &lt;= mid &amp;&amp; j &lt;= y) &#123;
+        // 如果左半部分当前元素小于等于右半部分当前元素，将左半部分的当前元素放入临时数组
+        if (a[i] &lt;= a[j]) &#123;
+            aa[k++] = a[i++];
+        &#125; else &#123;
+            // 如果右半部分当前元素小于左半部分当前元素，将右半部分的当前元素放入临时数组
+            aa[k++] = a[j++];
+            // 计算逆序对数量，即右半部分当前元素与左半部分剩余元素的数量
+            ans += mid - i + 1;
+            // 对结果取模，防止溢出
+            ans %= mod;
+        &#125;
+    &#125;
+    // 处理左半部分剩余元素
+    while (i &lt;= mid) &#123;
+        aa[k++] = a[i++];
+    &#125;
+    // 处理右半部分剩余元素
+    while (j &lt;= y) &#123;
+        aa[k++] = a[j++];
+    &#125;
+    // 将临时数组中排好序的元素复制回原数组
+    for (int index = x; index &lt;= y; index++) &#123;
+        a[index] = aa[index];
+    &#125;
+&#125;
+</code></pre>
+<p>归并排序是一种分治算法，其基本思想是将待排序数组分割成两部分，分别对这两部分进行排序，然后将两部分合并起来得到有序数组。</p>
+<p>在这段代码中，<code>mergeSort</code>方法实现了归并排序算法。具体步骤包括：</p>
+<ol>
+<li>将数组a在范围[x, y]内进行归并排序。</li>
+<li>如果x等于y，表示当前待排序数组只有一个元素，直接返回。</li>
+<li>计算中间位置mid，以mid为界将数组分为左右两部分，分别继续进行归并排序。</li>
+<li>合并左右两部分：利用i、j、k三个指针分别指向左部分、右部分和辅助数组aa，比较左右两部分的元素大小，并将较小的元素放入辅助数组aa中。</li>
+<li>在合并过程中，如果发现a[i] &gt; a[j]，则累加逆序对数量ans，并对mod取模。</li>
+<li>将剩余未处理的元素依次放入辅助数组aa中。</li>
+<li>最后将aa中的排序结果复制回原数组a。</li>
+</ol>
+<h1 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h1><pre><code class="java"> //冒泡排序
+        for(int i=0;i&lt;arr.length-1;i++) &#123;
+            for(int x=0;x&lt; arr.length-1-i;x++) &#123;
+                if(arr[x] &gt; arr[x+1]) &#123;
+                    //当前一个大于后一个时，双方交换位置
+                    int temp = arr[x];
+                    arr[x] = arr[x+1];
+                    arr[x+1] = temp;
+                &#125;
+            &#125;
+        &#125;
+</code></pre>
+<h1 id="二维数组的初始化"><a href="#二维数组的初始化" class="headerlink" title="二维数组的初始化"></a>二维数组的初始化</h1><pre><code class="java">char[][] arr = &#123;
+    &#123;&#39;U&#39;, &#39;D&#39;, &#39;D&#39;, &#39;L&#39;, &#39;U&#39;, &#39;U&#39;, &#39;L&#39;, &#39;R&#39;, &#39;U&#39;, &#39;L&#39;&#125;,
+    &#123;&#39;U&#39;, &#39;U&#39;, &#39;R&#39;, &#39;L&#39;, &#39;L&#39;, &#39;L&#39;, &#39;R&#39;, &#39;R&#39;, &#39;R&#39;, &#39;U&#39;&#125;,
+    &#123;&#39;R&#39;, &#39;R&#39;, &#39;U&#39;, &#39;U&#39;, &#39;R&#39;, &#39;L&#39;, &#39;D&#39;, &#39;L&#39;, &#39;R&#39;, &#39;D&#39;&#125;,
+    &#123;&#39;R&#39;, &#39;U&#39;, &#39;D&#39;, &#39;D&#39;, &#39;D&#39;, &#39;U&#39;, &#39;U&#39;, &#39;U&#39;, &#39;U&#39;, &#39;U&#39;&#125;,
+    &#123;&#39;U&#39;, &#39;R&#39;, &#39;U&#39;, &#39;D&#39;, &#39;L&#39;, &#39;L&#39;, &#39;R&#39;, &#39;R&#39;, &#39;U&#39;, &#39;U&#39;&#125;,
+    &#123;&#39;D&#39;, &#39;U&#39;, &#39;R&#39;, &#39;L&#39;, &#39;R&#39;, &#39;L&#39;, &#39;D&#39;, &#39;L&#39;, &#39;R&#39;, &#39;L&#39;&#125;,
+    &#123;&#39;U&#39;, &#39;L&#39;, &#39;L&#39;, &#39;U&#39;, &#39;R&#39;, &#39;L&#39;, &#39;L&#39;, &#39;R&#39;, &#39;D&#39;, &#39;U&#39;&#125;,
+    &#123;&#39;R&#39;, &#39;D&#39;, &#39;L&#39;, &#39;U&#39;, &#39;L&#39;, &#39;L&#39;, &#39;R&#39;, &#39;D&#39;, &#39;D&#39;, &#39;D&#39;&#125;,
+    &#123;&#39;U&#39;, &#39;U&#39;, &#39;D&#39;, &#39;D&#39;, &#39;U&#39;, &#39;D&#39;, &#39;U&#39;, &#39;D&#39;, &#39;L&#39;, &#39;L&#39;&#125;,
+    &#123;&#39;U&#39;, &#39;L&#39;, &#39;R&#39;, &#39;D&#39;, &#39;L&#39;, &#39;U&#39;, &#39;U&#39;, &#39;R&#39;, &#39;R&#39;, &#39;R&#39;&#125;
+&#125;;
+</code></pre>
+<h2 id="整形"><a href="#整形" class="headerlink" title="整形"></a>整形</h2><pre><code class="java">int[][] myArray = new int[3][3];
+Scanner sc = new Scanner(System.in);
+for (int i = 0; i &lt; myArray.length; i++) &#123;
+    for (int j = 0; j &lt; myArray[i].length; j++) &#123;
+        myArray[i][j] = sc.nextInt(); // 从标准输入中读取数据并赋值给数组元素
+    &#125;
+&#125;
+</code></pre>
+<h2 id="字符型"><a href="#字符型" class="headerlink" title="字符型"></a>字符型</h2><pre><code class="java">arr = new char[10][10];               // 创建一个 10 行 10 列的字符型二维数组 arr，并将其初始化
+        for(int i = 0;i&lt;arr.length;i++) &#123;     // 对于 arr 中的每一行
+            String s = sc.next();             // 从标准输入读入一行字符串
+            arr[i] = s.toCharArray();         // 将字符串转换为字符数组，并将其赋值给 arr 中的对应行
+        &#125;
+</code></pre>
+<pre><code class="java">char[][] arr = new char[10][10]; // 创建一个大小为 10x10 的字符数组
+
+String str = &quot;UDDLUULRUL\n&quot; +
+                &quot;UURLLLRRRU\n&quot; +
+                &quot;RRUURLDLRD\n&quot; +
+                &quot;RUDDDDUUUU\n&quot; +
+                &quot;URUDLLRRUU\n&quot; +
+                &quot;DURLRLDLRL\n&quot; +
+                &quot;ULLURLLRDU\n&quot; +
+                &quot;RDLULLRDDD\n&quot; +
+                &quot;UUDDUDUDLL\n&quot; +
+                &quot;ULRDLUURRR&quot;;
+// 定义一个包含一串字符串的变量
+
+String[] arr1 = str.split(&quot;\n&quot;);
+// 使用换行符 &quot;\n&quot; 将字符串分割成多行，并存储到字符串数组 arr1 中
+
+int count = 0;
+// 定义一个计数器变量，初始值为 0
+
+for (int i = 1; i &lt;= 10; i++) &#123;
+    for (int j = 1; j &lt;= 10; j++) &#123;
+        arr[i - 1][j - 1] = arr1[i - 1].charAt(j - 1);
+        // 将每个字符数组 arr1 中的字符赋值给二维字符数组 arr
+    &#125;
+&#125;
+
+for (char[] row : arr) &#123;
+    System.out.println(Arrays.toString(row));
+&#125;
+// 打印二维字符数组 arr 的内容，每一行以字符串形式打印出来
+</code></pre>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><pre><code>[U, D, D, L, U, U, L, R, U, L]
+[U, U, R, L, L, L, R, R, R, U]
+[R, R, U, U, R, L, D, L, R, D]
+[R, U, D, D, D, D, U, U, U, U]
+[U, R, U, D, L, L, R, R, U, U]
+[D, U, R, L, R, L, D, L, R, L]
+[U, L, L, U, R, L, L, R, D, U]
+[R, D, L, U, L, L, R, D, D, D]
+[U, U, D, D, U, D, U, D, L, L]
+[U, L, R, D, L, U, U, R, R, R]
+</code></pre>
+<h1 id="数学"><a href="#数学" class="headerlink" title="数学"></a>数学</h1><h2 id="模运算"><a href="#模运算" class="headerlink" title="模运算"></a>模运算</h2><p> 模运算是大数运算中的常用操作。如果一个数太大，无法直接输出，或者不需要直接输出，可以把它取模后，缩小数值再输出。取模也是哈希的常用技术。</p>
+<p>定义取模运算为 a 除以 m 的余数，记为：amodm&#x3D;a</p>
+<p>对于 a mod m &#x3D; a，必须要求 a 和 m 的正负号一致，都为正数或都为负数；如果正负不同，取模和求余的结果是不同的。另外取模的结果满足 0 ≤ a mod m &lt; m−1，题目会用给定的 m，限制计算结果的范围。</p>
+<p>取模运算的加减乘除</p>
+<p><img src="/img/loading.gif" data-original="/./%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/image-20240303213526199.png" alt="image-20240303213526199"></p>
+<p><img src="/img/loading.gif" data-original="/2024/01/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/image-20240303213526199.png" alt="image-20240303213526199"></p>
+<h3 id="java里有快速幂库函数"><a href="#java里有快速幂库函数" class="headerlink" title="java里有快速幂库函数"></a>java里有快速幂库函数</h3><pre><code class="java">import java.math.BigInteger;
+import java.util.Scanner;
+ 
+public class Main &#123;
+    public static void main(String[] args) &#123;
+        Scanner scanner = new Scanner(System.in);
+        BigInteger bigInteger1 = scanner.nextBigInteger();
+        BigInteger bigInteger2 = scanner.nextBigInteger();
+        BigInteger bigInteger3 = scanner.nextBigInteger();
+        System.out.println(bigInteger1.modPow(bigInteger2,bigInteger3));
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="markdown">计算第一个大整数的第二个大整数次方对第三个大整数取模的结果，并将结果打印到标准输出。
+</code></pre>
+<p>不用函数</p>
+<pre><code class="java">package 模板; // 定义一个包名为&quot;模板&quot;
+
+import java.util.Scanner; // 导入 Scanner 类，用于从控制台读取输入
+
+public class 快速幂模运算 &#123;
+    public static void main(String[] args) &#123;
+        Scanner scanner = new Scanner(System.in); // 创建 Scanner 对象，用于从控制台读取输入
+
+        // 输入三个整数
+        int b = scanner.nextInt(); // 读取第一个整数
+        int p = scanner.nextInt(); // 读取第二个整数
+        int k = scanner.nextInt(); // 读取第三个整数
+
+        int ans = 1; // 初始化结果变量为 1
+
+        // 使用快速幂算法计算 b^p % k 的结果
+        while (p != 0) &#123;
+            if (p % 2 == 1) &#123; // 如果 p 是奇数
+                ans = (ans * b) % k; // 更新结果变量
+            &#125;
+            p &gt;&gt;= 1; // 将 p 右移一位，相当于 p 除以 2
+            b = (b * b) % k; // 更新 b 的值为 b 的平方取模 k
+        &#125;
+
+        System.out.println(ans); // 输出结果
+    &#125;
+&#125;
+</code></pre>
+<h2 id="单纯取模"><a href="#单纯取模" class="headerlink" title="单纯取模"></a>单纯取模</h2><pre><code class="java">BigInteger result = a.mod(b);
+</code></pre>
+<h2 id="计算大整数的幂运算后对另一个大整数取模的结果"><a href="#计算大整数的幂运算后对另一个大整数取模的结果" class="headerlink" title="计算大整数的幂运算后对另一个大整数取模的结果"></a>计算大整数的幂运算后对另一个大整数取模的结果</h2><pre><code class="java"> System.out.println(bigInteger1.modPow(bigInteger2,bigInteger3));
+</code></pre>
+<h2 id="N-q-p-求qp"><a href="#N-q-p-求qp" class="headerlink" title="N &#x3D; q*p 求qp"></a>N &#x3D; q*p 求qp</h2><pre><code class="java">import java.math.BigInteger;
+
+public class Main &#123;
+    public static void main(String[] args) &#123;
+        // 给定的大整数字符串
+        String s = &quot;1001733993063167141&quot;;
+        
+        // 将字符串转换为 BigInteger 对象
+        BigInteger temp = new BigInteger(s);
+        BigInteger bigInteger = new BigInteger(s);
+        
+        // 计算给定大整数的平方根
+        bigInteger = bigInteger.sqrt();
+        
+        // 初始化计数器和常量
+        BigInteger i = new BigInteger(&quot;2&quot;);
+        BigInteger one = BigInteger.ONE;
+        BigInteger zero = BigInteger.ZERO;
+        
+        // 从 2 开始迭代直到平方根
+        for (; i.compareTo(bigInteger) &lt; 0; ) &#123;
+            // 检查是否能整除给定的大整数
+            if (temp.remainder(i).equals(zero)) &#123;
+                // 如果能整除，则打印出因子
+                System.out.println(i);
+            &#125;
+            // 增加计数器
+            i = i.add(BigInteger.ONE);
+        &#125;
+        
+        // 打印结束标志
+        System.out.println(&quot;END!&quot;);
+    &#125;
+&#125;
+</code></pre>
+<p><img src="/img/loading.gif" data-original="/./%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/image-20240316201112511.png" alt="image-20240316201112511"></p>
+<p><img src="/img/loading.gif" data-original="/2024/01/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/image-20240316201112511.png" alt="image-20240316201112511"></p>
+<p>解决方法</p>
+<pre><code class="java">  i.compareTo(sqrtN)&lt;=0
+</code></pre>
+<h2 id="大整数的加减乘除"><a href="#大整数的加减乘除" class="headerlink" title="大整数的加减乘除"></a>大整数的加减乘除</h2><pre><code class="java">// 使用 BigInteger.TWO 进行大整数除法，实现对两个 BigInteger 对象相除
+// 返回商，这里是对 left 和 right 之和进行除以 2 的操作，用于更新二分查找的中间值
+BigInteger mid = left.add(right).divide(BigInteger.TWO);
+
+// 使用 BigInteger.TWO 进行大整数加法，实现对两个 BigInteger 对象的加法操作
+// 将 left 和 right 相加后除以 2，得到新的中间值，用于更新二分查找的中间值
+BigInteger mid = left.add(right).divide(BigInteger.TWO);
+
+// 使用 BigInteger.TWO 进行大整数减法，实现对两个 BigInteger 对象的减法操作
+// 将当前中间值 mid 减去 1，向左移动一个单位，用于更新二分查找的右边界
+BigInteger right = mid.subtract(BigInteger.ONE);
+
+// 使用 BigInteger.TWO 进行大整数乘法，实现对两个 BigInteger 对象的乘法操作
+// 将当前中间值 mid 乘以 2，用于更新二分查找的右边界
+BigInteger square = mid.multiply(mid);
+
+// 使用 BigInteger.TWO 进行大整数除法，实现对两个 BigInteger 对象相除
+// 将 left 和 right 之和除以 2，用于更新二分查找的中间值
+BigInteger mid = left.add(right).divide(BigInteger.TWO);
+//取余和0
+if (temp.remainder(i).equals(zero)) &#123;
+</code></pre>
+<h2 id="矩阵乘法"><a href="#矩阵乘法" class="headerlink" title="矩阵乘法"></a>矩阵乘法</h2><p><img src="/img/loading.gif" data-original="/./%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDYyNzQyMTk=,size_20,color_FFFFFF,t_70,g_se,x_16.png" alt="img"></p>
+<p><strong>样例输入</strong></p>
+<pre><code>2 1 3
+1
+2
+1 2 3
+</code></pre>
+<p><strong>样例输出</strong></p>
+<pre><code>1 2 3
+
+
+
+2 4 6
+</code></pre>
+<pre><code class="java">package 模板;
+
+import java.util.Scanner;
+
+public class 矩阵乘法 &#123;
+    public static void main(String[] args) &#123;
+        //矩阵乘法
+        //输入数据 N,M,K;
+        Scanner scanner = new Scanner(System.in);
+        int N = scanner.nextInt();
+        int M = scanner.nextInt();
+        int K = scanner.nextInt();
+        //定义二维数组存放
+        int [][] k1 = new int[N][M];
+        int [][] k2 = new int[M][K];
+        int [][] k3 = new int[N][K];
+        for (int i = 0;i &lt; N ; i++)&#123;
+            for(int j = 0;j&lt; M;j++) &#123;
+                k1[i][j] = scanner.nextInt();
+            &#125;
+        &#125;
+        for (int i = 0; i &lt; M; i++) &#123;
+            for (int j = 0; j &lt; K; j++) &#123;
+                k2[i][j] = scanner.nextInt();
+            &#125;
+        &#125;
+        for (int i = 0; i &lt; N; i++) &#123;
+            for (int j = 0; j &lt; K; j++) &#123;
+                int sum = 0;
+                for (int k = 0; k &lt; M; k++) &#123;
+                    sum = sum + k1[i][k] * k2[k][j];
+                &#125;
+                k3[i][j] = sum;
+            &#125;
+        &#125;
+        for (int i = 0; i &lt; N; i++) &#123;
+            for (int j = 0; j &lt; K; j++) &#123;
+                System.out.print(k3[i][j] + &quot; &quot;);
+            &#125;
+            System.out.println();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h2 id="矩阵乘法模板"><a href="#矩阵乘法模板" class="headerlink" title="矩阵乘法模板"></a>矩阵乘法模板</h2><pre><code class="java"> // 矩阵乘法
+    private static int[][] solve(int[][] a1, int[][] a2) &#123;
+        int[][] a3 = new int[N + 1][N + 1]; // 存储计算结果
+        for (int i = 1; i &lt;= N; i++) &#123;
+            for (int j = 1; j &lt;= N; j++) &#123;
+                int sum = 0;
+                for (int k = 1; k &lt;= N; k++) &#123;
+                    sum = sum + a1[i][k] * a2[k][j]; // 计算矩阵元素乘积的和
+                &#125;
+                a3[i][j] = sum; // 存储结果
+            &#125;
+        &#125;
+        return a3; // 返回计算结果
+    &#125;
+</code></pre>
+<h2 id="计算矩阵幂次"><a href="#计算矩阵幂次" class="headerlink" title="计算矩阵幂次"></a>计算矩阵幂次</h2><pre><code class="java"> // 计算矩阵的幂次
+    private static int[][] modPow() &#123;
+        int[][] ans = new int[N + 1][N + 1]; // 存储计算结果
+        for (int i = 1; i &lt;= N; i++) &#123;
+            ans[i][i] = 1; // 单位矩阵
+        &#125;
+        while (M &gt; 0) &#123;
+            if (M % 2 == 1) &#123; // 若幂次是奇数
+                ans = solve(ans, a); // 计算结果乘以原始矩阵
+            &#125;
+            M = M / 2; // 幂次除以 2
+            a = solve(a, a); // 计算原始矩阵的平方
+        &#125;
+        return ans; // 返回计算结果
+    &#125;
+</code></pre>
+<h2 id="最大公约数"><a href="#最大公约数" class="headerlink" title="最大公约数"></a>最大公约数</h2><p>整数 a 和 b 的最大公约数是指能同时整除 a 和 b 的最大整数 编码时只需要考虑正整数的最大公约数</p>
+<h3 id="java-大数有gcd函数"><a href="#java-大数有gcd函数" class="headerlink" title="java 大数有gcd函数"></a>java 大数有gcd函数</h3><p><img src="/img/loading.gif" data-original="/./%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDYyNzQyMTk=,size_15,color_FFFFFF,t_70,g_se,x_16.png" alt="img"></p>
+<pre><code class="java">import java.util.Scanner;
+public class Main &#123;
+    public static void main(String[] args) &#123;
+        Scanner scanner = new Scanner(System.in);
+        // 从标准输入读取两个整数
+        int a = scanner.nextInt();
+        int b = scanner.nextInt();
+        // 调用 gcd 方法计算最大公约数并打印结果
+        System.out.println(gcd(a, b));
+    &#125;
+    // 计算两个整数的最大公约数
+    private static int gcd(int a, int b) &#123;
+        // 如果 b 为 0，则返回 a，a 即为最大公约数
+        if (b == 0) &#123;
+            return a;
+        &#125; else &#123;
+            // 否则递归调用 gcd 方法，传入 b 和 a%b，并返回结果
+            return gcd(b, a % b);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h2 id="最小公倍数"><a href="#最小公倍数" class="headerlink" title="最小公倍数"></a>最小公倍数</h2><ol>
+<li>是指几个自然数共有的倍数中除0以外最小的一个数。</li>
+<li>有结论：lcm（a,b）<em>gcd（a,b）&#x3D; a</em>b；</li>
+</ol>
+<pre><code class="java">import java.util.Scanner;
+public class Main &#123;
+    public static void main(String[] args) &#123;
+        Scanner scanner = new Scanner(System.in);
+        int a = scanner.nextInt();
+        int b = scanner.nextInt();
+        System.out.println((a*b)/gcd(a,b));
+    &#125;
+    private static int gcd(int a, int b) &#123;
+        if (b == 0) &#123;
+            return a;
+        &#125; else &#123;
+            return gcd(b, a % b);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p>等差数列</p>
+<ol>
+<li>最小数量 &#x3D; （最大值-最小值）&#x2F;公差 +1</li>
+<li>公差 &#x3D; 最小公倍数</li>
+<li>思路：首先排序数组，然后找到数组中相邻元素的最大公约数作为等差数列的公差，最后通过等差数列的性质计算出最长等差子序列的长度。</li>
+</ol>
+<pre><code class="java">import java.util.Arrays;
+import java.util.Scanner;
+public class Main &#123;
+    private static int[] a;
+    public static void main(String[] args) &#123;
+        Scanner scanner = new Scanner(System.in);
+        // 读取数组长度
+        int N = scanner.nextInt();
+        // 初始化数组
+        a = new int[N];
+        // 读取数组元素
+        for (int i = 0; i &lt; N; i++) &#123;
+            a[i] = scanner.nextInt();
+        &#125;   
+        // 对数组元素进行排序
+        Arrays.sort(a);
+        // 初始化公共差
+        int temp = a[1] - a[0];
+        // 计算数组中所有相邻元素的最大公约数
+        for (int i = 1; i &lt; N; i++) &#123;
+            temp = gcd(temp, a[i] - a[i - 1]);
+        &#125;
+        // 输出结果：数组中所有元素按照公共差排列的长度
+        System.out.println((a[N-1]-a[0])/temp+1);
+    &#125;
+    // 计算两个数的最大公约数
+    private static int gcd(int a, int b) &#123;
+        if (b == 0) &#123;
+            return a;
+        &#125; else &#123;
+            return gcd(b, a % b);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h2 id="素数"><a href="#素数" class="headerlink" title="素数"></a>素数</h2><pre><code>
+</code></pre>
+<h3 id="最大最小公倍数"><a href="#最大最小公倍数" class="headerlink" title="最大最小公倍数"></a>最大最小公倍数</h3><p>一定要挑出三个互质的数才能使最小公倍数 最大</p>
+<pre><code class="java">import java.math.BigInteger;
+import java.util.Scanner;
+public class Main &#123;
+    public static void main(String[] args) &#123;
+        Scanner scanner = new Scanner(System.in);
+        int N = scanner.nextInt();
+        BigInteger n = new BigInteger(String.valueOf(N));
+        BigInteger n1 = new BigInteger(String.valueOf(N-1));
+        BigInteger n2 = new BigInteger(String.valueOf(N-2));
+        BigInteger n3 = new BigInteger(String.valueOf(N-3));
+        if (N % 2 == 1) &#123;
+            System.out.println(n.multiply(n1).multiply(n2));
+        &#125; else &#123;
+            if (N % 3 == 0) &#123;
+                System.out.println(n1.multiply(n2).multiply(n3));
+            &#125; else &#123;
+                System.out.println(n.multiply(n1).multiply(n3));
+            &#125;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h1 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a>贪心</h1><p>贪心（Greedy）可以说是最容易理解的算法思想：把整个问题分解成多个步骤，在每个步骤，都选取当前步骤的最优方案，直到所有步骤结束；在每一步，都不考虑对后续步骤的影响，在后续步骤中也不再回头改变前面的选择。简单地说，其思想就是“走一步看一步”、“目光短浅”。</p>
+<p>虽然贪心法不一定能得到最优解，但是它思路简单、编程容易。因此，如果一个问题确定用贪心法能得到最优解，那么应该使用它。</p>
+<p>贪心法求解的问题，需要满足以下特征：<br>最优子结构性质。当一个问题的最优解包含其子问题的最优解时，称此问题具有最优子结构性质，也称此问题满足最优性原理。也就是说，从局部最优能扩展到全局最优。<br>贪心选择性质。问题的整体最优解可以通过一系列局部最优的选择来得到。<br>贪心算法没有固定的算法框架，关键是如何选择贪心策略。</p>
+<p>所谓贪心策略，必须具备无后效性，即某个状态以后的过程不会影响以前的状态，只与当前状态有关。另外，把贪心法用在“虽然不是最好，但是还不错，我表示满意！”的某些难解问题上，例如旅行商问题，是很难得到最优解的。但是用贪心法常常能得到不错的近似解。如果不一定非要求得最优解，那么贪心的结果，也是很不错的方案。</p>
+<h1 id="折半查找模板"><a href="#折半查找模板" class="headerlink" title="折半查找模板"></a>折半查找模板</h1><pre><code class="java"> public static int binarySearch(String [] a, String  x) &#123;
+        int low = 0,high = a.length-1;
+        while(low &lt;= high)&#123;
+            int mid = (low + high)/2;
+            if(a[mid].compareTo(x) &lt;0)&#123;
+                low = mid +1;
+            &#125;
+            else if(a[mid].compareTo(x)&gt;0)&#123;
+                high = mid-1;
+            &#125;
+            else
+                return mid;
+        &#125;
+        return -1;
+    &#125;
+</code></pre>
+<h1 id="判断质数"><a href="#判断质数" class="headerlink" title="判断质数"></a>判断质数</h1><pre><code class="java"> // 检查一个数是否为质数的方法
+    static boolean check(int sum) &#123;
+        if (sum &lt;= 1) &#123;
+            return false; // 如果 sum 小于等于 1，则返回 false
+        &#125;
+        for (int i = 2; i * i &lt;= sum; ++i) &#123; // 循环检查 sum 是否可以被 i 整除
+            if (sum % i == 0) return false; // 如果可以被整除，则不是质数，返回 false
+        &#125;
+        return true; // 否则是质数，返回 true
+    &#125;
+</code></pre>
+<h1 id="dfs"><a href="#dfs" class="headerlink" title="dfs"></a>dfs</h1><p>深度优先搜索算法（Depth First Search，简称DFS）：一种用于遍历或搜索树或图的算法。 沿着树的深度遍历树的节点，尽可能深的搜索树的分支。当节点v的所在边都己被探寻过或者在搜寻时结点不满足条件，搜索将回溯到发现节点v的那条边的起始节点。整个进程反复进行直到所有节点都被访问为止。属于盲目搜索,最糟糕的情况算法时间复杂度为O(!n)。</p>
+<h2 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h2><p>沿着树的深度来遍历树的节点，尽可能深的搜索树的分支。当节点v的所有边都己被探寻过，搜索将回溯到发现节点v的那条边的起始节点。这一过程一直进行到已发现从源节点可达的所有节点为止。如果还存在未被发现的节点，则选择其中一个作为源节点并重复以上过程，整个进程反复进行直到所有节点都被访问为止。</p>
+<pre><code class="java">int check(参数)
+&#123;
+    if(满足条件)
+        return 1;
+    return 0;
+&#125;
+void dfs(int step)
+&#123;
+        判断边界
+        &#123;
+            相应操作
+        &#125;
+        尝试每一种可能
+        &#123;
+               满足check条件
+               标记
+               继续下一步dfs(step+1)
+               恢复初始状态（回溯的时候要用到）
+        &#125;
+&#125;   
+</code></pre>
+<pre><code class="java">static ans;//全局变量
+static void dfs(层数，其他参数)&#123;
+    if(出局判断)&#123;
+        更新答案；//答案用全局变量表示
+        return;//返回上一层
+    &#125;
+    (剪枝)
+    for(枚举下一层可能的情况)&#123;//每一种情况
+        if (used[i] == 0)&#123;//判断有没有使用过
+            used[i] = 1;//标记已经使用过
+            dfs(层数+1，其他参数);//下一层
+            used[i] = 0; //恢复状态
+        &#125;
+        return;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">static Set&lt;Integer&gt; st; // 用于存储结果集，其中不会包含重复元素
+static void dfs(int pos, int sum) &#123;
+        if (pos == len) &#123; // 如果当前位置等于字符串的长度
+            if (check(sum)) &#123; // 检查当前生成的数是否为质数
+                st.add(sum); // 如果是质数，则加入结果集
+                return;
+            &#125;
+            return;
+        &#125;
+        for (int i = 0; i &lt; len; ++i) &#123; // 遍历字符串中的每一个字符
+            if (!vis[i]) &#123; // 如果当前字符未被访问过
+                sum = sum * 10 + (s.charAt(i) - &#39;0&#39;); // 将当前字符转换为数字并加到 sum 中
+                vis[i] = true; // 将当前位置标记为已访问
+                dfs(pos + 1, sum); // 递归调用，继续生成下一个数字
+                sum /= 10; // 回溯，恢复 sum 的值
+                vis[i] = false; // 恢复当前位置的访问状态
+            &#125;
+        &#125;
+    &#125;
+</code></pre>
+<h2 id="排列"><a href="#排列" class="headerlink" title="排列"></a>排列</h2><p>全排列</p>
+<pre><code class="java">import java.util.Scanner;
+
+public class Main &#123;
+    // 创建一个数组用于存储输入的数字
+    public static int[] a = new int[3];
+
+    public static void main(String[] args) &#123;
+        Scanner scanner = new Scanner(System.in);
+        // 循环读取输入的数字并存储到数组中
+        for (int i = 0; i &lt;= 2; i++) &#123;
+            a[i] = scanner.nextInt();
+        &#125;
+        // 调用深度优先搜索函数，从索引 0 到索引 2 进行全排列
+        dfs(0, 2);
+    &#125;
+
+    // 深度优先搜索函数，用于生成从第 s 到第 t 的全排列
+    public static void dfs(int s, int t) &#123;
+        // 如果 s 等于 t，表示已经生成一个完整的排列，可以打印结果并返回
+        if (s == t) &#123;
+            for (int i = 0; i &lt;= 2; i++) &#123;
+                System.out.print(a[i] + &quot; &quot;);
+            &#125;
+            System.out.println();
+            return;
+        &#125;
+        // 使用循环进行交换操作，生成全排列
+        for (int i = s; i &lt;= t; i++) &#123;
+            // 交换位置，将第 s 个元素与第 i 个元素交换
+            swap(s, i);
+            // 递归调用，继续生成剩余部分的排列
+            dfs(s + 1, t);
+            // 恢复原来的顺序，用于下一次循环
+            swap(i, s);
+        &#125;
+    &#125;
+
+    // 交换数组中两个位置的元素
+    public static void swap(int i, int j) &#123;
+        int temp;
+        temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
+    &#125;
+&#125;
+</code></pre>
+<h2 id="迷宫"><a href="#迷宫" class="headerlink" title="迷宫"></a>迷宫</h2><p><img src="/img/loading.gif" data-original="/./%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAcXFfNDYyNzQyMTk=,size_20,color_FFFFFF,t_70,g_se,x_16-1710617365483-3.png" alt="img"></p>
+<pre><code class="java">import java.util.Scanner;
+
+public class Main &#123;
+    static final int n = 10;
+    static char[][] mp = new char[n + 2][n + 2];
+    static boolean[][] vis = new boolean[n + 2][n + 2];
+    static int[][] solve = new int[n + 2][n + 2]; // solve[i][j]=1表示这个点能走出去；=2表示出不去
+    static int ans = 0;
+    static int cnt = 0;
+
+    public static void main(String[] args) &#123;
+        Scanner scanner = new Scanner(System.in);
+        for (int i = 0; i &lt; n; i++)
+            for (int j = 0; j &lt; n; j++)
+                mp[i][j] = scanner.next().charAt(0);
+        for (int i = 0; i &lt; n; i++)
+            for (int j = 0; j &lt; n; j++) &#123;
+                vis = new boolean[n + 2][n + 2];
+                if (dfs(i, j)) ans++;
+            &#125;
+        System.out.println(&quot;ans=&quot; + ans + &quot;,cnt=&quot; + cnt);
+    &#125;
+
+    static boolean dfs(int i, int j) &#123;
+        if (i &lt; 0 || i &gt; n - 1 || j &lt; 0 || j &gt; n - 1) return true;
+        if (solve[i][j] == 1) return true;  // 点(i,j)已经算过了，能出去
+        if (solve[i][j] == 2) return false; // 点(i,j)已经算过了，出不去
+        if (vis[i][j]) return false;
+        cnt++;  // 统计 dfs() 了多少次
+        vis[i][j] = true;
+        if (mp[i][j] == &#39;L&#39;) &#123;
+            if (dfs(i, j - 1)) &#123;
+                solve[i][j] = 1;
+                return true;
+            &#125; else &#123;
+                solve[i][j] = 2;
+                return false;
+            &#125;
+        &#125;
+        if (mp[i][j] == &#39;R&#39;) &#123;
+            if (dfs(i, j + 1)) &#123;
+                solve[i][j] = 1;
+                return true;
+            &#125; else &#123;
+                solve[i][j] = 2;
+                return false;
+            &#125;
+        &#125;
+        if (mp[i][j] == &#39;U&#39;) &#123;
+            if (dfs(i - 1, j)) &#123;
+                solve[i][j] = 1;
+                return true;
+            &#125; else &#123;
+                solve[i][j] = 2;
+                return false;
+            &#125;
+        &#125;
+        if (mp[i][j] == &#39;D&#39;) &#123;
+            if (dfs(i + 1, j)) &#123;
+                solve[i][j] = 1;
+                return true;
+            &#125; else &#123;
+                solve[i][j] = 2;
+                return false;
+            &#125;
+        &#125;
+        return false;
+    &#125;
+&#125;
+</code></pre>
+<h1 id="哈希表的使用"><a href="#哈希表的使用" class="headerlink" title="哈希表的使用"></a>哈希表的使用</h1><pre><code class="java">import java.util.HashMap;
+import java.util.Scanner;
+
+public class Main &#123;
+    public static void main(String[] args) &#123;
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt(); // 读取输入的第一个整数，表示第一个数组的长度
+        int m = scanner.nextInt(); // 读取输入的第二个整数，表示第二个数组的长度
+
+        HashMap&lt;Integer, Integer&gt; mp = new HashMap&lt;&gt;(); // 创建一个 HashMap，用于存储第一个数组中每个元素出现的次数
+        for (int i = 0; i &lt; n; i++) &#123;
+            int x = scanner.nextInt(); // 读取第一个数组中的每个元素
+            mp.put(x, mp.getOrDefault(x, 0) + 1); // 将元素加入 HashMap，并更新其出现次数
+        &#125;
+
+        int cnt = 0; // 用于统计第二个数组中与第一个数组中元素相同的个数
+        for (int i = 0; i &lt; m; i++) &#123;
+            int x = scanner.nextInt(); // 读取第二个数组中的每个元素
+            if (mp.containsKey(x) &amp;&amp; mp.get(x) &gt; 0) &#123; // 如果该元素在第一个数组中出现，并且出现次数大于 0
+                mp.put(x, mp.get(x) - 1); // 将其出现次数减 1
+                cnt++; // 统计个数加 1
+            &#125;
+        &#125;
+        System.out.println(cnt); // 输出统计结果
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">import java.util.HashMap;
+
+public class Main &#123;
+    public static void main(String[] args) &#123;
+        // 创建一个 HashMap 对象
+        HashMap&lt;Integer, String&gt; map = new HashMap&lt;&gt;();
+
+        // 添加键值对
+        map.put(1, &quot;Java&quot;);
+        map.put(2, &quot;Python&quot;);
+        map.put(3, &quot;C++&quot;);
+
+        // 获取值
+        String value = map.get(2);
+        System.out.println(&quot;Value at key 2: &quot; + value);
+
+        // 检查键是否存在
+        boolean containsKey = map.containsKey(3);
+        System.out.println(&quot;Key 3 exists: &quot; + containsKey);
+
+        // 删除键值对
+        map.remove(1);
+        System.out.println(&quot;After removing key 1: &quot; + map);
+    &#125;
+&#125;
+</code></pre>
+<h1 id="双指针找相同元素"><a href="#双指针找相同元素" class="headerlink" title="双指针找相同元素"></a>双指针找相同元素</h1><pre><code class="java">import java.util.Scanner;
+import java.util.Arrays;
+public class Main &#123;
+      public static void main(String[] args) &#123;
+        // 创建 Scanner 对象，用于从标准输入读取数据
+        Scanner sc = new Scanner(System.in);
+        // 读取两个整数，分别表示两个数组的长度
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        // 创建两个整型数组，分别用于存储两个数组的元素
+        int a[] = new int[n];
+        int b[] = new int[m];
+        // 初始化变量 sum，用于统计相同元素的个数
+        int sum = 0;
+        // 读取第一个数组的元素，并存储到数组 a 中
+        for (int i = 0; i &lt; n; i++) &#123;
+            a[i] = sc.nextInt();
+        &#125;
+        // 读取第二个数组的元素，并存储到数组 b 中
+        for (int i = 0; i &lt; m; i++) &#123;
+            b[i] = sc.nextInt();
+        &#125;
+        // 使用 Arrays.sort 对数组 a 和 b 进行排序，使其从小到大排列
+        Arrays.sort(a);
+        Arrays.sort(b);
+        // 关闭 Scanner 对象，释放资源
+        sc.close();
+        // 始化两个指针 x 和 y，分别指向数组 a 和 b 的起始位置
+        int x = 0;
+        int y = 0;
+        
+        // 遍历数组 a 和 b，统计相同元素的个数
+        while (x &lt; n &amp;&amp; y &lt; m) &#123;
+            if (a[x] == b[y]) &#123; // 如果两个元素相等，则相同元素个数加一，并移动两个指针
+                sum++;
+                x++;
+                y++;
+            &#125; else if (a[x] &lt; b[y]) &#123; // 如果数组 a 的元素小于数组 b 的元素，则将指针 x 向后移动一位
+                x++;
+            &#125; else &#123; // 如果数组 a 的元素大于数组 b 的元素，则将指针 y 向后移动一位
+                y++;
+            &#125;
+        &#125;
+        
+        // 输出相同元素的个数
+        System.out.println(sum);
+    &#125;
+&#125;
+</code></pre>
+<h1 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h1><h1 id="计算斐波那契数列的第-n-项"><a href="#计算斐波那契数列的第-n-项" class="headerlink" title="计算斐波那契数列的第 n 项"></a>计算斐波那契数列的第 n 项</h1><pre><code class="java"> // 计算斐波那契数列的第 n 项
+    private static BigInteger fb(int n) &#123;
+        BigInteger[] fib = new BigInteger[n + 1];
+        fib[1] = BigInteger.ONE;
+        fib[2] = BigInteger.ONE;
+        for (int i = 3; i &lt;= n; i++) &#123;
+            fib[i] = fib[i - 1].add(fib[i - 2]);
+        &#125;
+        return fib[n];
+    &#125;
+</code></pre>
+<h2 id="加入记忆化更高效-DP"><a href="#加入记忆化更高效-DP" class="headerlink" title="加入记忆化更高效 DP"></a>加入记忆化更高效 DP</h2><pre><code class="java">public class 斐波那契数列 &#123;
+    //求第20个数
+    static int cnt;
+    static long[] memo; // 使用静态数组作为记忆化存储
+    static long fib(int n) &#123;
+        cnt++;
+        if (n == 1 || n == 2) &#123;
+            return 1;
+        &#125;
+        // 如果已经计算过第 n 个斐波那契数，则直接返回结果
+        if (memo[n] != 0) &#123;
+            return memo[n];
+        &#125;
+        // 否则进行递归计算，并将结果存储到 memo 数组中
+        memo[n] = fib(n - 1) + fib(n - 2);
+        return memo[n];
+    &#125;
+
+    public static void main(String[] args) &#123;
+        int n = 20;
+        memo = new long[n + 1]; // 初始化 memo 数组
+        System.out.println(fib(n));
+        System.out.println(cnt);
+    &#125;
+&#125;
+</code></pre>
+<h1 id="排列与组合"><a href="#排列与组合" class="headerlink" title="排列与组合"></a>排列与组合</h1><h2 id="字典序模板"><a href="#字典序模板" class="headerlink" title="字典序模板"></a>字典序模板</h2><pre><code class="java">private static boolean next(int[] nums, int[] prev) &#123;
+        // 从右往左找到第一个递增的数 nums[i]
+        int i = nums.length - 2;
+        while (i &gt;= 0 &amp;&amp; nums[i] &gt;= nums[i + 1]) &#123;
+            i--;
+        &#125;
+        // 如果找不到递增的数，则说明当前排列已经是最大排列，无法生成下一个排列
+        if (i &lt; 0) &#123;
+            return false;
+        &#125;
+        // 从右往左找到第一个比 nums[i] 大的数 nums[j]
+        int j = nums.length - 1;
+        while (nums[j] &lt;= nums[i]) &#123;
+            j--;
+        &#125;
+        // 交换 nums[i] 和 nums[j]
+        swap(nums, i, j);
+        // 对 i 后面的数字进行逆序排列，保证新排列是下一个字典序的排列
+        reverse(nums, i + 1);
+        // 检查新生成的排列是否与上一个排列相同，如果相同则继续生成下一个排列
+        if (prev != null &amp;&amp; Arrays.equals(nums, prev)) &#123;
+            return next(nums, prev);
+        &#125;
+        return true;
+    &#125;
+
+    public static void reverse(int[] nums, int start) &#123;
+        int i = start;
+        int j = nums.length - 1;
+        while (i &lt; j) &#123;
+            swap(nums, i, j);
+            i++;
+            j--;
+        &#125;
+    &#125;
+
+    private static void swap(int[] nums, int i, int j) &#123;
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    &#125;
+</code></pre>
+<h2 id="递归实现全排列"><a href="#递归实现全排列" class="headerlink" title="递归实现全排列"></a>递归实现全排列</h2><pre><code class="java">public static void fullsort(int []num,int st,int m,int [] cnt,boolean[] used) &#123;
+        if (st == num.length -1)&#123;
+            cnt[0]++;
+            if (cnt[0] == m)&#123;
+                printArray(num);
+            &#125;
+
+               return;
+            &#125;
+        for (int i = st; i&lt;num.length;i++)
+        &#123;
+            if (!used[i]) &#123;
+                used[i] = true;
+                swap(num, st, i);
+                fullsort(num, st + 1, m, cnt, used);
+                swap(num, st, i);
+                used[i] = false;
+            &#125;
+        &#125;
+    &#125;
+    public static void swap(int []a,int b,int c) &#123;
+        int temp = a[b];
+        a[b] = a[c];
+        a[c] = temp;
+    &#125;
+    public static void printArray(int[] arr) &#123;
+        for (int i : arr) &#123;
+            System.out.print(i + &quot; &quot;);
+        &#125;
+        System.out.println();
+    &#125;
+</code></pre>
+<h2 id="手写排列"><a href="#手写排列" class="headerlink" title="手写排列"></a>手写排列</h2><pre><code class="java">public static void main(String[] args) &#123;
+        //定义数组
+//        4选3 循环3次
+        int cnt = 0;
+        int []m = &#123;1,2,3,4&#125;;
+        for (int i = 0; i&lt;4;i++)&#123;
+            for(int j = 0; j&lt;4;j++)&#123;
+                if (j != i)&#123;
+                    for (int k = 0; k&lt;4;k++)&#123;
+                        if (k != j &amp;&amp; k != i)&#123;
+                            // 输出排列结果
+                            cnt++;
+                            System.out.printf(&quot;%d%d%d，&quot;,  m[i],m[j],m[k]);
+                        &#125;
+                    &#125;
+                &#125;
+            &#125;
+        &#125;
+        System.out.println();
+        System.out.println(cnt);
+//        123，124，132，134，142，143，213，214，231，234，241，243，312，314，321，324，341，342，412，413，421，423，431，432，
+//24
+        //字典序 从小到大排序
+</code></pre>
+<h2 id="手写组合"><a href="#手写组合" class="headerlink" title="手写组合"></a>手写组合</h2><pre><code class="java">public static void main(String[] args) &#123;
+        //组合 n个数选m个
+        //n!/m!(n-m!)
+        //4选3
+        //循环3次不用判断
+        int []m = &#123;1,2,3,4&#125;;
+        int cnt = 0;
+        for (int i = 0; i&lt;4;i++)&#123;
+            for(int j = i+1; j&lt;4;j++)&#123;
+                    for (int k = j+1; k&lt;4;k++)&#123;
+
+                        cnt++;
+                        System.out.printf(&quot;%d%d%d，&quot;,  m[i],m[j],m[k]);
+
+                    &#125;
+                &#125;
+            &#125;
+        System.out.println();
+        System.out.println(cnt);
+//        123，124，134，234，
+//          4
+//        字典序 从小到大排序
+        &#125;
+</code></pre>
+<h2 id="DFS实现全排列"><a href="#DFS实现全排列" class="headerlink" title="DFS实现全排列"></a>DFS实现全排列</h2><pre><code class="java">public class 全排列 &#123;
+    static int[] sequences = &#123;1,2,3,4&#125;;//待全排序的序列
+
+    public static void main(String[] args) &#123;
+        dfs(0,sequences.length-1);
+    &#125;
+
+    public static void dfs(int start,int end) &#123;
+        //递归结束条件
+        if(start == end)&#123;
+            System.out.println(Arrays.toString(sequences));//输出一个全排列序列
+            return;
+        &#125;
+        for(int i = start;i&lt;=end;i++)&#123;
+            swap(sequences, start, i);//把当前第1个数与后面所有数交换位置，注意所以i是从start开始
+            dfs(start+1, end);
+            swap(sequences, start, i);//恢复，用于下一次交换
+        &#125;
+    &#125;
+
+    public static void swap(int[] a,int i,int j)&#123;
+        int temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
+    &#125;
+&#125;
+</code></pre>
+<h2 id="拼接字符串大小再进行输出"><a href="#拼接字符串大小再进行输出" class="headerlink" title="拼接字符串大小再进行输出"></a>拼接字符串大小再进行输出</h2><pre><code class="java">”231“”342“”1“输出最大
+”342“”231“”1“
+</code></pre>
+<pre><code class="java">package 排列和组合;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class 拼数字符串比较大小再拼接输出 &#123;
+    public static void main(String[] args) &#123;
+        Scanner scanner = new Scanner(System.in);
+        int inputCount = Integer.parseInt(scanner.nextLine());
+
+        String[] nums = new String[inputCount];
+        for (int i = 0; i &lt; inputCount; i++) &#123;
+            nums[i] = scanner.next();
+        &#125;
+
+
+        // 记录最大的排列
+        StringBuilder maxPermutation = new StringBuilder();
+
+        // 求全排列
+        generatePermutations(nums, 0, inputCount - 1, maxPermutation);
+
+        // 输出最大的排列
+        System.out.println(maxPermutation);
+    &#125;
+
+    private static void generatePermutations(String[] nums, int start, int end, StringBuilder maxPermutation) &#123;
+        if (start == end) &#123;
+            // 当只有一个元素时，输出排列结果
+            StringBuilder currentPermutation = new StringBuilder();
+            for (String num : nums) &#123;
+                currentPermutation.append(num);
+            &#125;
+            // 如果当前排列比记录的最大排列大，则更新最大排列
+            if (currentPermutation.toString().compareTo(maxPermutation.toString()) &gt; 0) &#123;
+                maxPermutation.setLength(0);
+                maxPermutation.append(currentPermutation);
+            &#125;
+            return;
+        &#125;
+
+        // 递归地生成全排列
+        for (int i = start; i &lt;= end; i++) &#123;
+            // 将第i个元素与第start个元素交换位置
+            swap(nums, start, i);
+            // 递归生成以第start+1个元素开头的子数组的全排列
+            generatePermutations(nums, start + 1, end, maxPermutation);
+            // 恢复原始顺序，以便下一轮交换
+            swap(nums, start, i);
+        &#125;
+    &#125;
+
+    private static void swap(String[] nums, int i, int j) &#123;
+        String temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    &#125;
+
+&#125;
+
+</code></pre>
+<h1 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h1><pre><code class="markdown">         二分法有「整数二分」和「实数二分」两种情况。实数二分的代码好写不易出错；整数二分的代码因为要考虑整除的问题，代码容易出错。
+
+        二分法的效率极高。比如在有序的n个数中找某个数，只需要二分log2​n ​次，也就是说它的时间复杂度是 O(log2​n) 的。例如有 n = 10^7个数，只需要24 次就能找到答案。
+
+        总结一下，二分法把一个长度为 n 的有序序列上 O(n) 的查找时间，优化到了O(log2​n)​。注意，这个序列的数字一定要是「有序」的，二分才有意义。在乱序的一堆数字上搞二分，没有任何用处。所以这个数字序列如果是乱序的，应该先排序再二分。
+
+        只搜索一个数的话二分法不如直接暴力搜索，但是搜m个数。那么排序再二分就是 O(nlogn+mlogn)，而你的暴力法是 O(mn)的，显然就快多了。
+</code></pre>
+<h2 id="整数二分"><a href="#整数二分" class="headerlink" title="整数二分"></a>整数二分</h2><p>假设目标值在闭区间<code>[l,r]</code>中</p>
+<pre><code class="java">int binarySearch(int[] nums, int target)&#123;
+  if(nums == null || nums.length == 0)&#123; //数组为空
+    return -1;
+  &#125;
+  int l = 0, r = nums.length - 1; //设置左右边界
+  while(l &lt;= r)&#123; 
+    int mid = l + (r-l) / 2; // 等同于mid=(l+r)/2,这种写法是为了防止数组越界,也可以写为(l+r) &gt;&gt;&gt; 1
+    if(nums[mid] == target)&#123; //最终target=mid,输出mid
+        return mid; 
+    &#125;else if(nums[mid] &lt; target) &#123; //目标值在(mid,r]之间
+        l = mid + 1; 
+    &#125;else &#123;  //目标值在[l,mid)之间
+        r = mid - 1; 
+    &#125;
+  &#125;
+  // 最后判断: l&gt;r 即数组不存在
+  return -1;
+&#125;
+</code></pre>
+<p><strong>关于开闭区间问题</strong></p>
+<pre><code class="java">static int bin_search(int[] a, int n, int x) &#123; // a[0]～a[n-1]是单调递增的
+        int left = 0, right = n ;//注意：不是 n-1，此时是左闭右开的[0,n)
+        while (left &lt; right) &#123;
+            int mid = left + (right - left) / 2; // int mid = (left + right) &gt;&gt; 1;
+            if (a[mid] &gt;= x)
+                right = mid;
+            else
+                left = mid + 1;
+        &#125; // 终止于left = right
+        return left; // 返回x的位置，如果不存在则返回x应该插入的位置
+    &#125;
+</code></pre>
+<pre><code class="java">static int search_2(int[] arr,int l,int r,int x)&#123;
+        Arrays.sort(arr);
+        while (l&lt;r)&#123;
+            int mid=(l+r+1)/2;
+            if (check(mid))&#123;
+                l=mid;
+            &#125;else&#123;
+                r=mid-1;
+            &#125;
+        &#125;
+        return l;
+    &#125;
+</code></pre>
+<p>二分查找 (left, right)</p>
+<pre><code class="java"> // 二分查找 (left, right)
+    int binarySearch3(int[] nums, int target) &#123;
+        if (nums == null || nums.length == 0)
+            return -1;
+ 
+        int left = 0, right = nums.length - 1;
+        while (left + 1 &lt; right)&#123;
+            int mid = left + (right - left) / 2;
+            if (nums[mid] == target) &#123;
+                return mid;
+            &#125; else if (nums[mid] &lt; target) &#123;
+                //  target 在右区间，在(middle, right)中
+                left = mid;
+            &#125; else &#123;
+                // target 在左区间，在(left, middle)中
+                right = mid;
+            &#125;
+        &#125;
+        // 当: left + 1 == right
+        if(nums[left] == target) return left;
+        if(nums[right] == target) return right;
+        return -1;
+    &#125;
+</code></pre>
+<h2 id="浮点数二分"><a href="#浮点数二分" class="headerlink" title="浮点数二分"></a>浮点数二分</h2><pre><code class="java">double binarySearch(int[] nums,int target)&#123;
+    // eps 表示精度，取决于题目对精度的要求
+    double l = 0; double r = nums.length-1;
+    const double eps = 1e-6; //科学计数法1*10^-6 当区间长度小于eps时退出循环 
+    while (r - l &gt; eps)&#123; //当区间长度大于eps时继续二分
+        double mid = (l + r) / 2;
+        if (nums[mid] &gt; target ) r = mid;
+        else l = mid;
+    &#125;
+    return l; //最后while循环退出的时候l和r近似相等
+&#125;
+</code></pre>
+<h2 id="分巧克力"><a href="#分巧克力" class="headerlink" title="分巧克力"></a>分巧克力</h2><pre><code class="java">import java.util.Scanner;
+ 
+public class Main &#123;
+    private static int max = 100000;
+ 
+    public static void main(String[] args) &#123;
+        Scanner scanner = new Scanner(System.in);
+        int N = scanner.nextInt();
+        int K = scanner.nextInt();
+        int[] H = new int[max];
+        int[] W = new int[max];
+        for (int i = 0; i &lt; N; i++) &#123;
+            H[i] = scanner.nextInt();
+            W[i] = scanner.nextInt();
+        &#125;
+        int left = 0, right = max;
+        while (left &lt; right) &#123;
+            int mid = left + (right - left + 1) / 2;
+            int temp = 0;
+            for (int i = 0; i &lt; N; i++) &#123;
+                temp = temp + (H[i] / mid) * (W[i] / mid);
+            &#125;
+            if (temp &gt;= K) &#123;
+                left = mid;
+            &#125; else &#123;
+                right = mid - 1;
+            &#125;
+        &#125;
+        System.out.println(left);
+    &#125;
+&#125;
+</code></pre>
+<h2 id="实数二分"><a href="#实数二分" class="headerlink" title="实数二分"></a>实数二分</h2><pre><code class="java">double bsearch_3(double left, double right)
+&#123;
+    for (int i = 0; i &lt; 100; i++)
+    &#123;
+        double mid = (left + right) / 2;
+        if (check(mid))
+            left = mid;
+        else
+            right = mid;
+    &#125;
+    return left;
+&#125;
+</code></pre>
+<pre><code class="java">double bsearch_4(double left, double right)
+&#123;
+    while(right-left&gt;0.0000001)&#123;
+        double mid = (left + right) / 2;
+        if (check(mid))
+            left = mid;
+        else
+            right = mid;
+    &#125;
+    return left;
+&#125;
+</code></pre>
+<h1 id="前缀和"><a href="#前缀和" class="headerlink" title="前缀和"></a>前缀和</h1><p>对于一个长度为n的数组 a[0]∼a[n−1]，它的前缀和 sum[i] 等于 a[0]∼a[i] 的和。例如：</p>
+<ul>
+<li><p>sum[0] &#x3D; a[0]</p>
+</li>
+<li><p>sum[1] &#x3D; a[0] + a[1]</p>
+</li>
+<li><p>sum[2] &#x3D; a[0] + a[1] + a[2]</p>
+</li>
+<li><p>⋯</p>
+<p>​      利用递推，只要计算 n 次，就能计算出所有的前缀和：sum[i] &#x3D; sum[i-1] + a[i]。当然，我们也能用 sum[] 反推计算出 a[]：a[i] &#x3D; sum[i] - sum[i-1]。</p>
+</li>
+</ul>
+<p>如果预先算出了前缀和，这时想知道 a[i]∼a[j] 的和，可以用sum[j]−sum[i−1]。 可以利用前缀和快速计算出数组中任意一个区间的和。本来复杂度为 O(n)的区间和计算，优化到了 O(1) 的前缀和计算。</p>
+<pre><code class="java">public static void main(String[] args) &#123;
+    Scanner sc = new Scanner(System.in);
+    // 读取输入的行数、列数和阈值 L
+    int N = sc.nextInt(); // 行数
+    int M = sc.nextInt(); // 列数
+    int L = sc.nextInt(); // 阈值 L
+
+    // 创建二维数组用于存储输入的矩阵
+    int[][] arr = new int[N + 1][M + 1];
+
+    // 输入数组元素
+    for (int i = 1; i &lt;= N; i++) &#123;
+        for (int j = 1; j &lt;= M; j++) &#123;
+            arr[i][j] = sc.nextInt();
+        &#125;
+    &#125;
+
+    // 计算二维数组的前缀和
+    for (int i = 1; i &lt;= N; i++) &#123;
+        for (int j = 1; j &lt;= M; j++) &#123;
+            // 使用动态规划的思想，计算每个位置的前缀和
+            arr[i][j] += arr[i - 1][j] + arr[i][j - 1] - arr[i - 1][j - 1];
+        &#125;
+    &#125;
+
+    long cnt = 0; // 计数器，用于统计符合条件的子矩阵数量
+
+    // 暴力查询子矩阵，遍历所有可能的子矩阵
+    for (int i1 = 1; i1 &lt;= N; i1++) &#123;
+        for (int i2 = i1; i2 &lt;= N; i2++) &#123;
+            for (int j1 = 1; j1 &lt;= M; j1++) &#123;
+                for (int j2 = j1; j2 &lt;= M; j2++) &#123;
+                    // 计算子矩阵中元素总和
+                    int z = arr[i2][j2] - arr[i2][j1 - 1] - arr[i1 - 1][j2] + arr[i1 - 1][j1 - 1];
+                    // 如果子矩阵中元素总和不超过 L，则增加计数器
+                    if (z &lt;= L) &#123;
+                        cnt++;
+                    &#125;
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+
+    // 输出符合条件的子矩阵数量
+    System.out.println(cnt);
+&#125;
+</code></pre>
+<p>灵能传输</p>
+<p><img src="/img/loading.gif" data-original="/2024/01/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/image-20240402201149341.png" alt="image-20240402201149341"></p>
+<p><img src="/img/loading.gif" data-original="/2024/01/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/image-20240402201209453.png" alt="image-20240402201209453"></p>
+<pre><code>3
+3
+5 -2 3
+4
+0 0 0 0
+3
+1 2 3
+</code></pre>
+<pre><code class="java">import java.util.*;
+ 
+public class Main &#123;
+    public static void main(String[] args) &#123;
+        Scanner cinScanner = new Scanner(System.in);
+        int T;
+        T = cinScanner.nextInt(); // 读取测试用例数量
+        while (T != 0) &#123; // 循环处理每个测试用例
+            T--;
+            long in0 = 0, inn = 0; // 记录起始和结束位置
+            long n;
+            long s0, sn;
+            n = cinScanner.nextLong(); // 读取数组长度
+            long[] a = new long[(int) n + 2]; // 输入数组
+            long[] s = new long[(int) n + 1]; // 前缀和数组
+            long[] vis = new long[(int) n + 2]; // 标记数组
+            long[] ans = new long[(int) n + 2]; // 存储排序后的结果
+            for (int i = 0; i &lt; n; i++) &#123;
+                a[i] = cinScanner.nextLong(); // 读取数组元素
+                s[i + 1] = a[i]; // 计算前缀和
+                s[i + 1] += s[i];
+            &#125;
+            s0 = s[0]; // 获取最小的前缀和
+            sn = s[(int) n]; // 获取最大的前缀和
+            if (s0 &gt; sn) &#123; // 保证 s0 是最小的前缀和
+                long t = s0;
+                s0 = sn;
+                sn = t;
+            &#125;
+            Arrays.sort(s); // 对前缀和进行排序
+            // 找到最小和最大前缀和的位置
+            for (int i = 0; i &lt;= (int) n; i++)
+                if (s[i] == s0) &#123;
+                    in0 = i;
+                    break;
+                &#125;
+            for (int i = (int) n; i &gt;= 0; i--)
+                if (s[i] == sn) &#123;
+                    inn = i;
+                    break;
+                &#125;
+            int l = 0;
+            int r = (int) n;
+            // 从最小前缀和的位置开始向左遍历
+            for (int i = (int) in0; i &gt;= 0; i -= 2) &#123;
+                ans[l++] = s[i];
+                vis[i] = 1; // 标记已经使用的位置
+            &#125;
+            // 从最大前缀和的位置开始向右遍历
+            for (int i = (int) inn; i &lt;= n; i += 2) &#123;
+                ans[r--] = s[i];
+                vis[i] = 1; // 标记已经使用的位置
+            &#125;
+            // 将未使用的位置填充到结果数组中
+            for (int i = 0; i &lt;= n; i++)
+                if (vis[i] == 0)
+                    ans[l++] = s[i];
+            long res = 0;
+            // 计算相邻元素之间的最大差值
+            for (int i = 1; i &lt;= n; i++)
+                res = Math.max(Math.abs((ans[i] - ans[i - 1])), res);
+            System.out.println(res); // 输出结果
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h1 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h1><p>判断连通性除了可以用学习过的 BFS、DFS 外，还可以用一个叫”并查集“的算法</p>
+<p>并查集又可以理解为不相交集合上的合并查询</p>
+<p>并查集是一种非常精巧而实用的数据结构，它主要用于处理一些不相交集合的合并和查询问题。经典的应用有：判断连通性、最小生成树 Kruskal 算法、最近公共祖先（Least Common Ancestors, LCA）等。并查集在算法竞赛中也十分常见：一是简单且高效，二是应用很直观，三是容易和其他数据结构和算法结合。</p>
+<h2 id="1、什么是并查集"><a href="#1、什么是并查集" class="headerlink" title="1、什么是并查集"></a>1、什么是并查集</h2><p>首先并查集是一个集合一种数据结构， 主要有两个操作，分别是</p>
+<p>合并（Union）：把两个不相交的集合合并为一个集合。<br>查询（Find）：判断两个元素是否在同一个集合中。<br>主要用于处理不相交集合的合并及判断连接问题。</p>
+<h2 id="2、并查集能做什么"><a href="#2、并查集能做什么" class="headerlink" title="2、并查集能做什么"></a>2、并查集能做什么</h2><p>判断连接问题 （社交网络、关系网）<br>最近公共祖先<br>渗滤<br>图像处理<br>有限状态自动机的等价性<br>Hinley-Milner 的多态类型推断<br>Kruskal 的最小生成树算法<br>游戏(围棋、十六进制)<br>在 Fortran 中的编译语句的等价性问题</p>
+<h3 id="2、并查集实现结构"><a href="#2、并查集实现结构" class="headerlink" title="2、并查集实现结构"></a>2、并查集实现结构</h3><p>并查集的结构有点类似树型结构， 不过与树不同， 指针是指向父节点。并且里面会存在多颗树， 如下图</p>
+<p><img src="/img/loading.gif" data-original="/2024/01/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/c8ab44c8397449f7a2d7d2ac0b031db6-1712073803053-4.png" alt="c8ab44c8397449f7a2d7d2ac0b031db6"></p>
+<h2 id="3、算法原理"><a href="#3、算法原理" class="headerlink" title="3、算法原理"></a>3、算法原理</h2><h3 id="3-1、合并（Union）"><a href="#3-1、合并（Union）" class="headerlink" title="3.1、合并（Union）"></a>3.1、合并（Union）</h3><p>即将两个节点合并归属为同一个集合。 假设有两个节点A 和 B， 一般不是将A 和 到 B， 就是将B合并到A。 在实现上其实也就是将 A的根节点的parent指针指向节点B的根节点即可。 不过为了维持这颗树结构的平衡高度， 一般由较矮的节点树 和合并到 较高的节点树。</p>
+<p>如下图， 如果要合并 g 和 b， 先找到g和b的根节点a和e， 然后把e的父指针指向a即可完成合并。</p>
+<h3 id="-1"><a href="#-1" class="headerlink" title=""></a><img src="/img/loading.gif" data-original="/2024/01/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/d75b0713e21c4ff183fb10ca24d2a6d1.png" alt="d75b0713e21c4ff183fb10ca24d2a6d1"></h3><h3 id="3-2、查询（Find"><a href="#3-2、查询（Find" class="headerlink" title="3.2、查询（Find)"></a>3.2、查询（Find)</h3><p>即判断两个节点是否有关系， 通过parent指针不断向上寻找该节点的根节点， 然后判断它们两个的根节点是否一样即可， 如果一样说明属于同一个集合， 反之不是。</p>
+<p>虽然一般查找根节点这个算法非常简单， 但是一般为了性能优化， 减少每次向上搜索的深度， 在查找find根节点的过程中会进行路径压缩。</p>
+<p>压缩路径过程就是， 在向上寻找的过程中如果发现父节点不是根节点， 就把父指针指向爷爷节点， 然后自己直接跳到爷爷节点进行下一次判断，依次类推。 当遍历到根节点后， 整颗路径树就会变得非常的矮壮， 大大降低的搜索的深度。</p>
+<p><img src="/img/loading.gif" data-original="/2024/01/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/de5b90997fd24c3cac04250b5672770e.gif" alt="de5b90997fd24c3cac04250b5672770e"></p>
+<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><h2 id="字符串函数"><a href="#字符串函数" class="headerlink" title="字符串函数"></a>字符串函数</h2><p><img src="/img/loading.gif" data-original="/2024/01/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/image-20240404205047417.png" alt="image-20240404205047417"></p>
+<pre><code class="java">package 字符串;
+
+import java.util.Scanner;
+
+public class 标题统计 &#123;
+    public static void main(String[] args) &#123;
+        // TODO Auto-generated method stub
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine().replace(&quot; &quot;, &quot;&quot;);
+        System.out.println(s.length());
+    &#125;
+&#125;
+</code></pre>
+<h1 id="图论"><a href="#图论" class="headerlink" title="图论"></a>图论</h1><h2 id="1-图的基本概念"><a href="#1-图的基本概念" class="headerlink" title="1.图的基本概念"></a>1.图的基本概念</h2><p>图是由顶点集合以及顶点间的关系组成的一种数据结构:G &#x3D; {V,E}.(顶点:vertex , 边:edge)</p>
+<p>V是顶点集合 , V &#x3D; {x|x属于某个对象集}.</p>
+<p>E是边集 , E &#x3D; {(x,y)|x , y 属于V}或者E &#x3D; {&lt;x,y&gt;|x , y 属于V}.</p>
+<pre><code>Tips: (x,y)表示x,y 之间的双向通路 , 即(x,y)是无方向的.&lt;x,y&gt;表示x,y之间的有向通路 . 即&lt;x,y&gt;是有向的.
+</code></pre>
+<ul>
+<li>完全图</li>
+</ul>
+<pre><code>假设有n个顶点 , 对于无向图任意两个顶点之间有且仅有一条边.
+
+完全无向图有n*(n-1)/2条边 .(因为每个顶点都重复计算了一次)
+对于无向图 , 任意两个顶点之间都存在方向相反的两条弧.
+
+完全有向图有n*(n-1)条边 .
+</code></pre>
+<ul>
+<li>领接顶点</li>
+</ul>
+<pre><code>两个顶点 v1 , v2 之间有边相连 , 则称 v1是v2的领接顶点或v2是v1的领接顶点.
+</code></pre>
+<ul>
+<li>顶点的度</li>
+</ul>
+<pre><code>顶点的度指的是它关联边的条数.有向图中顶点的度=入度(指出顶点的边)与出度(指入顶点的边)之和.
+</code></pre>
+<ul>
+<li>简单路径与回路</li>
+</ul>
+<pre><code>若路径上 v1,v2...vm均不重复 , 称这样的路径为简单路径. 若路径上第一个顶点 v1与最后一个顶点 vm 重合 , 则称这样的路径为回路或者环.
+</code></pre>
+<ul>
+<li>连通图</li>
+</ul>
+<pre><code>在无向图中 , 如果图中任意顶点都是连通的 , 则称此图为连通图.
+</code></pre>
+<ul>
+<li>强连通图</li>
+</ul>
+<pre><code>在有向图中，若在每一对顶点 vi 和 vj 之间都存在一条从 vi 到 vj 的路径，也存在一条从 vj 到 vi 的路径，则称此图是强连通图
+</code></pre>
+<ul>
+<li>极小连通子图</li>
+</ul>
+<pre><code>既有要保证连通 , 又要保证边数最小.
+</code></pre>
+<ul>
+<li>生成树</li>
+</ul>
+<pre><code>一个连通图的最小连通子图称作该图的生成树。有n个顶点的连通图的生成树有n个顶点和n-1条边
+</code></pre>
+<h2 id="2-图的存储结构"><a href="#2-图的存储结构" class="headerlink" title="2.图的存储结构"></a>2.图的存储结构</h2><p>因为图中既有节点又有边(节点与节点之间的关系) , 因此在图的存储中 , 我们可以使用一段连续的数组来存储节点 , 但边的关系存储较为复杂 , 通常有以下两种方式~~</p>
+<h3 id="2-1-邻接矩阵"><a href="#2-1-邻接矩阵" class="headerlink" title="2.1 邻接矩阵"></a>2.1 邻接矩阵</h3><p>因为节点与节点之间的关系就是是否连通 , 即为0 或 1 , 因此可以使用一个二维数组(领接矩阵)来保存节点与节点之间的关系.</p>
+<pre><code>无向图的矩阵是对称的 , 第 i 行(列)元素之和就是顶点 i 的度. 有向图的领接矩阵不一定是对称的 , 第 i 行(列)元素之和就是顶点 i 的出度(入度).
+如果边带权值 , 并且两个顶点之间是连通的 , 上图中的边的关系就用权值代替 ,  如果两个节点不通 , 则用无穷大代替.
+用领结矩阵存储图的优点是能够快速知道两个节点之间是否连通 , 缺陷是如果顶点较多 , 边较少(领接矩阵较为稀疏) , 矩阵中存储了大量的0 , 比较浪费空间 , 并且要求两个顶点之间的路径不是很好求.
+有向图的领接矩阵表示法中 , 顶点 i 的出度为: 第 i 行非0元素之和.顶点 i 的入度为: 第 i 列非0元素之和.
+</code></pre>
+<pre><code class="java">package Review;
+ 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+ 
+public class GraphOfMatrix &#123;
+    private char[] arrayV;//节点数组
+    private int[][] Matrix;//领接矩阵
+    private boolean isDirect;//是否是有向图
+    HashMap&lt;Character, Integer&gt; map;//优化版的写法 , 目的是建立节点数组与其下标之间的映射关系
+ 
+    //构造节点数组和领接矩阵 size表示当前节点的个数
+    public GraphOfMatrix(int size, boolean isDirect) &#123;
+        arrayV = new char[size];
+        Matrix = new int[size][size];
+        //将领接矩阵的每一位都初始化为无穷大
+        for (int i = 0; i &lt; size; i++) &#123;
+            Arrays.fill(Matrix[i], Integer.MIN_VALUE);
+        &#125;
+        this.isDirect = isDirect;
+    &#125;
+ 
+    /**
+     * 初始化节点数组
+     *
+     * @param array
+     */
+    public void initArray(char[] array) &#123;
+ 
+        for (int i = 0; i &lt; array.length; i++) &#123;
+            //要么初始化节点数组 , 要么建立映射关系.二选一
+            map.put(array[i], i);
+//            arrayV[i] = array[i];
+        &#125;
+    &#125;
+ 
+    /**
+     * 添加边
+     *
+     * @param src    起始节点
+     * @param dest   终止节点
+     * @param weight 权值
+     */
+    public void addEdg(char src, char dest, int weight) &#123;
+        //首先要确定起始节点和终止节点在矩阵中的位置
+        int srcIndex = getIndexOfV(src);
+        int destIndex = getIndexOfV(dest);
+        //将节点和节点之间的关系存储在矩阵中
+        Matrix[srcIndex][destIndex] = weight;
+        //如果是无向图 , 矩阵对称的位置同样需要赋值
+        if (!isDirect) &#123;
+            Matrix[destIndex][srcIndex] = weight;
+        &#125;
+    &#125;
+ 
+    /**
+     * 获取节点数组的下标
+     *
+     * @param v
+     * @return
+     */
+    public int getIndexOfV(char v) &#123;
+        //同样两种写法二选一
+        return map.get(v);
+//        for (int i = 0; i &lt; arrayV.length; i++) &#123;
+//            if (arrayV[i]==v)&#123;
+//                return i;
+//            &#125;
+//        &#125;
+//        return -1;
+    &#125;
+ 
+    /**
+     * 获取顶点的度
+     *
+     * @param v 有向图 = 入度+出度
+     * @return
+     */
+    public int getDevOfV(char v) &#123;
+        int count = 0;
+        int srcIndex = getIndexOfV(v);
+        for (int i = 0; i &lt; Matrix.length; i++) &#123;
+            if (Matrix[srcIndex][i] != Integer.MIN_VALUE) &#123;
+                count++;
+            &#125;
+        &#125;
+        //计算有向图的出度
+        if (isDirect) &#123;
+            for (int i = 0; i &lt; Matrix[0].length; i++) &#123;
+                if (Matrix[i][srcIndex] != Integer.MIN_VALUE) &#123;
+                    count++;
+                &#125;
+            &#125;
+        &#125;
+        return count;
+    &#125;
+ 
+    //打印领接表
+    public void printGraph() &#123;
+        for (int i = 0; i &lt; Matrix.length; i++) &#123;
+            for (int j = 0; j &lt; Matrix[0].length; j++) &#123;
+                if (Matrix[i][j] != Integer.MIN_VALUE) &#123;
+                    System.out.print(Matrix[i][j] + &quot; &quot;);
+                &#125; else &#123;
+                    System.out.print(&quot;∞ &quot;);
+                &#125;
+            &#125;
+            System.out.println();
+        &#125;
+    &#125;
+ 
+    public static void main(String[] args) &#123;
+        char[] chars = &#123;&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;,&#125;;
+        graph.GraphOfMatrix graph = new graph.GraphOfMatrix(chars.length, true);
+        graph.initArray(chars);
+ 
+        graph.addEdge(&#39;A&#39;, &#39;B&#39;, 1);
+        graph.addEdge(&#39;A&#39;, &#39;D&#39;, 1);
+        graph.addEdge(&#39;B&#39;, &#39;A&#39;, 1);
+        graph.addEdge(&#39;B&#39;, &#39;C&#39;, 1);
+        graph.addEdge(&#39;C&#39;, &#39;B&#39;, 1);
+        graph.addEdge(&#39;C&#39;, &#39;D&#39;, 1);
+        graph.addEdge(&#39;D&#39;, &#39;A&#39;, 1);
+        graph.addEdge(&#39;D&#39;, &#39;C&#39;, 1);
+ 
+        graph.printGraph();
+        System.out.print(&quot;输入节点的度为: &quot;);
+        System.out.println(graph.getDevOfV(&#39;A&#39;));
+        System.out.println(&quot;=============&quot;);
+    &#125;
+ 
+&#125;
+</code></pre>
+<p><img src="/img/loading.gif" data-original="/2024/01/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/image-20240405155452502.png" alt="image-20240405155452502"></p>
+<h3 id="2-2-邻接表"><a href="#2-2-邻接表" class="headerlink" title="2.2 邻接表"></a>2.2 邻接表</h3><p>使用数组表示节点的集合 , 使用链表表示边的关系 , 每个链表的节点中即存放边的关系也存放权重.</p>
+<p><strong>1. 无向图临接表存储</strong></p>
+<p><strong>A , B , C , D 分别代表 0 , 1 , 2, 3.</strong></p>
+<p><img src="/img/loading.gif" data-original="/2024/01/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/image-20240405155522354.png" alt="image-20240405155522354"></p>
+<pre><code>若 G 为无向图 , 则所需的存储空间为 O(V + 2E)
+若 G 为有向图 , 则所需的存储空间为 O(V + E)
+在有向图的领接表表示中 , 求一个给定顶点的出度/入度 , 只需计算领接表中相应节点的个数.
+</code></pre>
+<pre><code class="java">package Review;
+ 
+import java.util.ArrayList;
+ 
+public class GraphByNode &#123;
+    //构造存储边的链表
+    static class Node &#123;
+        public int src;//起始位置
+ 
+        public int dest;//目标位置
+ 
+        public int weight;//权值
+ 
+        public Node next;
+ 
+        public Node(int src, int dest, int weight) &#123;
+            this.src = src;
+            this.dest = dest;
+            this.weight = weight;
+        &#125;
+    &#125;
+ 
+    //存储节点的数组
+    public char[] arrayV;
+    //存在链表的集合
+    public ArrayList&lt;Node&gt; edgList;
+    //判断是否为有向图
+    public boolean isDirect;
+ 
+    //构造领接表
+    public GraphByNode(int size, boolean isDirect) &#123;
+        arrayV = new char[size];
+        edgList = new ArrayList&lt;&gt;(size);
+        this.isDirect = isDirect;
+    &#125;
+ 
+    /**
+     * 初始化顶点数组
+     *
+     * @param array
+     */
+    public void initArray(char[] array) &#123;
+        for (int i = 0; i &lt; arrayV.length; i++) &#123;
+            arrayV[i] = array[i];
+        &#125;
+    &#125;
+ 
+    /**
+     * 添加边
+     *
+     * @param src    起点
+     * @param dest   终点
+     * @param weight 权重
+     */
+    public void addEdge(char src, char dest, int weight) &#123;
+        int srcIndex = getIndexOfV(src);
+        int destIndex = getIndexOfV(dest);
+        addEdgeChild(srcIndex, destIndex, weight);
+    &#125;
+ 
+    public void addEdgeChild(int srcIndex, int destIndex, int weight) &#123;
+        //获取链表的头结点
+        Node cur = edgList.get(srcIndex);
+        //遍历整个链表查看之前是否已存在该边
+        while (cur != null) &#123;
+            if (cur.dest == destIndex) &#123;
+                //之前存过这条边直接返回
+                return;
+            &#125;
+            cur = cur.next;
+        &#125;
+        //之前没有存储过这条边 , 头插法插入链表
+        Node node = new Node(srcIndex, destIndex, weight);
+        node.next = edgList.get(srcIndex);
+        edgList.set(srcIndex, node);
+    &#125;
+ 
+    /**
+     * 获取 顶点下标
+     *
+     * @param v
+     * @return
+     */
+    public int getIndexOfV(char v) &#123;
+        for (int i = 0; i &lt; arrayV.length; i++) &#123;
+            if (arrayV[i] == v) &#123;
+                return i;
+            &#125;
+        &#125;
+        return -1;
+    &#125;
+ 
+    /**
+     * 获取顶点的度
+     *
+     * @param v
+     * @return
+     */
+    public int getDevOfV(char v) &#123;
+        int count = 0;
+        int srcIndex = getIndexOfV(v);
+        Node cur = edgList.get(srcIndex);
+        while (cur != null) &#123;
+            count++;
+            cur = cur.next;
+        &#125;
+        //以上仅仅计算了出度 , 还需计算入度
+        //遍历除了自身外 , 每一个顶点对应的链表中节点是否有指向srcIndex的.
+        if (isDirect) &#123;
+            //将srcIndex当做目的下标.
+            int destIndex = srcIndex;
+            for (int i = 0; i &lt; arrayV.length; i++) &#123;
+                //出去自身
+                if (destIndex == i) &#123;
+                    continue;
+                &#125;
+                Node pCur = edgList.get(i);
+                while (pCur != null) &#123;
+                    if (pCur.dest == destIndex) &#123;
+                        count++;
+                    &#125;
+                    pCur = pCur.next;
+                &#125;
+            &#125;
+        &#125;
+        return count;
+    &#125;
+ 
+    /**
+     * 打印领接表
+     */
+    public void printGraph() &#123;
+        for (int i = 0; i &lt; arrayV.length; i++) &#123;
+            System.out.println(arrayV[i] + &quot;-&gt;&quot;);
+            Node cur = edgList.get(i);
+            while (cur != null) &#123;
+                System.out.println(arrayV[cur.dest] + &quot;-&gt;&quot;);
+                cur = cur.next;
+            &#125;
+            System.out.println();
+        &#125;
+    &#125;
+ 
+    public static void main(String[] args) &#123;
+        graph.GraphByNode graph = new graph.GraphByNode(4, false);
+        char[] array = &#123;&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;,&#125;;
+        graph.initArray(array);
+ 
+        graph.addEdge(&#39;A&#39;, &#39;B&#39;, 1);
+        graph.addEdge(&#39;A&#39;, &#39;D&#39;, 1);
+        graph.addEdge(&#39;B&#39;, &#39;A&#39;, 1);
+        graph.addEdge(&#39;B&#39;, &#39;C&#39;, 1);
+        graph.addEdge(&#39;C&#39;, &#39;B&#39;, 1);
+        graph.addEdge(&#39;C&#39;, &#39;D&#39;, 1);
+        graph.addEdge(&#39;D&#39;, &#39;A&#39;, 1);
+        graph.addEdge(&#39;D&#39;, &#39;C&#39;, 1);
+ 
+        graph.printGraph();
+        System.out.println(graph.getDevOfV(&#39;A&#39;));
+        System.out.println(&quot;=============&quot;);
+    &#125;
+&#125;
+</code></pre>
+<p><img src="/img/loading.gif" data-original="/2024/01/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/image-20240405155555827.png" alt="image-20240405155555827"></p>
+<h2 id="3-图的遍历"><a href="#3-图的遍历" class="headerlink" title="3. 图的遍历"></a>3. 图的遍历</h2><h3 id="3-1-图的广度优先遍历"><a href="#3-1-图的广度优先遍历" class="headerlink" title="3.1 图的广度优先遍历"></a>3.1 图的广度优先遍历</h3><blockquote>
+<p>广度优先遍历类似于二叉树的层序遍历 , 由于二叉树的层序遍历借助队列 , 那么图的广度优先遍历也要借助队列. 广度优先遍历每次都访问起始节点相邻的所有节点 , 下图中的访问顺序就是B-&gt;A-&gt;C-&gt;D.</p>
+</blockquote>
+<p><img src="/img/loading.gif" data-original="/2024/01/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/image-20240405161452974.png" alt="image-20240405161452974"></p>
+<p><strong>Tips:</strong></p>
+<blockquote>
+<p>注意入队和出队都要将visited数组下标置为true , 否则会出现多次打印最后一个元素的情况. </p>
+</blockquote>
+<p><strong>示例代码:</strong> </p>
+<pre><code class="java"> /**
+     * 广度优先搜索
+     * @param v
+     */
+    public void bfs(char v) &#123;
+        //获取起始节点的下标
+        int srcIndex = getIndexOfV(v);
+        //调用队列
+        Queue&lt;Integer&gt; queue = new LinkedList&lt;&gt;();
+        //使用visited数组记录节点是否被访问
+        boolean[] visited = new boolean[arrayV.length];
+        queue.offer(srcIndex);
+        while (!queue.isEmpty()) &#123;
+            int top = queue.poll();
+            visited[top] = true;//每弹出一个元素visited数组相应下标就置为true
+            System.out.println(arrayV[top] + &quot;-&gt;&quot;);
+            for (int i = 0; i &lt; arrayV.length; i++) &#123;//搜索领接矩阵中起始节点行的每一个元素
+                if (Matrix[top][i] != Integer.MAX_VALUE &amp;&amp; visited[i] != true) &#123;
+                    queue.offer(i);
+                    visited[i] = true;//每存入一个元素visited数组相应下标就置为true
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+</code></pre>
+<h3 id="3-2-图的深度优先遍历"><a href="#3-2-图的深度优先遍历" class="headerlink" title="3.2 图的深度优先遍历"></a>3.2 图的深度优先遍历</h3><blockquote>
+<p>图的深度优先优先遍历类似于二叉树的前序遍历 , 需要递归实现.从起始位置一条路走到底 , 再返回寻找下一条路.返回时需要一个visited数组记录元素使用遍历过.</p>
+</blockquote>
+<p><strong>图示过程:</strong> </p>
+<p><img src="/img/loading.gif" data-original="/2024/01/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/image-20240405161549100.png" alt="image-20240405161549100"></p>
+<p>代码：</p>
+<pre><code class="java">/**
+     * 深度优先遍历
+     *
+     * @param v 起始元素
+     */
+    public void dfs(char v) &#123;
+        int srcIndex = getIndexOfV(v);
+        boolean[] visited = new boolean[arrayV.length];
+        dfsChild(srcIndex, visited);
+    &#125;
+ 
+    public void dfsChild(int srcIndex, boolean[] visited) &#123;
+        System.out.println(arrayV[srcIndex] + &quot;-&gt;&quot;);
+        visited[srcIndex] = true;
+        for (int i = 0; i &lt; Matrix[srcIndex].length; i++) &#123;
+            if (Matrix[srcIndex][i] != Integer.MAX_VALUE) &#123;
+                dfsChild(i, visited);
+            &#125;
+        &#125;
+    &#125;
+</code></pre>
+<h1 id="execl"><a href="#execl" class="headerlink" title="execl"></a>execl</h1><p><img src="/img/loading.gif" data-original="/2024/01/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/image-20240411192531452.png" alt="image-20240411192531452"></p>
+<p><img src="/img/loading.gif" data-original="/./%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/image-20240411192538077.png" alt="image-20240411192538077"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://linkailang.github.io">涂良湘</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://linkailang.github.io/2024/01/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/">https://linkailang.github.io/2024/01/20/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%AF%92%E5%81%87%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://linkailang.github.io" target="_blank">涂良湘</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/">-- 蓝桥杯</a></div><div class="post_share"><div class="social-share" data-image="/img/QQ%E5%9B%BE%E7%89%8720230422000755.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/01/25/%E6%90%9C%E7%B4%A2%E6%A8%A1%E6%9D%BF/" title="搜索模板"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">搜索模板</div></div></a></div><div class="next-post pull-right"><a href="/2024/01/13/1%E6%9C%88%E6%80%BB%E7%BB%93/" title="1月总结"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">1月总结</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/01/25/%E6%90%9C%E7%B4%A2%E6%A8%A1%E6%9D%BF/" title="搜索模板"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-25</div><div class="title">搜索模板</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/loading.gif" data-original="/img/QQ%E5%9B%BE%E7%89%8720230422000755.jpg" onerror="this.onerror=null;this.src='/img/avatar.png'" alt="avatar"/></div><div class="author-info__name">涂良湘</div><div class="author-info__description">涂良湘的个人博客</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:2698508226@qq.com" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">涂良湘的博客</div><timing></timing></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#API"><span class="toc-number">1.</span> <span class="toc-text">API</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Arrays"><span class="toc-number">1.1.</span> <span class="toc-text">Arrays</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">排序：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">2.1.</span> <span class="toc-text"></span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E6%A8%A1%E6%9D%BF"><span class="toc-number">3.</span> <span class="toc-text">归并排序模板</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="toc-number">4.</span> <span class="toc-text">冒泡排序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">5.</span> <span class="toc-text">二维数组的初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E5%BD%A2"><span class="toc-number">5.1.</span> <span class="toc-text">整形</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E5%9E%8B"><span class="toc-number">5.2.</span> <span class="toc-text">字符型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%9C"><span class="toc-number">5.2.1.</span> <span class="toc-text">结果</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6"><span class="toc-number">6.</span> <span class="toc-text">数学</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E8%BF%90%E7%AE%97"><span class="toc-number">6.1.</span> <span class="toc-text">模运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java%E9%87%8C%E6%9C%89%E5%BF%AB%E9%80%9F%E5%B9%82%E5%BA%93%E5%87%BD%E6%95%B0"><span class="toc-number">6.1.1.</span> <span class="toc-text">java里有快速幂库函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E7%BA%AF%E5%8F%96%E6%A8%A1"><span class="toc-number">6.2.</span> <span class="toc-text">单纯取模</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E5%A4%A7%E6%95%B4%E6%95%B0%E7%9A%84%E5%B9%82%E8%BF%90%E7%AE%97%E5%90%8E%E5%AF%B9%E5%8F%A6%E4%B8%80%E4%B8%AA%E5%A4%A7%E6%95%B4%E6%95%B0%E5%8F%96%E6%A8%A1%E7%9A%84%E7%BB%93%E6%9E%9C"><span class="toc-number">6.3.</span> <span class="toc-text">计算大整数的幂运算后对另一个大整数取模的结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#N-q-p-%E6%B1%82qp"><span class="toc-number">6.4.</span> <span class="toc-text">N &#x3D; q*p 求qp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E6%95%B4%E6%95%B0%E7%9A%84%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4"><span class="toc-number">6.5.</span> <span class="toc-text">大整数的加减乘除</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95"><span class="toc-number">6.6.</span> <span class="toc-text">矩阵乘法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95%E6%A8%A1%E6%9D%BF"><span class="toc-number">6.7.</span> <span class="toc-text">矩阵乘法模板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E7%9F%A9%E9%98%B5%E5%B9%82%E6%AC%A1"><span class="toc-number">6.8.</span> <span class="toc-text">计算矩阵幂次</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0"><span class="toc-number">6.9.</span> <span class="toc-text">最大公约数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#java-%E5%A4%A7%E6%95%B0%E6%9C%89gcd%E5%87%BD%E6%95%B0"><span class="toc-number">6.9.1.</span> <span class="toc-text">java 大数有gcd函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0"><span class="toc-number">6.10.</span> <span class="toc-text">最小公倍数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A0%E6%95%B0"><span class="toc-number">6.11.</span> <span class="toc-text">素数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%A4%A7%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0"><span class="toc-number">6.11.1.</span> <span class="toc-text">最大最小公倍数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B4%AA%E5%BF%83"><span class="toc-number">7.</span> <span class="toc-text">贪心</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE%E6%A8%A1%E6%9D%BF"><span class="toc-number">8.</span> <span class="toc-text">折半查找模板</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E8%B4%A8%E6%95%B0"><span class="toc-number">9.</span> <span class="toc-text">判断质数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#dfs"><span class="toc-number">10.</span> <span class="toc-text">dfs</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3"><span class="toc-number">10.1.</span> <span class="toc-text">算法思想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%92%E5%88%97"><span class="toc-number">10.2.</span> <span class="toc-text">排列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%B7%E5%AE%AB"><span class="toc-number">10.3.</span> <span class="toc-text">迷宫</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">11.</span> <span class="toc-text">哈希表的使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88%E6%89%BE%E7%9B%B8%E5%90%8C%E5%85%83%E7%B4%A0"><span class="toc-number">12.</span> <span class="toc-text">双指针找相同元素</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#BFS"><span class="toc-number">13.</span> <span class="toc-text">BFS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%9A%84%E7%AC%AC-n-%E9%A1%B9"><span class="toc-number">14.</span> <span class="toc-text">计算斐波那契数列的第 n 项</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E5%85%A5%E8%AE%B0%E5%BF%86%E5%8C%96%E6%9B%B4%E9%AB%98%E6%95%88-DP"><span class="toc-number">14.1.</span> <span class="toc-text">加入记忆化更高效 DP</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%92%E5%88%97%E4%B8%8E%E7%BB%84%E5%90%88"><span class="toc-number">15.</span> <span class="toc-text">排列与组合</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E5%85%B8%E5%BA%8F%E6%A8%A1%E6%9D%BF"><span class="toc-number">15.1.</span> <span class="toc-text">字典序模板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E5%AE%9E%E7%8E%B0%E5%85%A8%E6%8E%92%E5%88%97"><span class="toc-number">15.2.</span> <span class="toc-text">递归实现全排列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E5%86%99%E6%8E%92%E5%88%97"><span class="toc-number">15.3.</span> <span class="toc-text">手写排列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E5%86%99%E7%BB%84%E5%90%88"><span class="toc-number">15.4.</span> <span class="toc-text">手写组合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DFS%E5%AE%9E%E7%8E%B0%E5%85%A8%E6%8E%92%E5%88%97"><span class="toc-number">15.5.</span> <span class="toc-text">DFS实现全排列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%BC%E6%8E%A5%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%A7%E5%B0%8F%E5%86%8D%E8%BF%9B%E8%A1%8C%E8%BE%93%E5%87%BA"><span class="toc-number">15.6.</span> <span class="toc-text">拼接字符串大小再进行输出</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E6%B3%95"><span class="toc-number">16.</span> <span class="toc-text">二分法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E6%95%B0%E4%BA%8C%E5%88%86"><span class="toc-number">16.1.</span> <span class="toc-text">整数二分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0%E4%BA%8C%E5%88%86"><span class="toc-number">16.2.</span> <span class="toc-text">浮点数二分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B7%A7%E5%85%8B%E5%8A%9B"><span class="toc-number">16.3.</span> <span class="toc-text">分巧克力</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E6%95%B0%E4%BA%8C%E5%88%86"><span class="toc-number">16.4.</span> <span class="toc-text">实数二分</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E7%BC%80%E5%92%8C"><span class="toc-number">17.</span> <span class="toc-text">前缀和</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B9%B6%E6%9F%A5%E9%9B%86"><span class="toc-number">18.</span> <span class="toc-text">并查集</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E5%B9%B6%E6%9F%A5%E9%9B%86"><span class="toc-number">18.1.</span> <span class="toc-text">1、什么是并查集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%B9%B6%E6%9F%A5%E9%9B%86%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88"><span class="toc-number">18.2.</span> <span class="toc-text">2、并查集能做什么</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%B9%B6%E6%9F%A5%E9%9B%86%E5%AE%9E%E7%8E%B0%E7%BB%93%E6%9E%84"><span class="toc-number">18.2.1.</span> <span class="toc-text">2、并查集实现结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86"><span class="toc-number">18.3.</span> <span class="toc-text">3、算法原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1%E3%80%81%E5%90%88%E5%B9%B6%EF%BC%88Union%EF%BC%89"><span class="toc-number">18.3.1.</span> <span class="toc-text">3.1、合并（Union）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#-1"><span class="toc-number">18.3.2.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2%E3%80%81%E6%9F%A5%E8%AF%A2%EF%BC%88Find"><span class="toc-number">18.3.3.</span> <span class="toc-text">3.2、查询（Find)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">19.</span> <span class="toc-text">字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0"><span class="toc-number">19.1.</span> <span class="toc-text">字符串函数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE%E8%AE%BA"><span class="toc-number">20.</span> <span class="toc-text">图论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%9B%BE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">20.1.</span> <span class="toc-text">1.图的基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%9B%BE%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-number">20.2.</span> <span class="toc-text">2.图的存储结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5"><span class="toc-number">20.2.1.</span> <span class="toc-text">2.1 邻接矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E9%82%BB%E6%8E%A5%E8%A1%A8"><span class="toc-number">20.2.2.</span> <span class="toc-text">2.2 邻接表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-number">20.3.</span> <span class="toc-text">3. 图的遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%9B%BE%E7%9A%84%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86"><span class="toc-number">20.3.1.</span> <span class="toc-text">3.1 图的广度优先遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%9B%BE%E7%9A%84%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86"><span class="toc-number">20.3.2.</span> <span class="toc-text">3.2 图的深度优先遍历</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#execl"><span class="toc-number">21.</span> <span class="toc-text">execl</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/27/%E7%A4%BA%E6%B3%A2%E5%99%A8%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/" title="示波器使用方法">示波器使用方法</a><time datetime="2025-03-27T13:45:42.000Z" title="发表于 2025-03-27 21:45:42">2025-03-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/27/%E6%89%8B%E7%AE%97%E9%A2%98/" title="无题">无题</a><time datetime="2025-03-27T13:44:14.935Z" title="发表于 2025-03-27 21:44:14">2025-03-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/22/%E6%96%B0%E7%94%B5%E8%84%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" title="新电脑环境配置">新电脑环境配置</a><time datetime="2025-03-22T02:21:06.000Z" title="发表于 2025-03-22 10:21:06">2025-03-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/07/ROS2%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%BC%80%E5%8F%91/" title="ROS2机器人开发">ROS2机器人开发</a><time datetime="2025-02-07T10:53:36.000Z" title="发表于 2025-02-07 18:53:36">2025-02-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/18/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/" title="算法刷题">算法刷题</a><time datetime="2025-01-18T12:08:44.000Z" title="发表于 2025-01-18 20:08:44">2025-01-18</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 涂良湘</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div><div class="container" id="jsi-flying-fish-container"><script src="js/fish.js"></script></div><style>   @media only screen and (max-width: 767px){
+   #sidebar_search_box input[type=text]{width:calc(100% - 24px)}
+}</style></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/gh/xiabo2/CDN@latest/fish.js"></script><script src="https://cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script><script src="/js/sakura.js"></script><script src="/js/timing.js"></script><script src="/js/yunxing.js"></script><script defer src="https://rmt.dogedoge.com/fetch/~/source/jsdelivr/npm/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="https://cdn.jsdelivr.net/gh/sirxemic/jquery.ripples/dist/jquery.ripples.js"></script><script defer data-pjax src="/js/ripples.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div><div class="pjax-reload"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__fadeInLeft');
+    arr[i].setAttribute('data-wow-duration', '600ms');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__fadeInRightBig');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer="defer" src="https://cdn.jsdelivr.net/gh/graingert/wow@1.3.0/dist/wow.min.js"></script><script defer="defer" src="/js/wow_init.js"></script></div><!-- hexo injector body_end start --><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__fadeInLeft');
+    arr[i].setAttribute('data-wow-duration', '600ms');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__fadeInRightBig');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script>
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body></html>

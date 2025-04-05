@@ -1,0 +1,4722 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>java常用API | 涂良湘</title><meta name="author" content="涂良湘,2698508226@qq.com"><meta name="copyright" content="涂良湘"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1 常用API API（:Application Programming Interface ）：应用程序编程接口  1.1 Math类(java.lang)Math类包含执行基本数字运算的方法，如基本指数，对数，平方根和三角函数。   Math中没有构造方法，类的成员都是静态的（static修饰），通过类名就可以直接调用  静态常量  static final double PI &#x3D; 3.141">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java常用API">
+<meta property="og:url" content="https://linkailang.github.io/2024/03/11/java%E5%B8%B8%E7%94%A8API/index.html">
+<meta property="og:site_name" content="涂良湘">
+<meta property="og:description" content="1 常用API API（:Application Programming Interface ）：应用程序编程接口  1.1 Math类(java.lang)Math类包含执行基本数字运算的方法，如基本指数，对数，平方根和三角函数。   Math中没有构造方法，类的成员都是静态的（static修饰），通过类名就可以直接调用  静态常量  static final double PI &#x3D; 3.141">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://linkailang.github.io/img/QQ%E5%9B%BE%E7%89%8720230422000755.jpg">
+<meta property="article:published_time" content="2024-03-11T10:38:47.000Z">
+<meta property="article:modified_time" content="2024-05-15T08:45:26.682Z">
+<meta property="article:author" content="涂良湘">
+<meta property="article:tag" content="-- 蓝桥">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://linkailang.github.io/img/QQ%E5%9B%BE%E7%89%8720230422000755.jpg"><link rel="shortcut icon" href="/img/avatar.png"><link rel="canonical" href="https://linkailang.github.io/2024/03/11/java%E5%B8%B8%E7%94%A8API/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.12.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'java常用API',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-05-15 16:45:26'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/mouse.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='screen'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (false) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+document.addEventListener('pjax:send', () => {
+  Pace.restart()
+})
+</script><link rel="stylesheet" href="/css/progress_bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/loading.gif" data-original="/img/QQ%E5%9B%BE%E7%89%8720230422000755.jpg" onerror="onerror=null;src='/img/avatar.png'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/Message/"><i class="fa-fw fas fa-comment"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/Snipaste_2024-01-12_01-49-04.png')"><nav id="nav"><span id="blog-info"><a href="/" title="涂良湘"><span class="site-name">涂良湘</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/Message/"><i class="fa-fw fas fa-comment"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">java常用API</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-03-11T10:38:47.000Z" title="发表于 2024-03-11 18:38:47">2024-03-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-05-15T08:45:26.682Z" title="更新于 2024-05-15 16:45:26">2024-05-15</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">25.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>117分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="java常用API"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="1-常用API"><a href="#1-常用API" class="headerlink" title="1 常用API"></a>1 常用API</h1><ul>
+<li>API（:Application Programming Interface ）：应用程序编程接口</li>
+</ul>
+<h2 id="1-1-Math类-java-lang"><a href="#1-1-Math类-java-lang" class="headerlink" title="1.1 Math类(java.lang)"></a>1.1 Math类(java.lang)</h2><pre><code>Math类包含执行基本数字运算的方法，如基本指数，对数，平方根和三角函数。
+</code></pre>
+<ul>
+<li><p>Math中<strong>没有构造方法</strong>，<strong>类的成员都是静态的</strong>（static修饰），<strong>通过类名就可以直接调用</strong></p>
+</li>
+<li><p>静态常量</p>
+<ul>
+<li><code>static final double PI = 3.141……</code>(精确到19位)</li>
+<li><code>static double exp(double a)</code> :返回Euler的数字 e ，其值 double值。<ul>
+<li>用于计算 Euler’s 数（自然对数的底 e）的 a 次幂。参数 <code>a</code> 是幂的指数。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>常用方法</strong></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">public static int abs(int a)</td>
+<td>获取参数a的绝对值</td>
+</tr>
+<tr>
+<td align="left">public static double ceil(double a)</td>
+<td>向上取整</td>
+</tr>
+<tr>
+<td align="left">public static double floor(double a)</td>
+<td>向下取整</td>
+</tr>
+<tr>
+<td align="left">public static long round(double a)</td>
+<td>四舍五入取整</td>
+</tr>
+<tr>
+<td align="left">public static int max(int a,int b)</td>
+<td>返回两个数中较大值</td>
+</tr>
+<tr>
+<td align="left">public static int min(int a,int b)</td>
+<td>返回两个数中较小值</td>
+</tr>
+<tr>
+<td align="left">public static double pow(double a,double b)</td>
+<td>获取a的b次幂</td>
+</tr>
+<tr>
+<td align="left">public static double random()</td>
+<td>返回值为double类型随机数 [0.0~1.0）</td>
+</tr>
+<tr>
+<td align="left">static double cos(double a)</td>
+<td>返回角度的三角余弦值。</td>
+</tr>
+<tr>
+<td align="left">static double acos(double a)</td>
+<td>返回值的反余弦值; 返回的角度在0.0到pi的范围内。</td>
+</tr>
+<tr>
+<td align="left">static double expm1(double x)</td>
+<td>返回 e^x -1</td>
+</tr>
+<tr>
+<td align="left">static double log(double a)</td>
+<td>返回 double值的自然对数（基数 e ）</td>
+</tr>
+<tr>
+<td align="left">static double log10(double a)</td>
+<td>返回 double值的基数10对数。</td>
+</tr>
+<tr>
+<td align="left">static double sqrt(double a)</td>
+<td>返回 double值的正确舍入正平方根。</td>
+</tr>
+<tr>
+<td align="left">static double toDegrees(double angrad)</td>
+<td>将以弧度测量的角度转换为以度为单位测量的近似等效角度。</td>
+</tr>
+<tr>
+<td align="left">static double toRadians(double angdeg)</td>
+<td>将以度为单位测量的角度转换为以弧度为单位测量的近似等效角度。</td>
+</tr>
+</tbody></table>
+<pre><code class="java">public class MathDemo &#123;
+    public static void main(String[] args) &#123;
+        //1、public static int abs(int a)	获取参数a的绝对值
+        System.out.println(Math.abs(88)); //88
+        System.out.println(Math.abs(-88)); //88
+
+        //2、public static double ceil(double a)	向上取整
+        System.out.println(Math.ceil(12.34)); //13.0
+        System.out.println(Math.ceil(12.56)); //13.0
+
+        //3、public static double floor(double a)	向下取整
+        System.out.println(Math.floor(12.34)); //12.0
+        System.out.println(Math.floor(12.56)); //12.0
+
+        //4、public static long round(double a)	四舍五入取整
+        System.out.println(Math.round(12.34)); //12
+        System.out.println(Math.round(12.56)); //13
+
+        //5、public static int max(int a,int b)	返回两个数中较大值
+        System.out.println(Math.max(66,88)); //88
+
+        //6、public static int min(int a,int b)	返回两个数中较小值
+        System.out.println(Math.min(66,88)); //66
+
+        //7、public static double pow(double a,double b)	获取a的b次幂
+        System.out.println(Math.pow(2.0,3.0)); //8.0
+
+        //8、public static double random()	返回值为double类型随机数 [0.0~1.0）
+        System.out.println(Math.random()); //0.36896250602163483
+        System.out.println(Math.random()); //0.3507783145075083
+    &#125;
+&#125;
+</code></pre>
+<h2 id="1-2-System类"><a href="#1-2-System类" class="headerlink" title="1.2 System类"></a>1.2 System类</h2><ul>
+<li><p>System被<strong>静态修饰</strong>，通过类名访问</p>
+</li>
+<li><p><strong>常用方法</strong></p>
+<ul>
+<li><p>static long currentTimeMillis()：返回以毫秒为单位的当前时间。&#x2F;&#x2F;获取毫秒值形式的当前时间。</p>
+<pre><code>常用于测试程序效率
+</code></pre>
+</li>
+<li><p>static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)：将数组中指定的数据拷贝到另一个数组中。</p>
+</li>
+<li><p>src Object:源数组（原来的数组）。</p>
+<pre><code>src Posint:源数组索引起始位置。dest Object:目标数组。dest Posint:目标数组索引起始位置。length int:复制元素个数。
+</code></pre>
+</li>
+<li><p>static void setErr(PrintStream err)：重新分配“标准”错误输出流。</p>
+</li>
+<li><p>static void setIn(InputStream in)：重新分配“标准”输入流。</p>
+</li>
+<li><p>static void setOut(PrintStream out)：重新分配“标准”输出流。</p>
+</li>
+<li><p><em>public static void exit(int status)	终止JVM虚拟机，非 0 是异常终止        System.exit(0);</em></p>
+</li>
+</ul>
+<pre><code class="java">import java.text.SimpleDateFormat;
+
+public class SystemDemo &#123;
+    public static void main(String[] args) &#123;
+        /*
+        System.out.println(&quot;开始&quot;); //开始
+        //1、public static void exit(int status)	终止JVM虚拟机，非 0 是异常终止
+        System.exit(0);
+        System.out.println(&quot;结束&quot;); //没有输出结束
+        */
+
+        //2、public static long currentTimeMillis()	返回当前时间（以毫秒为单位）
+        System.out.println(System.currentTimeMillis()); //1625491582918
+        long time = System.currentTimeMillis();
+        SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy年MM月dd日 HH:mm:ss EEE a&quot;);
+        System.out.println(sdf.format(time)); //2023年12月05日 21:26:22 星期一 下午
+    &#125;
+&#125;
+</code></pre>
+</li>
+</ul>
+<h2 id="1-3-Object类-java-lang"><a href="#1-3-Object类-java-lang" class="headerlink" title="1.3 Object类(java.lang)"></a>1.3 Object类(java.lang)</h2><ul>
+<li><p>Object 类是 Java 中的祖宗类，所有类都直接或者间接继承自该类</p>
+<ul>
+<li>Class Object是类Object结构的根。 每个班都有Object作为超类。 所有对象（包括数组）都实现了这个类的方法。</li>
+</ul>
+</li>
+<li><p><strong>只有无参构造方法</strong>：<code>public Object()</code></p>
+</li>
+<li><p><strong>常用方法</strong>：</p>
+<ul>
+<li><p>String toString()：返回该对象的字符串表示。</p>
+</li>
+<li><p>boolean equals(Object obj)：指示其他某个对象是否与此对象“相等”。</p>
+</li>
+<li><p>int hasCode()：返回该对象的哈希码值。</p>
+<pre><code>HashSet集合存放自定义类型元素时，需要重写对象中的hashCode和equals方法
+</code></pre>
+</li>
+<li><p>void wait()：在其他线程调用此对象的 notify() 方法或 notifyAll() 方法前，导致当前线程等待。</p>
+</li>
+<li><p>void wait(long timeout)：在其他线程调用此对象的 notify() 方法或 notifyAll() 方法，或者超过指定的时间量前，导致当前线程等待。</p>
+</li>
+<li><p>void wait(long timeout, int nanos)：在其他线程调用此对象的 notify() 方法或 notifyAll() 方法，或者其他某个线程中断当前线程，或者已超过某个实际时间量前，导致当前线程等待。</p>
+</li>
+<li><p>void notify()：唤醒在此对象监视器上等待的单个线程。</p>
+</li>
+<li><p>void notifyAll()：唤醒在此对象监视器上等待的所有线程。<br>Class&lt;?&gt; getClass()：返回此 Object 的运行时类。</p>
+</li>
+<li><p>protected Object clone()：创建并返回此对象的一个副本。</p>
+</li>
+<li><p>protected void finalize()：当垃圾回收器确定不存在对该对象的更多引用时，由对象的垃圾回收器调用此方法。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="1、public-String-toString"><a href="#1、public-String-toString" class="headerlink" title="1、public String toString()"></a>1、public String toString()</h3><p>默认是返回当前对象在堆内存中的地址信息<br>直接输出对象名称，默认会调用 toString()方法，所以直接输出对象可以省略 toString()<br>所以 toString() 存在的意义是为了被子类重写，以便能够返回对象的数据内容输出<br>重写快捷键：按下Fn+Alt+Insert &#x2F; 右键 -&gt; generate -&gt; toString -&gt; OK<br>看方法的源码：选中方法，按Ctrl+B</p>
+<pre><code class="java">package ceshi;
+
+public class Student extends Object&#123;
+    private String name;
+    private int age;
+
+public Student() &#123; &#125;
+
+public Student(String name, int age) &#123;
+    this.name = name;
+    this.age = age;
+&#125;
+
+public String getName() &#123;
+    return name;
+&#125;
+
+public void setName(String name) &#123;
+    this.name = name;
+&#125;
+
+public int getAge() &#123;
+    return age;
+&#125;
+
+public void setAge(int age) &#123;
+    this.age = age;
+&#125;
+
+//自动生成重写toString()方法；按下Fn+Alt+Insert / 右键 -&gt; generate -&gt; toString -&gt; OK
+@Override
+public String toString() &#123;
+    return &quot;Student&#123;&quot; +
+            &quot;name=&#39;&quot; + name + &#39;\&#39;&#39; +
+            &quot;, age=&quot; + age +
+            &#39;&#125;&#39;;
+&#125;
+
+&#125;
+</code></pre>
+<pre><code class="java">package ceshi;
+
+public class ObjectDemo &#123;
+    public static void main(String[] args) &#123;
+        Student s = new Student();
+        s.setName(&quot;yy&quot;);
+        s.setAge(20);
+        System.out.println(s); //ceshi.Student@1b6d3586
+        System.out.println(s.toString()); //ceshi.Student@1b6d3586
+        //重写后输出
+        /*源码
+        Student&#123;name=&#39;yy&#39;, age=20&#125;
+        Student&#123;name=&#39;yy&#39;, age=20&#125;*/
+
+        //选中方法Ctrl+B查看方法源码
+        /*public void println(Object x) &#123; //1、x = s
+            String s = String.valueOf(x);
+            synchronized (this) &#123;
+                print(s);
+                newLine();
+            &#125;
+        &#125;*/
+    
+        /*public static String valueOf(Object obj) &#123; //2、obj = x
+            return (obj == null) ? &quot;null&quot; : obj.toString();
+        &#125;*/
+    
+        /*public String toString() &#123; //3、
+            return getClass().getName() + &quot;@&quot; + Integer.toHexString(hashCode()); //所以重写前才会输出ceshi.Student@1b6d3586
+        &#125;*/
+    &#125;
+
+&#125;
+</code></pre>
+<h3 id="2、public-boolean-equals-Object-o"><a href="#2、public-boolean-equals-Object-o" class="headerlink" title="2、public boolean equals(Object o)"></a>2、public boolean equals(Object o)</h3><p>默认是比较两个对象的地址是否相同，相同返回true<br>直接比较两个对象的地址是否完全相同，可以用”&#x3D;&#x3D;”替代equals<br>所以 equals 存在的意义是为了被子类重写<br>重写快捷键：按下Fn+Alt+Insert -&gt; generate -&gt; equals() and hashCode() -&gt; Template：选择 IntelliJ default -&gt; 三个next &gt; finsh ；然后删除hashCode()方法</p>
+<pre><code class="java">package ceshi;
+
+public class Student extends Object&#123;
+    private String name;
+    private int age;
+
+    public Student() &#123; &#125;
+    
+    public Student(String name, int age) &#123;
+        this.name = name;
+        this.age = age;
+    &#125;
+    
+    public String getName() &#123;
+        return name;
+    &#125;
+    
+    public void setName(String name) &#123;
+        this.name = name;
+    &#125;
+    
+    public int getAge() &#123;
+        return age;
+    &#125;
+    
+    public void setAge(int age) &#123;
+        this.age = age;
+    &#125;
+    
+    //自动生成重写equals()方法
+    @Override
+    public boolean equals(Object o) &#123;
+        if (this == o) return true; //1、比较地址是否相同，如果相同就是同一个对象，直接返回true
+        //2、先判断参数是否为null；判断连个对象是否来自同一个类；一个满足就返回false
+        if (o == null || getClass() != o.getClass()) return false;
+        //向下转型
+        Student student = (Student) o; //student = s2;
+        //3、比较年龄是否相同，年龄相同往下走
+        if (age != student.age) return false;
+        //比较名字是否相同，s1的name不是null才能取调方法
+        return name != null ? name.equals(student.name) : student.name == null;
+    &#125;
+
+&#125;
+</code></pre>
+<pre><code class="java">package ceshi;
+
+public class ObjectDemo &#123;
+    public static void main(String[] args) &#123;
+        Student s1 = new Student();
+        s1.setName(&quot;yy&quot;);
+        s1.setAge(20);
+
+        Student s2 = new Student();
+        s2.setName(&quot;yy&quot;);
+        s2.setAge(20);
+    
+        //比较两个对象内容是否相等
+        System.out.println(s1.equals(s2)); //重写前：false ； 重写后：true
+        /*public boolean equals(Object obj) &#123;
+            //this---s1
+            //obj---s2
+            return (this == obj); //重写前==比较的是地址值，不是内容需要重写equals()方法
+        &#125;*/
+    
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="1-4-Objects类-java-util"><a href="#1-4-Objects类-java-util" class="headerlink" title="1.4 Objects类 (java.util)"></a>1.4 Objects类 (java.util)</h2><ul>
+<li><p>Objects类是 jdk 1.7 开始之后才有的</p>
+</li>
+<li><p>常用方法</p>
+<ul>
+<li><p>public static boolean equals(Object a, Object b)	比较两个对象内容是否相等</p>
+</li>
+<li><p>public static boolean isNull(Object obj)	判断变量是否为 null , 为 null 返回 true</p>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="java">public class ObjectsDemo &#123;
+    public static void main(String[] args) &#123;
+        Student s1 = new Student();
+        Student s2 = new Student();
+        System.out.println(s1.equals(s2));
+        System.out.println(Objects.equals(s1,s2));
+        // true
+        // true
+
+        //询问s1是否为null，为null返回true
+        System.out.println(Objects.isNull(s1));
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="1-5-Arrays类-java-util"><a href="#1-5-Arrays类-java-util" class="headerlink" title="1.5 Arrays类 (java.util)"></a>1.5 Arrays类 (java.util)</h2><ul>
+<li><p>Arrays类包含用于操作数组的各种方法</p>
+</li>
+<li><p>工具类的设计思想</p>
+<ul>
+<li>构造方法用 private 修饰（防止外界创建对象）</li>
+<li>成员用 public static 修饰（使用类名来访问</li>
+</ul>
+</li>
+<li><p><strong>常用方法</strong></p>
+<p>- </p>
+<ul>
+<li><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public static String toString(int[] a)</td>
+<td>返回指定数组的内容的字符串表示形式</td>
+</tr>
+<tr>
+<td><code>sort(T[] a)</code></td>
+<td>对数组进行自然排序</td>
+</tr>
+<tr>
+<td><code>sort(T[] a, Comparator&lt;? super T&gt; c)</code></td>
+<td>使用指定的比较器对数组进行排序</td>
+</tr>
+<tr>
+<td><code>binarySearch(T[] a, T key)</code></td>
+<td>在已排序的数组中使用二分搜索算法查找指定元素的索引</td>
+</tr>
+<tr>
+<td><code>binarySearch(T[] a, int fromIndex, int toIndex, T key)</code></td>
+<td>在指定范围内的已排序数组中使用二分搜索算法查找指定元素的索引</td>
+</tr>
+<tr>
+<td><code>fill(T[] a, T val)</code></td>
+<td>使用指定的值填充整个数组</td>
+</tr>
+<tr>
+<td><code>fill(T[] a, int fromIndex, int toIndex, T val)</code></td>
+<td>使用指定的值填充数组的指定范围</td>
+</tr>
+<tr>
+<td><code>equals(T[] a, T[] a2)</code></td>
+<td>比较两个数组是否相等</td>
+</tr>
+<tr>
+<td><code>deepEquals(Object[] a1, Object[] a2)</code></td>
+<td>深度比较两个数组是否相等</td>
+</tr>
+<tr>
+<td><code>toString(T[] a)</code></td>
+<td>返回包含数组元素的字符串表示形式</td>
+</tr>
+<tr>
+<td><code>asList(T... a)</code></td>
+<td>将指定数组转换为 List</td>
+</tr>
+<tr>
+<td><code>copyOf(T[] original, int newLength)</code></td>
+<td>复制指定数组的副本，截取或填充空值以使副本具有指定的长度</td>
+</tr>
+<tr>
+<td><code>copyOfRange(T[] original, int from, int to)</code></td>
+<td>复制指定数组的指定范围</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+<li><p>冒泡排序</p>
+</li>
+</ul>
+<pre><code class="java">package ceshi;
+
+public class ArrayDemo &#123;
+    public static void main(String[] args) &#123;
+        int[] arr = &#123;21,56,15,89,62&#125;;
+        System.out.println(&quot;排序前:&quot;+arrayToString(arr)); //排序前:[21, 56, 15, 89, 62]
+
+        //冒泡排序
+        for(int i=0;i&lt;arr.length-1;i++) &#123;
+            for(int x=0;x&lt; arr.length-1-i;x++) &#123;
+                if(arr[x] &gt; arr[x+1]) &#123;
+                    //当前一个大于后一个时，双方交换位置
+                    int temp = arr[x];
+                    arr[x] = arr[x+1];
+                    arr[x+1] = temp;
+                &#125;
+            &#125;
+        &#125;
+        System.out.println(&quot;排序后:&quot;+arrayToString(arr)); //排序后:[15, 21, 56, 62, 89]
+
+    &#125;
+    public static String arrayToString(int[] arr) &#123;
+        StringBuilder sb = new StringBuilder();
+        sb.append(&quot;[&quot;);
+        for(int i=0;i&lt;arr.length;i++) &#123;
+            if(i==arr.length-1) &#123;
+                sb.append(arr[i]);
+            &#125;else &#123;
+                sb.append(arr[i]).append(&quot;, &quot;);
+            &#125;
+        &#125;
+        sb.append(&quot;]&quot;);
+        String s = sb.toString();
+        return s;
+    &#125;
+&#125;
+//排序前:[21, 56, 15, 89, 62]
+//排序后:[15, 21, 56, 62, 89]
+</code></pre>
+<p><img src="/img/loading.gif" data-original="/2024/03/11/java%E5%B8%B8%E7%94%A8API/image-20240311004011670.png" alt="image-20240311004011670"></p>
+<ul>
+<li>Arrays方法范例</li>
+</ul>
+<pre><code class="java">package ceshi;
+
+import java.util.Arrays;
+
+public class ArrayDemo &#123;
+    public static void main(String[] args) &#123;
+        int[] arr = &#123;21,56,15,89,62&#125;;
+        //1、public static String toString(int[] a) 	返回指定数组的内容的字符串表示形式
+        System.out.println(&quot;排序前：&quot;+ Arrays.toString(arr)); //排序前：[21, 56, 15, 89, 62]
+        //2、public static void sort(int[] a) 	按照数字排序指定的数组
+        Arrays.sort(arr);
+        System.out.println(&quot;排序后：&quot;+Arrays.toString(arr)); //排序后：[15, 21, 56, 62, 89]
+    &#125;
+&#125;
+</code></pre>
+<h2 id="1-6-基本类型包装类"><a href="#1-6-基本类型包装类" class="headerlink" title="1.6 基本类型包装类"></a>1.6 基本类型包装类</h2><ul>
+<li>将基本数据类型封装成对象的好处在于在对象中定义更多的功能方法操作该数据</li>
+<li>常用的操作之一：用于<strong>基本数据类型与字符串之间的转换</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>基本数据类型</th>
+<th>包装类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>byte</td>
+<td>Byte</td>
+</tr>
+<tr>
+<td>short</td>
+<td>Short</td>
+</tr>
+<tr>
+<td>int</td>
+<td>Integer(重点)</td>
+</tr>
+<tr>
+<td>long</td>
+<td>Long</td>
+</tr>
+<tr>
+<td>float</td>
+<td>Float</td>
+</tr>
+<tr>
+<td>double</td>
+<td>Double</td>
+</tr>
+<tr>
+<td>char</td>
+<td>Character(特殊)</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>Boolean</td>
+</tr>
+</tbody></table>
+<h3 id="包装类和基本数据类型的区别"><a href="#包装类和基本数据类型的区别" class="headerlink" title="包装类和基本数据类型的区别"></a>包装类和基本数据类型的区别</h3><p><strong>存储方式</strong>：</p>
+<ul>
+<li>基本数据类型存储的是实际的数据值，它们在栈上分配内存。</li>
+<li>包装类存储的是对象的引用，它们在堆上分配内存。</li>
+</ul>
+<p><strong>对象特性</strong>：</p>
+<ul>
+<li>基本数据类型不是对象，因此它们没有方法或属性。</li>
+<li>包装类是对象，它们具有方法和属性，可以进行对象操作。</li>
+</ul>
+<p><strong>装箱(基本类型的数据-&gt;包装类)</strong></p>
+<h3 id="1-6-1-Integer类概述和使用"><a href="#1-6-1-Integer类概述和使用" class="headerlink" title="1.6.1 Integer类概述和使用"></a>1.6.1 Integer类概述和使用</h3><ul>
+<li>Integer：包装一个对象中原始类型int的值</li>
+<li><strong>常用方法</strong></li>
+</ul>
+<p>构造方法：</p>
+<ul>
+<li><p>Integer(int value)：构造一个新分配的 Integer 对象，它表示指定的 int 值。（过时）</p>
+</li>
+<li><p>Integer(String s)：构造一个新分配的 Integer 对象，它表示 String 参数所指示的 int 值。（传递的字符串，必须是基本类型的字符串，否则会抛出异常 “100” 正确 “a” 抛异常）</p>
+</li>
+</ul>
+<p>静态方法:</p>
+<ul>
+<li><p>static Integer valueOf(int i)：返回一个表示指定的 int 值的 Integer 实例。</p>
+</li>
+<li><p>static Integer valueOf(String s)：返回保存指定的 String 的值的 Integer 对象。</p>
+</li>
+</ul>
+<p>进制转换静态方法：</p>
+<ul>
+<li>static String toBinaryString(int i)：返回数字i的二进制数字符串。</li>
+<li>static String toOctalString(int i)：返回数字i的八进制数字符串。</li>
+<li>static String toHexString(int i)：返回数字i的十六进制数字符串。</li>
+<li>static int parseInt(String s)： 将字符串参数s解析为带符号的十进制整数。</li>
+<li>static int parseInt(String s, int radix)： 将整数字符串s（radix用来指明s是几进制）转换成10进制的整数。</li>
+</ul>
+<h3 id="1-6-2-int-和-String-的相互转换"><a href="#1-6-2-int-和-String-的相互转换" class="headerlink" title="1.6.2 int 和 String 的相互转换"></a>1.6.2 int 和 String 的相互转换</h3><ul>
+<li>1、int 转换为 String 类型<ul>
+<li>public static String valueOf(int i)：返回 int 参数的字符串表示形式。该方法是 String 类中的方法</li>
+</ul>
+</li>
+<li>2、String 转换为 int 类型<ul>
+<li>public static int parselnt(String s)：将字符串解析为int类型。该方法是 Integer 类中的方法</li>
+</ul>
+</li>
+</ul>
+<pre><code class="java">package ceshi;
+
+public class IntegerDemo &#123;
+    public static void main(String[] args) &#123;
+        //int --- String
+        int number = 10;
+        //1、public static String valueOf (int i)
+        String s = String.valueOf(number);
+        System.out.println(s); //10
+
+        //String --- int
+        String s1 = &quot;100&quot;;
+        //2、public static int parseInt(String s)
+        int i = Integer.parseInt(s1);
+        System.out.println(i); //100
+    &#125;
+&#125;
+</code></pre>
+<h3 id="1-6-3-案例：字符串中数据排序"><a href="#1-6-3-案例：字符串中数据排序" class="headerlink" title="1.6.3 案例：字符串中数据排序"></a>1.6.3 案例：字符串中数据排序</h3><pre><code class="java">package ceshi; // 定义一个包名为&quot;ceshi&quot;
+
+import java.util.Arrays; // 导入 Arrays 类，用于排序数组
+
+public class IntegerTest &#123;
+    public static void main(String[] args) &#123;
+        String s = &quot;15 8 45 32 21&quot;; // 定义一个包含整数字符串
+        String[] strArray = s.split(&quot; &quot;); // 使用空格作为分隔符将字符串分割为字符串数组
+
+        int[] arr = new int[strArray.length]; // 创建一个整型数组，长度与字符串数组相同
+        for (int i = 0; i &lt; arr.length; i++) &#123;
+            arr[i] = Integer.parseInt(strArray[i]); // 将字符串数组中的每个元素转换为整数并赋值给整型数组
+        &#125;
+
+        Arrays.sort(arr); // 使用 Arrays 类的 sort 方法对整型数组进行排序
+
+        StringBuilder sb = new StringBuilder(); // 创建一个 StringBuilder 对象，用于拼接排序后的整数字符串
+        for (int i = 0; i &lt; arr.length; i++) &#123;
+            if (i == arr.length - 1) &#123;
+                sb.append(arr[i]); // 如果是数组最后一个元素，不添加逗号
+            &#125; else &#123;
+                sb.append(arr[i]).append(&quot;, &quot;); // 否则添加逗号和空格
+            &#125;
+        &#125;
+        String s1 = sb.toString(); // 将 StringBuilder 对象转换为字符串
+
+        System.out.println(s1); // 输出排序后的整数字符串
+    &#125;
+&#125;
+</code></pre>
+<h3 id="1-6-4-自动装箱和拆箱"><a href="#1-6-4-自动装箱和拆箱" class="headerlink" title="1.6.4 自动装箱和拆箱"></a>1.6.4 自动装箱和拆箱</h3><ul>
+<li><strong>自动装箱</strong>: 可以直接把基本数据类型的值或变量赋值给包装类</li>
+<li><strong>自动拆箱</strong>: 可以把包装类的变量直接赋值给基本数据类型</li>
+</ul>
+<pre><code class="java">public class PackageClass &#123;
+    public static void main(String[] args) &#123;
+        //基本数据类型的值或变量赋值给包装类
+        Integer i = Integer.valueOf(100); //手动调方法装箱
+        Integer ii = 100; //默认调用Integer.valueOf(100);
+        //拆箱
+        int i1 = ii; //自动拆箱，100
+        ii +=200; //
+        System.out.println(ii) //300
+        
+
+        //开发中如果是引用类型变量最好先做不为null判断
+        Integer iii = null;
+        if(iii != null) &#123;
+            iii += 300; //NullPointerException
+        &#125;
+              
+    &#125;
+
+&#125;
+</code></pre>
+<ul>
+<li><strong>注意</strong>：在使用包装类的时候，如果是操作最好先判断是否为null；推荐只要是对象，再使用前必须进行不为null判断</li>
+</ul>
+<h2 id="1-7-日期类"><a href="#1-7-日期类" class="headerlink" title="1.7 日期类"></a>1.7 日期类</h2><h3 id="1-7-1-Date类"><a href="#1-7-1-Date类" class="headerlink" title="1.7.1 Date类"></a>1.7.1 Date类</h3><ul>
+<li><strong>导包</strong>：<code>java.util.Date</code></li>
+<li><strong>构造方法</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public Date()</td>
+<td>创建当前系统的此刻日期时间对象</td>
+</tr>
+<tr>
+<td>public Date(long time)</td>
+<td>把时间毫秒值转换成日期对象</td>
+</tr>
+</tbody></table>
+<pre><code class="java">package ceshi;
+
+import java.util.Date;
+
+public class DateDemo &#123;
+    public static void main(String[] args) &#123;
+        //1、public Date()
+        Date d1 = new Date();
+        System.out.println(d1); //Tue Jul 06 22:36:15 CST 2021
+
+        //2、public Date(long time)
+        long date = 60;
+        Date d2 = new Date(date);
+        System.out.println(d2); //Thu Jan 01 08:00:00 CST 1970
+    &#125;
+
+&#125;
+</code></pre>
+<ul>
+<li><strong>常用方法</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public long getTime()</td>
+<td>获取日期对象从1970年1月1日00：00：00 到现在的毫秒值</td>
+</tr>
+<tr>
+<td>public void setTime(long time)</td>
+<td>设置时间，给的是毫秒值</td>
+</tr>
+</tbody></table>
+<pre><code class="java">package ceshi;
+
+import java.util.Date;
+
+public class DateDemo &#123;
+    public static void main(String[] args) &#123;
+        //1、public long getTime() 	获取日期对象从1970年1月1日00：00：00 到现在的毫秒值
+        Date d = new Date();
+        System.out.println(d.getTime()); //1625582796041
+
+        //2、public void setTime(long time) 	设置时间，给的是毫秒值
+        long time = 1000*60*60;
+        d.setTime(time);
+        System.out.println(d); //Thu Jan 01 09:00:00 CST 1970
+    &#125;
+&#125;
+</code></pre>
+<h3 id="1-7-2-SimpleDateFormat类-ˈsɪmpl"><a href="#1-7-2-SimpleDateFormat类-ˈsɪmpl" class="headerlink" title="1.7.2 SimpleDateFormat类 [ˈsɪmpl]"></a>1.7.2 SimpleDateFormat类 [ˈsɪmpl]</h3><ul>
+<li>可以对日期格式化和解析</li>
+<li>日期和时间格式由日期和时间模式字符串指定，在日期和时间模式字符串中,从 ‘A’ 到 ‘Z’ 以及从 ‘a’ 到’z’ 引号的字母被解释为表示日期或时间字符串的组件的模式字母</li>
+<li>常用的模式字母对应： y—年；M—月；d—日；H—时；m—分；s—秒；E—星期几；a—上午 &#x2F; 下午</li>
+<li>构造方法：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public SimpleDateFormat()</td>
+<td>使用默认模式和日期模式</td>
+</tr>
+<tr>
+<td>public SimpleDateFormat(String pattern)</td>
+<td>指定时间的格式创建简单日期格式化对象</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p><strong>格式化和解析日期方法</strong></p>
+<ul>
+<li><p>public String format(Date date)	将日期格式化为日期 &#x2F; 时间字符串</p>
+</li>
+<li><p>public String format(Object time)	将时间毫秒格式化为日期 &#x2F; 时间字符串</p>
+</li>
+<li><p>public Date parse(String source) [pɑːz]	从给定的字符串开始解析文本生成日期</p>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="java">package ceshi;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class SimpleDateFormatDemo &#123;
+    public static void main(String[] args) throws ParseException &#123;
+        //格式化 Date》String
+         Date d = new Date();
+//1、        SimpleDateFormat sdf = new SimpleDateFormat(); //无参构造
+        SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy年MM月dd日 HH:mm:ss E a&quot;); //2、带参构造
+        String s = sdf.format(d);
+        System.out.println(s); //1、21-7-11 上午10:13  2、2021年07月11日 10:16:00 星期日 上午
+
+        //解析 String &gt; date
+        String s1 = &quot;2020年1月1日 8:25:12&quot;;
+        SimpleDateFormat sdf1 = new SimpleDateFormat(&quot;yyyy年MM月dd日 HH:mm:ss&quot;);
+        Date d1 = sdf1.parse(s1); //parse报错了，选中按下Alt+enter，默认选第一个
+        System.out.println(d1); //Wed Jan 01 08:25:12 CST 2020
+    &#125;
+&#125;
+</code></pre>
+<h3 id="日期工具类"><a href="#日期工具类" class="headerlink" title="日期工具类"></a>日期工具类</h3><pre><code class="java">/**
+ * 日期时间工具类
+ *
+ */
+public class DateUtils &#123;
+
+    /**
+     * 显示年月日时分秒，例如 2015-08-11 09:51:53.
+     */
+    public static final String DATETIME_PATTERN = &quot;yyyy-MM-dd HH:mm:ss&quot;;
+
+    /**
+     * 显示年月日时分，例如 2015-08-11 09:51.
+     */
+    public static final String NO_SECOND_DATETIME_PATTERN = &quot;yyyy-MM-dd HH:mm&quot;;
+
+    /**
+     * 仅显示年月日，例如 2015-08-11.
+     */
+    public static final String DATE_PATTERN = &quot;yyyy-MM-dd&quot;;
+
+    /**
+     * 仅显示时分秒，例如 09:51:53.
+     */
+    public static final String TIME_PATTERN = &quot;HH:mm:ss&quot;;
+
+    /**
+     * 显示年月日时分秒(由/分割)，例如 2015/08/11 09:51:53.
+     */
+    public static final String DATETIME_PATTERN_WITH_SLASH = &quot;yyyy/MM/dd HH:mm:ss&quot;;
+
+    /**
+     * 显示年月日(由/分割)，例如 2015/08/11.
+     */
+    public static final String DATE_PATTERN_WITH_SLASH = &quot;yyyy/MM/dd&quot;;
+
+    /**
+     * 显示年月日时分秒(无符号)，例如 20150811095153.
+     */
+    public static final String UNSIGNED_DATETIME_PATTERN = &quot;yyyyMMddHHmmss&quot;;
+
+    /**
+     * 仅显示年月日(无符号)，例如 20150811.
+     */
+    public static final String UNSIGNED_DATE_PATTERN = &quot;yyyyMMdd&quot;;
+
+    /**
+     * 仅显示年(无符号)，例如 2015.
+     */
+    private static final String YEAR_PATTERN = &quot;yyyy&quot;;
+
+    /**
+     * 仅显示年月，例如 2015-08.
+     */
+    private static final String MONTH_PATTERN = &quot;yyyy-MM&quot;;
+
+    /**
+     * 仅显示年月(无符号)，例如 201508.
+     */
+    private static final String UNSIGNED_MONTH_PATTERN = &quot;yyyyMM&quot;;
+
+    /**
+     * 一天的开始时间，仅显示时分秒
+     */
+    private static final String START_TIME = &quot;00:00:00&quot;;
+
+    /**
+     * 一天的结束时间，仅显示时分秒
+     */
+    private static final String END_TIME = &quot;23:59:59&quot;;
+
+    /**
+     * 每天的毫秒数.
+     */
+    public static final long MILLISECONDS_PER_DAY = 86400000L;
+
+    /**
+     * 每小时毫秒数.
+     */
+    public static final long MILLISECONDS_PER_HOUR = 3600000L;
+
+    /**
+     * 每分钟毫秒数.
+     */
+    public static final long MILLISECONDS_PER_MINU = 60000L;
+
+    /**
+     * 每秒的毫秒数.
+     */
+    public static final long MILLISECONDS_PER_SECONDS = 1000L;
+
+    /**
+     * 每分钟秒数.
+     */
+    public static final long SECONDS_PER_MINUTE = 60L;
+
+    /**
+     * 每小时秒数.
+     */
+    public static final long SECONDS_PER_HOUR = 3600L;
+
+    /**
+     * 每天秒数.
+     */
+    public static final long SECONDS_PER_DAY = 86400L;
+
+    /**
+     * 每周秒数.
+     */
+    public static final long SECONDS_PER_WEEK = 604800L;
+
+    /**
+     * 每个月秒数，默认每月30天.
+     */
+    public static final long SECONDS_PER_MONTH = 2592000L;
+
+    /**
+     * 每年秒数，默认每年365天.
+     */
+    public static final long SECONDS_PER_YEAR = 31536000L;
+
+    /**
+     * 每周的天数.
+     */
+    public static final long DAYS_PER_WEEK = 7L;
+
+    /**
+     * 春天;
+     */
+    public static final Integer SPRING = 1;
+
+    /**
+     * 夏天;
+     */
+    public static final Integer SUMMER = 2;
+
+    /**
+     * 秋天;
+     */
+    public static final Integer AUTUMN = 3;
+
+    /**
+     * 冬天;
+     */
+    public static final Integer WINTER = 4;
+
+    /**
+     * 星期日;
+     */
+    public static final String SUNDAY = &quot;星期日&quot;;
+
+    /**
+     * 星期一;
+     */
+    public static final String MONDAY = &quot;星期一&quot;;
+
+    /**
+     * 星期二;
+     */
+    public static final String TUESDAY = &quot;星期二&quot;;
+
+    /**
+     * 星期三;
+     */
+    public static final String WEDNESDAY = &quot;星期三&quot;;
+
+    /**
+     * 星期四;
+     */
+    public static final String THURSDAY = &quot;星期四&quot;;
+
+    /**
+     * 星期五;
+     */
+    public static final String FRIDAY = &quot;星期五&quot;;
+
+    /**
+     * 星期六;
+     */
+    public static final String SATURDAY = &quot;星期六&quot;;
+
+    /**
+     * 获取当前日期和时间字符串.
+     *
+     * @return String 日期时间字符串，例如 2015-08-11 09:51:53
+     */
+    public static String getDateTimeStr() &#123;
+        return format(new Date(), DATETIME_PATTERN);
+    &#125;
+
+    /**
+     * 获取当前日期字符串.
+     *
+     * @return String 日期字符串，例如2015-08-11
+     */
+    public static String getDateStr() &#123;
+        return format(new Date(), DATE_PATTERN);
+    &#125;
+
+    /**
+     * 获取当前时间字符串.
+     *
+     * @return String 时间字符串，例如 09:51:53
+     */
+    public static String getTimeStr() &#123;
+        return format(new Date(), TIME_PATTERN);
+    &#125;
+
+    /**
+     * 获取当前年份字符串.
+     *
+     * @return String 当前年份字符串，例如 2015
+     */
+    public static String getYearStr() &#123;
+        return format(new Date(), YEAR_PATTERN);
+    &#125;
+
+    /**
+     * 获取当前月份字符串.
+     *
+     * @return String 当前月份字符串，例如 08
+     */
+    public static String getMonthStr() &#123;
+        return format(new Date(), &quot;MM&quot;);
+    &#125;
+
+    /**
+     * 获取当前天数字符串.
+     *
+     * @return String 当前天数字符串，例如 11
+     */
+    public static String getDayStr() &#123;
+        return format(new Date(), &quot;dd&quot;);
+    &#125;
+
+    /**
+     * 获取当前星期字符串.
+     *
+     * @return String 当前星期字符串，例如 星期二
+     */
+    public static String getDayOfWeekStr() &#123;
+        return format(new Date(), &quot;E&quot;);
+    &#125;
+
+    /**
+     * 获取指定日期是星期几
+     *
+     * @param date 日期
+     * @return String 星期几
+     */
+    public static String getDayOfWeekStr(Date date) &#123;
+        String[] weekOfDays = &#123;SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY&#125;;
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        int num = calendar.get(Calendar.DAY_OF_WEEK) - 1;
+        return weekOfDays[num];
+    &#125;
+
+    /**
+     * 获取当前小时字符串.
+     *
+     * @return String 当前小时字符串，例如09
+     */
+    public static String getHourStr() &#123;
+        return format(new Date(), &quot;HH&quot;);
+    &#125;
+
+    /**
+     * 获取当前分钟字符串.
+     *
+     * @return String 当前分钟字符串，例如51
+     */
+    public static String getMinuteStr() &#123;
+        return format(new Date(), &quot;mm&quot;);
+    &#125;
+
+    /**
+     * 获取当前秒钟字符串.
+     *
+     * @return String 当前秒钟字符串，例如53
+     */
+    public static String getSecondStr() &#123;
+        return format(new Date(), &quot;ss&quot;);
+    &#125;
+
+    /**
+     * 获取日期时间字符串
+     *
+     * @param date    需要转化的日期时间
+     * @param pattern 时间格式
+     * @return String 日期时间字符串，例如 2015-08-11 09:51:53
+     */
+    public static String format(Date date, String pattern) &#123;
+        return new SimpleDateFormat(pattern).format(date);
+    &#125;
+
+    /**
+     * 时间戳转换为日期时间字符串
+     *
+     * @param timestamp 时间戳
+     * @param pattern   日期格式 例如DATETIME_PATTERN
+     * @return String 日期时间字符串，例如 2015-08-11 09:51:53
+     */
+    public static String getDateTimeStr(long timestamp, String pattern) &#123;
+        return new SimpleDateFormat(pattern).format(timestamp);
+    &#125;
+
+    /**
+     * 日期字符串转换为日期(java.util.Date)
+     *
+     * @param dateStr 日期字符串
+     * @param pattern 日期格式 例如DATETIME_PATTERN
+     * @return Date 日期
+     */
+    public static Date parse(String dateStr, String pattern) &#123;
+        Date date = null;
+        SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
+        // 设置lenient为false. 否则SimpleDateFormat会比较宽松地验证日期，比如2007/02/29会被接受，并转换成2007/03/01
+        dateFormat.setLenient(false);
+        try &#123;
+            date = dateFormat.parse(dateStr);
+        &#125; catch (ParseException e) &#123;
+            e.printStackTrace();
+        &#125;
+        return date;
+    &#125;
+
+    /**
+     * 获取指定日期num年数之后的日期.
+     *
+     * @param num 间隔年数(负数表示之前)
+     * @return Date 日期
+     */
+    public static Date addYears(Date date, int num) &#123;
+        return add(date, num, Calendar.YEAR);
+    &#125;
+
+    /**
+     * 获取当前日期指定年数之后的日期.
+     *
+     * @param num 间隔年数(负数表示之前)
+     * @return Date 日期
+     */
+    public static Date addYears(int num) &#123;
+        return add(new Date(), num, Calendar.YEAR);
+    &#125;
+
+    /**
+     * 获取当前日期num月数之后的日期.
+     *
+     * @param num 间隔月数(负数表示之前)
+     * @return Date 日期
+     */
+    public static Date addMonths(Date date, int num) &#123;
+        return add(date, num, Calendar.MONTH);
+    &#125;
+
+    /**
+     * 获取当前日期指定月数之后的日期.
+     *
+     * @param num 间隔月数(负数表示之前)
+     * @return Date 日期
+     */
+    public static Date addMonths(int num) &#123;
+        return add(new Date(), num, Calendar.MONTH);
+    &#125;
+
+    /**
+     * 获取指定日期num周数之后的日期.
+     *
+     * @param date 日期
+     * @param num  周数(负数表示之前)
+     * @return Date 新的日期
+     */
+    public static Date addWeeks(Date date, int num) &#123;
+        return add(date, num, Calendar.WEEK_OF_YEAR);
+    &#125;
+
+    /**
+     * 获取当前日期指定周数之后的日期.
+     *
+     * @param num 周数(负数表示之前)
+     * @return Date 新的日期
+     */
+    public static Date addWeeks(int num) &#123;
+        return add(new Date(), num, Calendar.WEEK_OF_YEAR);
+    &#125;
+
+    /**
+     * 获取指定日期num天数之后的日期.
+     *
+     * @param date 日期
+     * @param num  天数(负数表示之前)
+     * @return Date 新的日期
+     */
+    public static Date addDays(Date date, int num) &#123;
+        return add(date, num, Calendar.DAY_OF_MONTH);
+    &#125;
+
+    /**
+     * 获取当前日期指定天数之后的日期.
+     *
+     * @param num 天数(负数表示之前)
+     * @return Date 新的日期
+     */
+    public static Date addDays(int num) &#123;
+        return add(new Date(), num, Calendar.DAY_OF_MONTH);
+    &#125;
+
+    /**
+     * 获取指定日期num小时之后的日期.
+     *
+     * @param date 日期
+     * @param num  小时数(负数表示之前)
+     * @return Date 新的日期
+     */
+    public static Date addHours(Date date, int num) &#123;
+        return add(date, num, Calendar.HOUR_OF_DAY);
+    &#125;
+
+    /**
+     * 获取当前日期指定小时之后的日期.
+     *
+     * @param num 小时数(负数表示之前)
+     * @return Date 新的日期
+     */
+    public static Date addHours(int num) &#123;
+        return add(new Date(), num, Calendar.HOUR_OF_DAY);
+    &#125;
+
+    /**
+     * 获取指定日期num分钟之后的日期.
+     *
+     * @param date 日期
+     * @param num  分钟数(负数表示之前)
+     * @return Date 新的日期
+     */
+    public static Date addMinutes(Date date, int num) &#123;
+        return add(date, num, Calendar.MINUTE);
+    &#125;
+
+    /**
+     * 获取当前日期指定分钟之后的日期.
+     *
+     * @param num 分钟数(负数表示之前)
+     * @return Date 新的日期
+     */
+    public static Date addMinutes(int num) &#123;
+        return add(new Date(), num, Calendar.MINUTE);
+    &#125;
+
+    /**
+     * 获取指定日期num秒钟之后的日期.
+     *
+     * @param date 日期
+     * @param num  秒钟数(负数表示之前)
+     * @return Date 新的日期
+     */
+    public static Date addSeconds(Date date, int num) &#123;
+        return add(date, num, Calendar.SECOND);
+    &#125;
+
+    /**
+     * 获取当前日期指定秒钟之后的日期.
+     *
+     * @param num 秒钟数(负数表示之前)
+     * @return Date 新的日期
+     */
+    public static Date addSeconds(int num) &#123;
+        return add(new Date(), num, Calendar.SECOND);
+    &#125;
+
+    /**
+     * 获取指定日期num毫秒之后的日期.
+     *
+     * @param date 日期
+     * @param num  毫秒数(负数表示之前)
+     * @return Date 新的日期
+     */
+    public static Date addMilliSeconds(Date date, int num) &#123;
+        return add(date, num, Calendar.MILLISECOND);
+    &#125;
+
+    /**
+     * 获取当前日期指定毫秒之后的日期.
+     *
+     * @param num 毫秒数(负数表示之前)
+     * @return Date 新的日期
+     */
+    public static Date addMilliSeconds(int num) &#123;
+        return add(new Date(), num, Calendar.MILLISECOND);
+    &#125;
+
+    /**
+     * 获取当前日期指定数量日期时间单位之后的日期.
+     *
+     * @param date 日期
+     * @param num  数量
+     * @param unit 日期时间单位
+     * @return Date 新的日期
+     */
+    public static Date add(Date date, int num, int unit) &#123;
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(unit, num);
+        return calendar.getTime();
+    &#125;
+
+    /**
+     * 计算两个日期之间相隔年数.
+     *
+     * @param startDate 开始日期
+     * @param endDate   结束日期
+     * @return int 相隔年数，向下取整
+     */
+    public static int getYearsBetween(Date startDate, Date endDate) &#123;
+        return getMonthsBetween(startDate, endDate) / 12;
+    &#125;
+
+    /**
+     * 计算两个日期之间相隔月数.
+     *
+     * @param startDate 开始日期
+     * @param endDate   结束日期
+     * @return int 相隔月数，向下取整
+     */
+    public static int getMonthsBetween(Date startDate, Date endDate) &#123;
+        int months;
+        int flag = 0;
+
+        Calendar startCalendar = Calendar.getInstance();
+        startCalendar.setTime(startDate);
+        Calendar endCalendar = Calendar.getInstance();
+        endCalendar.setTime(endDate);
+
+        if (endCalendar.equals(startCalendar)) &#123;
+            return 0;
+        &#125;
+
+        if (startCalendar.after(endCalendar)) &#123;
+            Calendar temp = startCalendar;
+            startCalendar = endCalendar;
+            endCalendar = temp;
+        &#125;
+        if (endCalendar.get(Calendar.DAY_OF_MONTH) &lt; startCalendar.get(Calendar.DAY_OF_MONTH)) &#123;
+            flag = 1;
+        &#125;
+
+        if (endCalendar.get(Calendar.YEAR) &gt; startCalendar.get(Calendar.YEAR)) &#123;
+            months = ((endCalendar.get(Calendar.YEAR) - startCalendar.get(Calendar.YEAR))
+                    * 12 + endCalendar.get(Calendar.MONTH) - flag)
+                    - startCalendar.get(Calendar.MONTH);
+        &#125; else &#123;
+            months = endCalendar.get(Calendar.MONTH)
+                    - startCalendar.get(Calendar.MONTH) - flag;
+        &#125;
+
+        return months;
+    &#125;
+
+    /**
+     * 计算两个日期之间相隔周数.
+     *
+     * @param startDate 开始日期
+     * @param endDate   结束日期
+     * @return long 相隔周数，向下取整
+     */
+    public static long getWeeksBetween(Date startDate, Date endDate) &#123;
+        return getDaysBetween(startDate, endDate) / DAYS_PER_WEEK;
+    &#125;
+
+    /**
+     * 计算两个日期之间相隔天数.
+     *
+     * @param startDate 开始日期
+     * @param endDate   结束日期
+     * @return long 相隔天数，向下取整
+     */
+    public static long getDaysBetween(Date startDate, Date endDate) &#123;
+        return (endDate.getTime() - startDate.getTime()) / MILLISECONDS_PER_DAY;
+    &#125;
+
+    /**
+     * 计算两个日期之间相隔小时数.
+     *
+     * @param startDate 开始日期
+     * @param endDate   结束日期
+     * @return long 相隔小时数，向下取整
+     */
+    public static long getHoursBetween(Date startDate, Date endDate) &#123;
+        return (endDate.getTime() - startDate.getTime()) / MILLISECONDS_PER_HOUR;
+    &#125;
+
+    /**
+     * 计算两个日期之间相隔分钟数.
+     *
+     * @param startDate 开始日期
+     * @param endDate   结束日期
+     * @return long 相隔分钟数，向下取整
+     */
+    public static long getMinutesBetween(Date startDate, Date endDate) &#123;
+        return (endDate.getTime() - startDate.getTime()) / MILLISECONDS_PER_MINU;
+    &#125;
+
+    /**
+     * 计算两个日期之间相隔秒数.
+     *
+     * @param startDate 开始日期
+     * @param endDate   结束日期
+     * @return long 相隔秒数，向下取整
+     */
+    public static long getSecondsBetween(Date startDate, Date endDate) &#123;
+        return (endDate.getTime() - startDate.getTime()) / MILLISECONDS_PER_SECONDS;
+    &#125;
+
+    /**
+     * 获取当前季度.
+     * 注意:3～5月为春季 1，6～8月为夏季 2，9～11月为秋季 3，12～2月为冬季 4
+     *
+     * @return int 当前季度数
+     */
+    public static int getCurrentSeason() &#123;
+        Calendar calendar = Calendar.getInstance();
+        int month = calendar.get(Calendar.MONTH) + 1;
+        int season = 0;
+        if (month &gt;= 3 &amp;&amp; month &lt;= 5) &#123;
+            season = SPRING;
+        &#125; else if (month &gt;= 6 &amp;&amp; month &lt;= 8) &#123;
+            season = SUMMER;
+        &#125; else if (month &gt;= 9 &amp;&amp; month &lt;= 11) &#123;
+            season = AUTUMN;
+        &#125; else if (month == 12 || month &gt;= 1 &amp;&amp; month &lt;= 2) &#123;
+            season = WINTER;
+        &#125;
+        return season;
+    &#125;
+
+    /**
+     * 获取当前日期与之前日期的时间间隔.
+     *
+     * @param date 之前的日期
+     * @return String 例如 16分钟前、2小时前、3天前、4月前、5年前等
+     */
+    public static String getIntervalByDate(Date date) &#123;
+        long secondsBetween = getSecondsBetween(date, new Date());
+        return getIntervalBySeconds(secondsBetween);
+    &#125;
+
+    /**
+     * 将以秒为单位的时间转换为其他单位.
+     *
+     * @param seconds 秒数
+     * @return String 例如 16分钟前、2小时前、3天前、4月前、5年前等
+     */
+    public static String getIntervalBySeconds(long seconds) &#123;
+        StringBuffer buffer = new StringBuffer();
+        if (seconds &lt; SECONDS_PER_MINUTE) &#123;
+            buffer.append(seconds).append(&quot;秒前&quot;);
+        &#125; else if (seconds &lt; SECONDS_PER_HOUR) &#123;
+            buffer.append((long) Math.floor(seconds / SECONDS_PER_MINUTE)).append(&quot;分钟前&quot;);
+        &#125; else if (seconds &lt; SECONDS_PER_DAY) &#123;
+            buffer.append((long) Math.floor(seconds / SECONDS_PER_HOUR)).append(&quot;小时前&quot;);
+        &#125; else if (seconds &lt; SECONDS_PER_WEEK) &#123;
+            buffer.append((long) Math.floor(seconds / SECONDS_PER_DAY)).append(&quot;天前&quot;);
+        &#125; else if (seconds &lt; SECONDS_PER_MONTH) &#123;
+            buffer.append((long) Math.floor(seconds / SECONDS_PER_WEEK)).append(&quot;周前&quot;);
+        &#125; else if (seconds &lt; SECONDS_PER_YEAR) &#123;
+            buffer.append((long) Math.floor(seconds / SECONDS_PER_MONTH)).append(&quot;月前&quot;);
+        &#125; else &#123;
+            buffer.append((long) Math.floor(seconds / SECONDS_PER_YEAR)).append(&quot;年前&quot;);
+        &#125;
+        return buffer.toString();
+    &#125;
+
+    /**
+     * 将 Date 日期转化为 Calendar 类型日期.
+     *
+     * @param date 指定日期
+     * @return Calendar Calendar对象
+     */
+    public static Calendar getCalendar(Date date) &#123;
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        return calendar;
+    &#125;
+
+    /**
+     * 得到UTC时间，类型为字符串，格式为&quot;yyyy-MM-dd HH:mm&quot;
+     * 如果获取失败，返回null
+     *
+     * @return
+     */
+    public static String getUTCTimeStr() &#123;
+        StringBuffer UTCTimeBuffer = new StringBuffer();
+        // 1、取得本地时间：
+        Calendar cal = Calendar.getInstance();
+        // 2、取得时间偏移量：
+        int zoneOffset = cal.get(Calendar.ZONE_OFFSET);
+        // 3、取得夏令时差：
+        int dstOffset = cal.get(Calendar.DST_OFFSET);
+        // 4、从本地时间里扣除这些差量，即可以取得UTC时间：
+        cal.add(Calendar.MILLISECOND, -(zoneOffset + dstOffset));
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH) + 1;
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        int hour = cal.get(Calendar.HOUR_OF_DAY);
+        int minute = cal.get(Calendar.MINUTE);
+        UTCTimeBuffer.append(year).append(&quot;-&quot;).append(month).append(&quot;-&quot;).append(day);
+        UTCTimeBuffer.append(&quot; &quot;).append(hour).append(&quot;:&quot;).append(minute);
+        try &#123;
+            SimpleDateFormat sdf = new SimpleDateFormat(NO_SECOND_DATETIME_PATTERN);
+            sdf.parse(UTCTimeBuffer.toString());
+            return UTCTimeBuffer.toString();
+        &#125; catch (ParseException e) &#123;
+            e.printStackTrace();
+        &#125;
+        return null;
+    &#125;
+
+    /**
+     * 将Timestamp转换为yyyy-MM-dd HH:mm:ss格式字符串
+     *
+     * @param timestamp
+     * @return
+     */
+    public static String timestampToStr(Timestamp timestamp) &#123;
+        return timestamp.toString().substring(0, 19);
+    &#125;
+
+    /**
+     * 比较传进来的日期是否大于当前日期，如果传进来的日期大于当前日期则返回true，否则返回false
+     *
+     * @param dateStr 日期字符串
+     * @param pattern 日期格式
+     * @return boolean
+     */
+    public static boolean compareNowDate(String dateStr, String pattern) &#123;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        try &#123;
+            Date date = simpleDateFormat.parse(dateStr);
+            return date.after(new Date());
+        &#125; catch (ParseException e) &#123;
+            e.printStackTrace();
+        &#125;
+        return false;
+    &#125;
+
+    /**
+     * 如果endDateStr&gt;startDateStr，返回true，否则返回false
+     *
+     * @param startDateStr 开始日期字符串
+     * @param endDateStr   结束日期字符串
+     * @param pattern      日期格式
+     * @return boolean
+     */
+    public static boolean compareDate(String startDateStr, String endDateStr, String pattern) &#123;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        try &#123;
+            Date startDate = simpleDateFormat.parse(startDateStr);
+            Date endDate = simpleDateFormat.parse(endDateStr);
+            return endDate.after(startDate);
+        &#125; catch (ParseException e) &#123;
+            e.printStackTrace();
+        &#125;
+        return false;
+    &#125;
+
+    /**
+     * 如果startDate&gt;endDate，返回true，否则返回false
+     *
+     * @param startDate 开始日期字符串
+     * @param endDate   结束日期字符串
+     * @return boolean
+     */
+    public static boolean compareDate(Date startDate, Date endDate) &#123;
+        return endDate.after(startDate);
+    &#125;
+
+    /**
+     * 判断日期是否合法
+     *
+     * @param dateStr yyyy-MM-dd HH:mm:ss格式日期字符串
+     * @return
+     */
+    public static boolean isValidDate(String dateStr) &#123;
+        boolean convertSuccess = true;
+        // 指定日期格式为四位年/两位月份/两位日期
+        SimpleDateFormat format = new SimpleDateFormat(DATETIME_PATTERN);
+        try &#123;
+            // 设置lenient为false. 否则SimpleDateFormat会比较宽松地验证日期，比如2007/02/29会被接受，并转换成2007/03/01
+            format.setLenient(false);
+            format.parse(dateStr);
+        &#125; catch (ParseException e) &#123;
+            e.printStackTrace();
+            // 如果throw java.text.ParseException或者NullPointerException，就说明格式不对
+            convertSuccess = false;
+        &#125;
+        return convertSuccess;
+    &#125;
+
+    /**
+     * 判断日期是否为月底最后一天
+     *
+     * @param date 日期
+     * @return boolean true:是  false:否
+     */
+    public static boolean isLastDayofMonth(Date date) &#123;
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.set(Calendar.DATE, (calendar.get(Calendar.DATE) + 1));
+        if (calendar.get(Calendar.DAY_OF_MONTH) == 1) &#123;
+            return true;
+        &#125;
+        return false;
+    &#125;
+
+    /**
+     * 获取本年第一天的日期字符串
+     *
+     * @return String 格式：yyyy-MM-dd HH:mm:ss
+     */
+    public static String getYearStartTimeStr() &#123;
+        return getDateTimeStr(getStartDayOfYear(new Date()));
+    &#125;
+
+    /**
+     * 获取指定日期当年第一天的日期字符串
+     *
+     * @param date
+     * @return String 格式：yyyy-MM-dd HH:mm:ss
+     */
+    public static String getYearStartTimeStr(Date date) &#123;
+        return getDateTimeStr(getStartDayOfYear(date));
+    &#125;
+
+    /**
+     * 获取本年最后一天的日期字符串
+     *
+     * @return String 格式：yyyy-MM-dd HH:mm:ss
+     */
+    public static String getYearEndTimeStr() &#123;
+        return getDateTimeStr(getEndDayOfYear(new Date()));
+    &#125;
+
+    /**
+     * 获取指定日期当年最后一天的日期字符串
+     *
+     * @param date 指定日期
+     * @return String 格式：yyyy-MM-dd HH:mm:ss
+     */
+    public static String getYearEndTimeStr(Date date) &#123;
+        return getDateTimeStr(getEndDayOfYear(date));
+    &#125;
+
+    /**
+     * 获取本月第一天的日期字符串
+     * 格式：yyyy-MM-dd HH:mm:ss
+     *
+     * @return
+     */
+    public static String getMonthStartTimeStr() &#123;
+        return getDateTimeStr(getStartDayOfMonth(new Date()));
+    &#125;
+
+    /**
+     * 获取指定日期当月第一天的日期字符串
+     *
+     * @param date 指定日期
+     * @return String 格式：yyyy-MM-dd HH:mm:ss
+     */
+    public static String getMonthStartTimeStr(Date date) &#123;
+        return getDateTimeStr(getStartDayOfMonth(date));
+    &#125;
+
+    /**
+     * 获取本月最后一天的日期字符串
+     *
+     * @return String 格式：yyyy-MM-dd HH:mm:ss
+     */
+    public static String getMonthEndTimeStr() &#123;
+        return getDateTimeStr(getEndDayOfMonth(new Date()));
+    &#125;
+
+    /**
+     * 获取指定日期当月最后一天的日期字符串
+     *
+     * @param date 指定日期
+     * @return String 格式：yyyy-MM-dd HH:mm:ss
+     */
+    public static String getMonthEndTimeStr(Date date) &#123;
+        return getDateTimeStr(getEndDayOfMonth(date));
+    &#125;
+
+    /**
+     * 获取本周第一天的日期字符串
+     *
+     * @return String 格式：yyyy-MM-dd HH:mm:ss
+     */
+    public static String getWeekStartTimeStr() &#123;
+        return getDateTimeStr(getStartDayOfWeek(new Date()));
+    &#125;
+
+    /**
+     * 获取指定日期当周第一天的日期字符串
+     *
+     * @param date 指定日期
+     * @return String 格式：yyyy-MM-dd HH:mm:ss
+     */
+    public static String getWeekStartTimeStr(Date date) &#123;
+        return getDateTimeStr(getStartDayOfWeek(date));
+    &#125;
+
+    /**
+     * 获取本周最后一天的日期字符串
+     *
+     * @return String 格式：yyyy-MM-dd HH:mm:ss
+     */
+    public static String getWeekEndTimeStr() &#123;
+        return getDateTimeStr(getEndDayOfWeek(new Date()));
+    &#125;
+
+    /**
+     * 获取指定日期当周最后一天的日期字符串
+     *
+     * @param date 指定日期
+     * @return String 格式：yyyy-MM-dd HH:mm:ss
+     */
+    public static String getWeekEndTimeStr(Date date) &#123;
+        return getDateTimeStr(getEndDayOfWeek(date));
+    &#125;
+
+    /**
+     * 获取今天的开始时间字符串
+     *
+     * @return String 格式：yyyy-MM-dd HH:mm:ss
+     */
+    public static String getTodayStartTimeStr() &#123;
+        return getDateTimeStr(getTodayStartTime(new Date()));
+    &#125;
+
+    /**
+     * 获取指定日期的开始时间字符串
+     *
+     * @param date 指定日期
+     * @return String 格式：yyyy-MM-dd HH:mm:ss
+     */
+    public static String getTodayStartTimeStr(Date date) &#123;
+        return getDateTimeStr(getTodayStartTime(date));
+    &#125;
+
+    /**
+     * 获取今天的结束时间字符串
+     *
+     * @return String 格式：yyyy-MM-dd HH:mm:ss
+     */
+    public static String getTodayEndTimeStr() &#123;
+        return getDateTimeStr(getTodayEndTime(new Date()));
+    &#125;
+
+    /**
+     * 获取指定日期的结束时间字符串
+     *
+     * @param date 指定日期
+     * @return String 格式：yyyy-MM-dd HH:mm:ss
+     */
+    public static String getTodayEndTimeStr(Date date) &#123;
+        return getDateTimeStr(getTodayEndTime(date));
+    &#125;
+
+    /**
+     * 获得指定日期所在日的开始时间字符串
+     *
+     * @param date 指定日期
+     * @return String 例如：2020-12-06 00:00:00
+     */
+    public static String getDateStartTimeStr(Date date) &#123;
+        String result = format(date, DATE_PATTERN);
+        return result.concat(&quot; &quot;).concat(START_TIME);
+    &#125;
+
+    /**
+     * 获得指定日期所在日的结束时间字符串
+     *
+     * @param date 指定日期
+     * @return String 例如：2020-12-06 23:59:59
+     */
+    public static String getDateEndTimeStr(Date date) &#123;
+        String result = format(date, DATE_PATTERN);
+        return result.concat(&quot; &quot;).concat(END_TIME);
+    &#125;
+
+    /**
+     * 根据日历返回日期时间字符串
+     *
+     * @param calendar 日历
+     * @return String 日期时间字符串
+     */
+    public static String getDateTimeStr(Calendar calendar) &#123;
+        StringBuffer buf = new StringBuffer(&quot;&quot;);
+
+        buf.append(calendar.get(Calendar.YEAR));
+        buf.append(&quot;-&quot;);
+        buf.append(calendar.get(Calendar.MONTH) + 1 &gt; 9 ? calendar.get(Calendar.MONTH) + 1 + &quot;&quot;
+                : &quot;0&quot; + (calendar.get(Calendar.MONTH) + 1));
+        buf.append(&quot;-&quot;);
+        buf.append(calendar.get(Calendar.DAY_OF_MONTH) &gt; 9 ? calendar.get(Calendar.DAY_OF_MONTH) + &quot;&quot;
+                : &quot;0&quot; + calendar.get(Calendar.DAY_OF_MONTH));
+        buf.append(&quot; &quot;);
+        buf.append(calendar.get(Calendar.HOUR_OF_DAY) &gt; 9 ? calendar.get(Calendar.HOUR_OF_DAY) + &quot;&quot;
+                : &quot;0&quot; + calendar.get(Calendar.HOUR_OF_DAY));
+        buf.append(&quot;:&quot;);
+        buf.append(calendar.get(Calendar.MINUTE) &gt; 9 ? calendar.get(Calendar.MINUTE) + &quot;&quot;
+                : &quot;0&quot; + calendar.get(Calendar.MINUTE));
+        buf.append(&quot;:&quot;);
+        buf.append(calendar.get(Calendar.SECOND) &gt; 9 ? calendar.get(Calendar.SECOND) + &quot;&quot;
+                : &quot;0&quot; + calendar.get(Calendar.SECOND));
+        return buf.toString();
+    &#125;
+
+    /**
+     * 获取今年的第一天
+     *
+     * @return Calendar 日历
+     */
+    public static Calendar getStartDayOfYear(Date date) &#123;
+        Calendar calendar = Calendar.getInstance(Locale.CHINA);
+        calendar.setTime(date);
+        calendar.set(Calendar.DAY_OF_YEAR, 1);
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        return calendar;
+    &#125;
+
+    /**
+     * 获取今年的最后一天
+     *
+     * @return Calendar 日历
+     */
+    public static Calendar getEndDayOfYear(Date date) &#123;
+        Calendar calendar = Calendar.getInstance(Locale.CHINA);
+        calendar.setTime(date);
+        int i = calendar.getActualMaximum(Calendar.DAY_OF_YEAR);
+        calendar.set(Calendar.DAY_OF_YEAR, i);
+        calendar.set(Calendar.HOUR_OF_DAY, 23);
+        calendar.set(Calendar.MINUTE, 59);
+        calendar.set(Calendar.SECOND, 59);
+        return calendar;
+    &#125;
+
+    /**
+     * 获取本月的第一天
+     *
+     * @return Calendar 日历
+     */
+    public static Calendar getStartDayOfMonth(Date date) &#123;
+        Calendar calendar = Calendar.getInstance(Locale.CHINA);
+        calendar.setTime(date);
+        calendar.set(Calendar.DAY_OF_MONTH, 1);
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        return calendar;
+    &#125;
+
+    /**
+     * 获取本月的最后一天
+     *
+     * @return Calendar 日历
+     */
+    public static Calendar getEndDayOfMonth(Date date) &#123;
+        Calendar calendar = Calendar.getInstance(Locale.CHINA);
+        calendar.setTime(date);
+        int i = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+        calendar.set(Calendar.DAY_OF_MONTH, i);
+        calendar.set(Calendar.HOUR_OF_DAY, 23);
+        calendar.set(Calendar.MINUTE, 59);
+        calendar.set(Calendar.SECOND, 59);
+        return calendar;
+    &#125;
+
+    /**
+     * 获取本周的第一天，一个星期的第一天是星期一，最后一天是星期天
+     *
+     * @return Calendar 日历
+     */
+    public static Calendar getStartDayOfWeek(Date date) &#123;
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        // 设置一个星期的第一天，按中国的习惯一个星期的第一天是星期一
+        calendar.setFirstDayOfWeek(Calendar.MONDAY);
+        calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        return calendar;
+    &#125;
+
+    /**
+     * 获取本周的最后一天，一个星期的第一天是星期一，最后一天是星期天
+     *
+     * @return Calendar 日历
+     */
+    public static Calendar getEndDayOfWeek(Date date) &#123;
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        // 设置一个星期的第一天，按中国的习惯一个星期的第一天是星期一
+        calendar.setFirstDayOfWeek(Calendar.MONDAY);
+        calendar.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
+
+        calendar.set(Calendar.HOUR_OF_DAY, 23);
+        calendar.set(Calendar.MINUTE, 59);
+        calendar.set(Calendar.SECOND, 59);
+        return calendar;
+    &#125;
+
+    /**
+     * 获取今天开始时间
+     *
+     * @return
+     */
+    public static Calendar getTodayStartTime(Date date) &#123;
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        return calendar;
+    &#125;
+
+    /**
+     * 获取今天结束时间
+     *
+     * @return
+     */
+    public static Calendar getTodayEndTime(Date date) &#123;
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.set(Calendar.HOUR_OF_DAY, 23);
+        calendar.set(Calendar.MINUTE, 59);
+        calendar.set(Calendar.SECOND, 59);
+        calendar.set(Calendar.MILLISECOND, 999);
+        return calendar;
+    &#125;
+
+    /**
+     * 根据日期范围，获取按周期划分的日期区间
+     *
+     * @param startDateStr 开始日期（格式：2020-11-29）
+     * @param endDateStr   结束日期（格式：2020-12-02）
+     * @param pattern      日期格式（支持：DATE_PATTERN，MONTH_PATTERN，YEAR_PATTERN）
+     * @return List&lt;String&gt; 区间集合 例如：[2020-11-29,2020-11-30,2020-12-01,2020-12-02]
+     */
+    public static List&lt;String&gt; getDateStrList(String startDateStr, String endDateStr, String pattern) &#123;
+        Date start = parse(startDateStr, pattern);
+        Date end = parse(endDateStr, pattern);
+        return getDateStrList(start, end, pattern);
+    &#125;
+
+    /**
+     * 根据日期范围，获取按周期划分的日期区间
+     *
+     * @param startDate 开始日期
+     * @param endDate   结束日期
+     * @param pattern   日期格式（支持：DATE_PATTERN，MONTH_PATTERN，YEAR_PATTERN）
+     * @return List&lt;String&gt; 区间集合 例如：[2020-11-29,2020-11-30,2020-12-01,2020-12-02]
+     */
+    public static List&lt;String&gt; getDateStrList(Date startDate, Date endDate, String pattern) &#123;
+        List&lt;String&gt; result = new ArrayList&lt;&gt;();
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(startDate);
+        if (DATE_PATTERN.equals(pattern)) &#123;
+            while (startDate.before(endDate) || startDate.equals(endDate)) &#123;
+                result.add(new SimpleDateFormat(DATE_PATTERN).format(calendar.getTimeInMillis()));
+                calendar.add(Calendar.DATE, 1);
+                startDate = calendar.getTime();
+            &#125;
+        &#125; else if (MONTH_PATTERN.equals(pattern)) &#123;
+            while (startDate.before(endDate) || startDate.equals(endDate)) &#123;
+                result.add(new SimpleDateFormat(MONTH_PATTERN).format(calendar.getTimeInMillis()));
+                calendar.add(Calendar.MONTH, 1);
+                startDate = calendar.getTime();
+            &#125;
+        &#125; else if (YEAR_PATTERN.equals(pattern)) &#123;
+            while (startDate.before(endDate) || startDate.equals(endDate)) &#123;
+                result.add(new SimpleDateFormat(YEAR_PATTERN).format(calendar.getTimeInMillis()));
+                calendar.add(Calendar.YEAR, 1);
+                startDate = calendar.getTime();
+            &#125;
+        &#125;
+        return result;
+    &#125;
+
+    /**
+     * 获取当前日期前后num天的集合
+     *
+     * @param num 天数（正数：之后；负数：之前）
+     * @return List&lt;String&gt; 前/后日期的集合（包含指定日期）
+     */
+    public static List&lt;String&gt; getDateStrList(int num) &#123;
+        return getDateStrList(new Date(), num, DATE_PATTERN);
+    &#125;
+
+    /**
+     * 获取指定日期前后num天的集合
+     *
+     * @param date 指定日期
+     * @param num  天数（正数：之后；负数：之前）
+     * @return List&lt;String&gt; 前/后日期的集合（包含指定日期）
+     */
+    public static List&lt;String&gt; getDateStrList(Date date, int num) &#123;
+        return getDateStrList(date, num, DATE_PATTERN);
+    &#125;
+
+    /**
+     * 获取指定日期前后num天的集合，带日期格式参数
+     *
+     * @param date    指定日期
+     * @param num     天数（正数：之后；负数：之前）
+     * @param pattern 日期格式
+     * @return List&lt;String&gt; 前/后日期的集合（包含指定日期）  例如：[2020-11-29,2020-11-30,2020-12-01]
+     */
+    public static List&lt;String&gt; getDateStrList(Date date, int num, String pattern) &#123;
+        List&lt;String&gt; result = new ArrayList&lt;&gt;();
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        boolean flag = false;
+        if (num &lt; 0) &#123;
+            num = Math.abs(num);
+            flag = true;
+        &#125;
+        for (int i = 0; i &lt; num; i++) &#123;
+            result.add(new SimpleDateFormat(pattern).format(c.getTimeInMillis()));
+            c.add(Calendar.DATE, flag ? -1 : 1);
+        &#125;
+        if (flag) &#123;
+            Collections.reverse(result);
+        &#125;
+        return result;
+    &#125;
+
+    public static void main(String[] args) &#123;
+        System.out.println(&quot;=======================&quot;);
+        System.out.println(getYearStr());
+        System.out.println(getMonthStr());
+        System.out.println(getDayStr());
+        System.out.println(getHourStr());
+        System.out.println(getMinuteStr());
+        System.out.println(getSecondStr());
+
+        System.out.println(getDateTimeStr());
+        System.out.println(getDateStr());
+        System.out.println(getTimeStr());
+        System.out.println(getDayOfWeekStr());
+        System.out.println(getDayOfWeekStr(parse(&quot;2020-12-05&quot;, DATE_PATTERN)));
+        System.out.println(getDateTimeStr(System.currentTimeMillis(), DATETIME_PATTERN));
+
+        System.out.println(&quot;=======================&quot;);
+        System.out.println(parse(&quot;2020-12-31&quot;, DATE_PATTERN));
+
+        System.out.println(&quot;=======================&quot;);
+        System.out.println(addYears(1));
+        System.out.println(addYears(new Date(), -1));
+        System.out.println(addMonths(1));
+        System.out.println(addMonths(new Date(), -1));
+        System.out.println(addWeeks(1));
+        System.out.println(addWeeks(new Date(), -1));
+        System.out.println(addDays(1));
+        System.out.println(addDays(new Date(), -1));
+        System.out.println(addHours(1));
+        System.out.println(addHours(new Date(), -1));
+        System.out.println(addMinutes(1));
+        System.out.println(addMinutes(new Date(), -1));
+        System.out.println(addSeconds(1));
+        System.out.println(addSeconds(new Date(), -1));
+        System.out.println(addMilliSeconds(1));
+        System.out.println(addMilliSeconds(new Date(), -1));
+
+        System.out.println(&quot;=======================&quot;);
+        System.out.println(getYearsBetween(parse(&quot;2020-01-30&quot;, DATE_PATTERN), parse(&quot;2021-01-29&quot;, DATE_PATTERN)));
+        System.out.println(getMonthsBetween(parse(&quot;2020-01-30&quot;, DATE_PATTERN), parse(&quot;2021-01-29&quot;, DATE_PATTERN)));
+        System.out.println(getWeeksBetween(parse(&quot;2020-01-30&quot;, DATE_PATTERN), parse(&quot;2020-02-06&quot;, DATE_PATTERN)));
+        System.out.println(getDaysBetween(parse(&quot;2020-01-30&quot;, DATE_PATTERN), parse(&quot;2020-02-06&quot;, DATE_PATTERN)));
+        System.out.println(getHoursBetween(parse(&quot;2020-01-30&quot;, DATE_PATTERN), parse(&quot;2020-02-06&quot;, DATE_PATTERN)));
+        System.out.println(getMinutesBetween(parse(&quot;2020-01-30&quot;, DATE_PATTERN), parse(&quot;2020-02-06&quot;, DATE_PATTERN)));
+        System.out.println(getSecondsBetween(parse(&quot;2020-12-06 19:47:00&quot;, DATETIME_PATTERN), parse(&quot;2020-12-06 19:47:50&quot;, DATETIME_PATTERN)));
+
+        System.out.println(&quot;=======================&quot;);
+        System.out.println(getCurrentSeason());
+
+        System.out.println(&quot;=======================&quot;);
+        System.out.println(getIntervalByDate(parse(&quot;2020-12-06 19:30:00&quot;, DATETIME_PATTERN)));
+        System.out.println(getIntervalBySeconds(604800L));
+
+        System.out.println(&quot;=======================&quot;);
+        System.out.println(getCalendar(new Date()));
+        System.out.println(getUTCTimeStr());
+
+        System.out.println(&quot;=======================&quot;);
+        System.out.println(timestampToStr(new Timestamp(System.currentTimeMillis())));
+
+        System.out.println(&quot;=======================&quot;);
+        System.out.println(compareNowDate(&quot;2020-12-07&quot;, DATE_PATTERN));
+        System.out.println(compareDate(parse(&quot;2020-12-05&quot;, DATE_PATTERN), new Date()));
+        System.out.println(compareDate(&quot;2020-12-05&quot;, &quot;2020-12-06&quot;, DATE_PATTERN));
+
+        System.out.println(&quot;=======================&quot;);
+        System.out.println(isValidDate(&quot;2020-02-29 23:59:00&quot;));
+        System.out.println(isLastDayofMonth(parse(&quot;2020-11-01 00:00:00&quot;, DATETIME_PATTERN)));
+
+        System.out.println(&quot;=======================&quot;);
+        System.out.println(getYearStartTimeStr());
+        System.out.println(getYearStartTimeStr(parse(&quot;2019-12-06&quot;, DATE_PATTERN)));
+        System.out.println(getYearEndTimeStr());
+        System.out.println(getYearEndTimeStr(parse(&quot;2019-12-06&quot;, DATE_PATTERN)));
+        System.out.println(getMonthStartTimeStr());
+        System.out.println(getMonthStartTimeStr(parse(&quot;2019-12-06&quot;, DATE_PATTERN)));
+        System.out.println(getMonthEndTimeStr());
+        System.out.println(getMonthEndTimeStr(parse(&quot;2019-12-06&quot;, DATE_PATTERN)));
+        System.out.println(getWeekStartTimeStr());
+        System.out.println(getWeekStartTimeStr(parse(&quot;2019-12-06&quot;, DATE_PATTERN)));
+        System.out.println(getWeekEndTimeStr());
+        System.out.println(getWeekEndTimeStr(parse(&quot;2019-12-06&quot;, DATE_PATTERN)));
+        System.out.println(getTodayStartTimeStr());
+        System.out.println(getTodayStartTimeStr(parse(&quot;2019-12-06&quot;, DATE_PATTERN)));
+        System.out.println(getTodayEndTimeStr());
+        System.out.println(getTodayEndTimeStr(parse(&quot;2019-12-06&quot;, DATE_PATTERN)));
+        System.out.println(getDateStartTimeStr(parse(&quot;2020-11-01 00:00:00&quot;, DATETIME_PATTERN)));
+        System.out.println(getDateEndTimeStr(parse(&quot;2020-11-01 00:00:00&quot;, DATETIME_PATTERN)));
+
+        System.out.println(&quot;=======================&quot;);
+        List&lt;String&gt; strList1 = getDateStrList(3);
+        for (String s : strList1) &#123;
+            System.out.println(s);
+        &#125;
+
+        System.out.println(&quot;=======================&quot;);
+        List&lt;String&gt; dayList = getDateStrList(parse(&quot;2020-11-29&quot;, DATE_PATTERN), 3);
+        for (String s : dayList) &#123;
+            System.out.println(s);
+        &#125;
+
+        System.out.println(&quot;=======================&quot;);
+        List&lt;String&gt; dateList = getDateStrList(&quot;2020-11-29&quot;, &quot;2020-12-06&quot;, DATE_PATTERN);
+        for (String s : dateList) &#123;
+            System.out.println(s);
+        &#125;
+
+        System.out.println(&quot;=======================&quot;);
+        List&lt;String&gt; strList = getDateStrList(parse(&quot;2020-11-29&quot;, DATE_PATTERN), parse(&quot;2020-12-06&quot;, DATE_PATTERN), DATE_PATTERN);
+        for (String s : strList) &#123;
+            System.out.println(s);
+        &#125;
+    &#125;
+
+&#125;
+
+</code></pre>
+<h5 id="1-7-3Calendar日历"><a href="#1-7-3Calendar日历" class="headerlink" title="1.7.3Calendar日历"></a>1.7.3Calendar日历</h5><ul>
+<li><p>Calendar 代表了系统此刻日期对应的日历对象</p>
+</li>
+<li><p>Calendar 是一个<strong>抽象类</strong>，不能直接创建对象</p>
+</li>
+<li><p><strong>常用方法</strong></p>
+<ul>
+<li><p>public static Calendar getInstance()	返回一个日历类的对象</p>
+</li>
+<li><p>public int get(int field)	返回给定日历的值</p>
+</li>
+<li><p>public void set(int field,int value)	修改日历的某个字段信息</p>
+</li>
+<li><p>public abstract void add(int field,int amount)	根据日历的规则，将指定的时间量添加或减去给定的日历字段</p>
+</li>
+<li><p>public final void set(int year,int month,int date)	设置当前日历年月日</p>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>package ceshi;
+
+import java.util.Calendar;
+
+public class CalendarDemo &#123;
+    public static void main(String[] args) &#123;
+        //1、获取Calendar对象
+        Calendar c = Calendar.getInstance(); //多态形式
+        //2、public int get (int field) 根据给的日历字段返回值
+   /*     int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH) + 1; //从0开始所以加个1
+        int date = c.get(Calendar.DATE);
+        System.out.println(year+&quot;年&quot;+month+&quot;月&quot;+date+&quot;日&quot;); //2021年7月7日*/
+        
+        //3、public void set(int field,int value) 	修改日历的某个字段信息
+        //c.set(Calendar.YEAR,2099);
+        // System.out.println(rightNow.get(Calendar.YEAR)); //2099
+        
+        //4、public abstract void add(int field,int amount):根据日历的规则，将指定的时间量添加或减去给定的日历字段
+        //需求1:三年前
+/*        c.add(Calendar.YEAR,-3);
+        int year = c.get(Calendar.YEAR);
+        System.out.println(year); //2018,减了三年*/
+
+        //需求2：十年后，五天前
+        /*c.add(Calendar.YEAR,10);
+        c.add(Calendar.DATE,-5);
+
+        System.out.println();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH) + 1;
+        int date = c.get(Calendar.DATE);
+        System.out.println(year+&quot;年&quot;+month+&quot;月&quot;+date+&quot;日&quot;); //2031年7月2日*/
+
+        //5、public final void set(int year,int month,int date)：设置当前日历年月日
+        c.set(2022,1,1);
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH) + 1;
+        int date = c.get(Calendar.DATE);
+        System.out.println(year+&quot;年&quot;+month+&quot;月&quot;+date+&quot;日&quot;); //2022年2月1日
+    &#125;
+&#125;
+
+</code></pre>
+<h1 id="2-String类"><a href="#2-String类" class="headerlink" title="2 String类"></a>2 String类</h1><h2 id="2-1-String概括"><a href="#2-1-String概括" class="headerlink" title="2.1 String概括"></a>2.1 String概括</h2><ul>
+<li>String 类 在java.lang包下，所以使用的时候不需要导包</li>
+<li>java程序中所有的双引号字符串，都是String这个类的对象</li>
+<li>特点：字符串不可变，它们的值在创建后不可改变</li>
+</ul>
+<h2 id="2-2-String构造方法"><a href="#2-2-String构造方法" class="headerlink" title="2.2 String构造方法"></a>2.2 String构造方法</h2><ul>
+<li><p>String()：初始化新创建的String对象，以使其表示空字符序列。</p>
+</li>
+<li><p>String(char[] value)：通过当前参数中的字符数组来构造新的String。</p>
+</li>
+<li><p>String(byte[] bytes)：通过使用平台的默认字符集解码当前参数中的字节数组来构造新的String。&#x3D;&#x3D;双引号直接写的字符串在常量池当中，new的不在池当中。地址值不同.&#x3D;&#x3D;</p>
+</li>
+<li><p>String(byte[] bytes, int offset, int length)：通过使用平台的默认字符集解码指定的 byte 子数组，构造一个新的 String。&#x2F;&#x2F;把字节数组的一部分转换为字符串。</p>
+</li>
+<li><p>String(char[] value, int offset, int count)：分配一个新的 String，它包含取自字符数组参数一个子数组的字符。&#x2F;&#x2F;把字符数组的一部分转换为字符串。</p>
+<p>&#x3D;&#x3D;把字节&#x2F;字符数组的一部分转换为字符串 offset:数组的开始索引 length:转换的字节个数 count:转换的字符个数&#x3D;&#x3D;</p>
+</li>
+</ul>
+<h2 id="判断功能的方法"><a href="#判断功能的方法" class="headerlink" title="判断功能的方法:"></a>判断功能的方法:</h2><ul>
+<li><p>boolean equals(Objectan Object)：将此字符串与指定对象进行比较。</p>
+</li>
+<li><p>boolean equalsIgnoreCase(String anotherString)：将此字符串与指定对象进行比较，忽略大小写。</p>
+<p>&#x3D;&#x3D;Object是”对象”的意思，也是一种引用类型。作为参数类型，表示任意对象都可以传递到方法中。&#x3D;&#x3D;</p>
+</li>
+</ul>
+<h2 id="获取功能的方法"><a href="#获取功能的方法" class="headerlink" title="获取功能的方法:"></a>获取功能的方法:</h2><ul>
+<li>int length()：返回此字符串的长度。</li>
+<li>String concat(String str)：将指定的字符串连接到该字符串的末尾。</li>
+<li>char charAt(int index)：返回指定索引处的char值。</li>
+<li>int indexOf(String str)：返回指定子字符串第一次出现在该字符串内的索引。</li>
+<li>String substring(int beginIndex)：返回一个子字符串，从beginIndex开始截取字符串到字符串结尾。</li>
+<li>String substring(int beginIndex, int endIndex)：返回一个子字符串，从beginIndex到endIndex截取字符串。含beginIndex，不含endIndex。</li>
+</ul>
+<h2 id="转换功能的方法"><a href="#转换功能的方法" class="headerlink" title="转换功能的方法:"></a>转换功能的方法:</h2><ul>
+<li>char[] toCharArray()：将此字符串转换为新的字符数组。</li>
+<li>byte[] getBytes()：使用平台的默认字符集将该String编码转换为新的字节数组。</li>
+<li>String replaceAll(String regex, String replacement)：成功则返回替换的字符串，失败则返回原始字符串。其中regex为匹配此字符串的正则表达式；replacement为用来替换每个匹配项的字符串。</li>
+<li>String replace(CharSequence target, CharSequencere placement)：将与target匹配的字符串使用replacement字符串替换。</li>
+<li>CharSequence是一个接口，也是一种引用类型。作为参数类型，可以把String对象传递到方法中。</li>
+</ul>
+<h2 id="分割功能的方法"><a href="#分割功能的方法" class="headerlink" title="分割功能的方法:"></a>分割功能的方法:</h2><ul>
+<li>String[] split(String regex)：将此字符串按照给定的regex（规则）拆分为字符串数组。</li>
+<li>split方法的参数其实是一个“正则表达式”，如果按照英文句点“.”进行切分，必须写”.”。<br>将基本数据型态转换成String的static方法：</li>
+<li>String.valueOf(boolean b) : 将 boolean 变量 b 转换成字符串。</li>
+<li>String.valueOf(char c) : 将 char 变量 c 转换成字符串。</li>
+<li>String.valueOf(char[] data) : 将 char 数组 data 转换成字符串。</li>
+<li>String.valueOf(char[] data, int offset, int count) : 将 char 数组 data 中 由 data[offset] 开始取 count 个元素 转换成字符串。</li>
+<li>String.valueOf(double d) : 将 double 变量 d 转换成字符串。</li>
+<li>String.valueOf(float f) : 将 float 变量 f 转换成字符串。</li>
+<li>String.valueOf(int i) : 将 int 变量 i 转换成字符串。</li>
+<li>String.valueOf(long l) : 将 long 变量 l 转换成字符串。</li>
+<li>String.valueOf(Object obj) : 将 obj 对象转换成 字符串, 等于 obj.toString()。<br>将String转换成基本数据型态的方法：<br>详情参考parseXxx系列方法。</li>
+</ul>
+<pre><code class="java">
+public class Demo&#123;
+    public static void main(String[] args)&#123;
+        //1.public String() 	创建一个空字符串对象，不包含任何内容
+        String s1 = new String();
+        System.out.println(&quot;s1:&quot;+s1); //s1:（无内容）
+
+        //2.public String(chas[] chs) 	根据字符数组内容，来创建字符串对象
+        char[] chs = &#123;&#39;a&#39;,&#39;b&#39;,&#39;c&#39;&#125;;
+        String s2 = new String(chs);
+        System.out.println(&quot;s2:&quot;+s2); //s2:abc
+
+        //3.public String(byte[] bys) 	根据字节数组内容，来创建字符串对象
+        byte[] bys = &#123;97,98,99&#125;; //对应计算机底层字符
+        String s3 = new String(bys);
+        System.out.println(&quot;s3:&quot;+s3); //s3:abc
+
+        //4.String s = “abc”; 	直接赋值的方法创建字符串对象，内容就是abc
+        String s4 = &quot;abc&quot;;
+        System.out.println(&quot;s4:&quot;+s4); //s4:abc
+    &#125;
+&#125;
+
+</code></pre>
+<h2 id="2-3-String对象的区别"><a href="#2-3-String对象的区别" class="headerlink" title="2.3 String对象的区别"></a>2.3 String对象的区别</h2><p>1.通过 new 创建字符串对象，每一次 new 都会申请一个内存空间，虽然内容相同，但是地址值不同</p>
+<p>2.以 “ ” 方式给出的字符串，只要字符串的序列相同（顺序和大小写），无论在程序中出现多少次，JVM都只会建立一个String对象，并在字符串池维护</p>
+<p>内存</p>
+<p><img src="/img/loading.gif" data-original="/2024/03/11/java%E5%B8%B8%E7%94%A8API/image-20240312182518251.png" alt="image-20240312182518251"></p>
+<h2 id="2-5-String字符串比较"><a href="#2-5-String字符串比较" class="headerlink" title="2.5 String字符串比较"></a>2.5 String字符串比较</h2><ul>
+<li>使用双等号作比较<ul>
+<li>基本类型：比较的是数据值是否相同</li>
+<li>引用类型：比较的是地址值是否相同</li>
+</ul>
+</li>
+<li>字符串是对象，它比较内容是否相同，是通过一个方法来实现的，这个方法叫做: equals()</li>
+<li>范例：</li>
+</ul>
+<pre><code>public class Demo&#123;
+
+  public static void main(String[] args)&#123;
+
+     //构造方法的方式得到对象
+
+     char[] chs = &#123;&#39;a&#39;,&#39;b&#39;,&#39;c&#39;&#125;;
+
+      String s1 = new String(chs);
+
+      String s2 = new String(chs);
+      //直接赋值的方法得到对象
+
+      String s3 = &quot;abc&quot;;
+
+     String s4 = &quot;abc&quot;;
+
+```
+    System.out.println(s1.equals(s2)); //true
+    System.out.println(s1.equals(s3)); //true
+    System.out.println(s3.equals(s4)); //true
+&#125;
+```
+
+&#125;
+</code></pre>
+<h1 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a>StringBuilder</h1><ul>
+<li>java.lang.StringBuilder字符串缓冲区 可变字符序列</li>
+</ul>
+<p>构造方法：</p>
+<ul>
+<li>StringBuilder()：构造一个空的StringBuilder容器。</li>
+<li>StringBuilder(String str)：构造一个StringBuilder容器，并将字符串添加进去。</li>
+</ul>
+<p>常用方法：</p>
+<ul>
+<li><p>StringBuilder append(…)：添加任意类型数据的字符串形式，并返回当前对象自身。</p>
+</li>
+<li><p>连锁编程：bu.append(“abc”).append(1).append(true).append(8.8).append(‘中’);</p>
+</li>
+<li><p>String toString()：将当前StringBuilder对象转换为String对象。</p>
+</li>
+<li></li>
+<li><table>
+<thead>
+<tr>
+<th>public int length()</th>
+<th>返回长度(字符出现的个数)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><p>StringBuilder和String可以相互转换：String-&gt;StringBuilder：StringBuilder&#x2F;&#x2F;StringBuilder-&gt;String：toString</p>
+</li>
+</ul>
+<ol>
+<li>JDK5.0后提供了StringBuilder，等价StringBuffer 。</li>
+<li>区别：StringBuilder线程不安全，StringBuffer线程安全， StringBuilder类是单线程，不提供同步，理论上效率更高</li>
+</ol>
+<pre><code class="java">public class Demo &#123;
+    public static void main(String[] args) &#123;
+        //创建空白可改变字符串对象
+        StringBuilder sb = new StringBuilder();
+        System.out.println(&quot;sb:&quot;+sb); //sb:
+        System.out.println(&quot;sb.length():&quot;+sb.length()); //sb.length():0
+
+        //根据字符串内容创建对象
+        StringBuilder sb2 = new StringBuilder(&quot;hello&quot;);
+        System.out.println(&quot;sb2:&quot;+sb2); //sb2:hello
+        System.out.println(&quot;sb2.length():&quot;+sb2.length()); //5
+    &#125;
+&#125;
+</code></pre>
+<pre><code>public class Demo &#123;
+    public static void main(String[] args) &#123;
+        //创建对象
+        StringBuilder sb = new StringBuilder();
+
+        //1.public StringBuilder append(任意类型) 	添加数据，并返回对象本身
+//        StringBuilder sb2 = sb.append(&quot;java&quot;);
+//        System.out.println(&quot;sb:&quot;+sb); //sb:java，因为返回的是对象本身所以sb赋值了java
+//        System.out.println(&quot;sb2:&quot;+sb2); //sb2:java
+//        System.out.println(sb==sb2); //true
+
+//        sb.append(&quot;java&quot;);
+//        sb.append(&quot;word&quot;);
+//        sb.append(100);
+//        System.out.println(&quot;sb:&quot;+sb); //sb:javaword100
+
+        //链式编程
+        sb.append(&quot;java&quot;).append(&quot;word&quot;).append(100);
+        System.out.println(&quot;sb:&quot;+sb); //sb:javaword100
+
+        //2.public StringBuilder reverse() 	返回相反的字符序列
+        sb.reverse();
+        System.out.println(&quot;sb:&quot;+sb); //sb:001drowavaj
+    &#125;
+&#125;
+</code></pre>
+<h2 id="3-3-StringBuilder-和-String-相互转换"><a href="#3-3-StringBuilder-和-String-相互转换" class="headerlink" title="3.3 StringBuilder 和 String 相互转换"></a>3.3 StringBuilder 和 String 相互转换</h2><ol>
+<li>StringBuilder 转换为 String</li>
+</ol>
+<pre><code>public String toString()	通过toString()可以把StringBuilder 转换为 String
+</code></pre>
+<ol>
+<li>String 转换为 StringBuilder</li>
+</ol>
+<pre><code>public StringBuilder(String s)	通过构造方法就可以把String 转换为 StringBuilder
+</code></pre>
+<ul>
+<li>范例</li>
+</ul>
+<pre><code>public class Demo &#123;
+    public static void main(String[] args) &#123;
+        //1.StringBulider 转换为 String
+        StringBuilder sb = new StringBuilder();
+        sb.append(&quot;hello&quot;);
+
+        //public String toString() 	通过toString()可以把StringBuilder 转换为 String
+        String s = sb.toString();
+        System.out.println(&quot;s:&quot;+s); //s:hello
+    
+        //2.String 转换为 StringBulider
+        String s1 = &quot;hello&quot;;
+        //public StringBuilder(String s) 	通过构造方法就可以把String 转换为 StringBuilder
+        StringBuilder sb1 = new StringBuilder(s1);
+        System.out.println(&quot;sb1:&quot;+sb1); //sb1:hello
+    &#125;
+
+&#125;
+
+</code></pre>
+<h1 id="4-集合结构体系"><a href="#4-集合结构体系" class="headerlink" title="4 集合结构体系"></a>4 集合结构体系</h1><p><img src="/img/loading.gif" data-original="/2024/03/11/java%E5%B8%B8%E7%94%A8API/image-20240312193951531.png" alt="image-20240312193951531"></p>
+<h1 id="4-集合基础"><a href="#4-集合基础" class="headerlink" title="4 集合基础"></a>4 集合基础</h1><ul>
+<li><p>集合提供一种存储空间可变的存储模型，存储的数据容量可以改变</p>
+</li>
+<li><p>ArrayLis&lt;&gt;:</p>
+<ul>
+<li><p>可调整大小的数组实现</p>
+</li>
+<li><p>&lt;&gt;：是一种特殊的数据类型，泛型</p>
+</li>
+<li><p>可储存重复元素</p>
+</li>
+</ul>
+</li>
+<li><p>怎么使用呢</p>
+<ul>
+<li>在出现E的地方我们使用引用数据类型替换即可</li>
+<li>举例：ArrayList<String>、ArrayList<Student></li>
+</ul>
+</li>
+</ul>
+<h2 id="4-1-集合与数组的区别"><a href="#4-1-集合与数组的区别" class="headerlink" title="4.1 集合与数组的区别"></a>4.1 集合与数组的区别</h2><ul>
+<li>共同点:都是存储数据的容器</li>
+<li>不同点：数组的容量是固定的，集合的容量是可变的</li>
+</ul>
+<h2 id="4-2-ArrayList-构造方法和添加方法"><a href="#4-2-ArrayList-构造方法和添加方法" class="headerlink" title="4.2 ArrayList 构造方法和添加方法"></a>4.2 ArrayList 构造方法和添加方法</h2><pre><code>import java.util.ArrayList;
+
+public class Demo &#123;
+    public static void main(String[] args) &#123;
+        //创建集合对象
+        ArrayList&lt;String&gt; array = new ArrayList&lt;&gt;();
+        System.out.println(array); //[]
+
+        //添加到集合末尾
+        array.add(&quot;hello&quot;);
+        array.add(&quot;word&quot;);
+        array.add(&quot;java&quot;);
+        System.out.println(array); //[hello, word, java]
+    
+        //指定位置，添加元素
+        array.add(1,&quot;javase&quot;);
+        System.out.println(array); //[hello, javase, word, java]
+    
+        array.add(4,&quot;javaee&quot;);
+        System.out.println(array); //[hello, javase, word, java, javaee]
+    
+        array.add(6,&quot;javaweb&quot;); 
+        System.out.println(array); //IndexOutOfBoundsException，不能中间跳一个位置
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="4-3-ArrayList-常用方法"><a href="#4-3-ArrayList-常用方法" class="headerlink" title="4.3 ArrayList 常用方法"></a>4.3 ArrayList 常用方法</h2><p>方法名	说明</p>
+<ul>
+<li>public boolean remove(Object o)	删除指定的元素，返回删除是否成功</li>
+<li>public E remove(int index)	删除指定索引处的元素,返回被删除的元素</li>
+<li>public E set(int index,E element)	修改指定索引处的元素，返回被修改的元素</li>
+<li>public E get(int index)	返回指定索引处的元素</li>
+<li>public int size()	返回集合中元素的个数</li>
+</ul>
+<h3 id="范例："><a href="#范例：" class="headerlink" title="范例："></a>范例：</h3><pre><code>import java.util.ArrayList;
+
+public class Demo &#123;
+    public static void main(String[] args) &#123;
+        //创建集合对象
+        ArrayList&lt;String&gt; array = new ArrayList&lt;&gt;();
+        System.out.println(array); //[]
+
+        //添加到集合末尾
+        array.add(&quot;hello&quot;);
+        array.add(&quot;word&quot;);
+        array.add(&quot;java&quot;);
+        System.out.println(array); //[hello, word, java]
+    
+        //1,public boolean remove(Object o) 	删除指定的元素，返回删除是否成功
+
+//        System.out.println(array.remove(&quot;hello&quot;)); //true; 集合变为[word, java]
+//        System.out.println(array.remove(&quot;javase&quot;)); //false; 集合变为[hello, word, java]
+
+        //2,public E remove(int index) 	删除指定索引处的元素,返回被删除的元素
+
+//        System.out.println(array.remove(1)); //word,集合变为[hello, java]
+
+        //3,public E set(int index,E element) 	修改指定索引处的元素，返回被修改的元素
+
+//        System.out.println(array.set(1,&quot;javase&quot;)); //word;集合变为[hello, javase, java]
+
+        //4,public E get(int index) 	返回指定索引处的元素
+
+//        System.out.println(array.get(0)); //hello
+//        System.out.println(array.get(1)); //word
+//        System.out.println(array.get(2)); //java
+
+        //5,public int size() 	返回集合中元素的个数
+        System.out.println(array.size()); //3
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="4-4-案例"><a href="#4-4-案例" class="headerlink" title="4.4 案例"></a>4.4 案例</h2><h3 id="4-4-1-案例1：存储字符串并遍历"><a href="#4-4-1-案例1：存储字符串并遍历" class="headerlink" title="4.4.1 案例1：存储字符串并遍历"></a>4.4.1 案例1：存储字符串并遍历</h3><pre><code>import java.util.ArrayList;
+
+public class Demo &#123;
+    public static void main(String[] args) &#123;
+        //创建集合对象
+        ArrayList&lt;String&gt; array = new ArrayList&lt;&gt;();
+
+        //加元素
+        array.add(&quot;java&quot;);
+        array.add(&quot;天下&quot;);
+        array.add(&quot;第一&quot;);
+    
+        for(int i=0;i&lt;array.size();i++) &#123;
+            String s = array.get(i);
+            System.out.print(s+&quot; &quot;); //java 天下 第一
+        &#125;
+    &#125;
+
+&#125;
+</code></pre>
+<h3 id="4-4-2-案例2：存储学生对象并遍历"><a href="#4-4-2-案例2：存储学生对象并遍历" class="headerlink" title="4.4.2 案例2：存储学生对象并遍历"></a>4.4.2 案例2：存储学生对象并遍历</h3><pre><code>Student类
+package ceshi;
+
+public class Student &#123;
+    private String name;
+    private int age;
+
+    public Student() &#123;
+    &#125;
+    
+    public Student(String name, int age) &#123;
+        this.name = name;
+        this.age = age;
+    &#125;
+    
+    public String getName() &#123;
+        return name;
+    &#125;
+    
+    public void setName(String name) &#123;
+        this.name = name;
+    &#125;
+    
+    public int getAge() &#123;
+        return age;
+    &#125;
+    
+    public void setAge(int age) &#123;
+        this.age = age;
+    &#125;
+
+&#125;
+</code></pre>
+<h4 id="测试类"><a href="#测试类" class="headerlink" title="测试类"></a>测试类</h4><pre><code>package ceshi;
+
+import java.util.ArrayList;
+
+public class ArrayListStudent &#123;
+    public static void main(String[] args) &#123;
+        //定义集合对象
+        ArrayList&lt;Student&gt; array = new ArrayList&lt;Student&gt;();
+
+        //创建学生对象
+        Student stu1 = new Student(&quot;小白&quot;,20);
+        Student stu2 = new Student(&quot;小明&quot;,21);
+        Student stu3 = new Student(&quot;小黑&quot;,22);
+    
+        //添加学生对象到集合中
+        array.add(stu1);
+        array.add(stu2);
+        array.add(stu3);
+    
+        //遍历集合
+        for(int i=0;i&lt;array.size();i++) &#123;
+            Student s = array.get(i);
+            System.out.println(s.getName()+&quot;,&quot;+s.getAge()); //小白,20
+                                                            //小明,21
+                                                            //小黑,22
+        &#125;
+    &#125;
+
+&#125;
+</code></pre>
+<h1 id="5-Collection集合"><a href="#5-Collection集合" class="headerlink" title="5 Collection集合"></a>5 Collection集合</h1><h2 id="5-1-Collection集合概述"><a href="#5-1-Collection集合概述" class="headerlink" title="5.1 Collection集合概述"></a>5.1 Collection集合概述</h2><ul>
+<li>是单列集合的顶层接口，它表示一组对象，这些对象也称Collection元素</li>
+<li>JDK不提供此接口的直接实现，它提供更具体的子接口（Set 和 List）实现</li>
+</ul>
+<pre><code>package ceshi;
+
+import java.util.AbstractCollection;
+import java.util.ArrayList;
+import java.util.Collection;
+
+public class CollectionDemo &#123;
+    public static void main(String[] args) &#123;
+        //创建Collection集合对象
+        Collection&lt;String&gt; c = new ArrayList&lt;String&gt;();
+
+```
+    //添加元素
+    c.add(&quot;hello&quot;);
+    c.add(&quot;world&quot;);
+    c.add(&quot;java&quot;);
+    System.out.println(c); //[hello, world, java]
+&#125;
+```
+
+&#125;
+</code></pre>
+<h2 id="5-2-Collection集合常用方法（查看所有源码快捷键）"><a href="#5-2-Collection集合常用方法（查看所有源码快捷键）" class="headerlink" title="5.2 Collection集合常用方法（查看所有源码快捷键）"></a>5.2 Collection集合常用方法（查看所有源码快捷键）</h2><pre><code>方法名	说明
+public boolean add(E e)	把给定的元素添加到当前集合中
+public boolean remove(E e)	把给定的对象在当前集合中删除
+public void clear()	清空集合中所有的元素
+public boolean contains(Object obj) [kənˈteɪnz] 包括	判断当前集合中是否存在指定的对象
+public boolean isEmpty() [ˈenpti]	判断当前集合是否为空
+public int size()	返回集合中元素的个数
+public Object[] toArray( )	把集合中的元素，储存到数组中
+</code></pre>
+<ul>
+<li>快捷键：Alt+7 打开源码中所有方法</li>
+</ul>
+<pre><code>package ceshi;
+
+import java.util.AbstractCollection;
+import java.util.ArrayList;
+import java.util.Collection;
+
+public class CollectionDemo &#123;
+    public static void main(String[] args) &#123;
+        //创建Collection集合对象
+        Collection&lt;String&gt; c = new ArrayList&lt;String&gt;();
+
+        //1、public boolean add(E e) 	把给定的元素添加到当前集合中
+        c.add(&quot;hello&quot;);
+        c.add(&quot;hello&quot;);
+        System.out.println(c); //[hello, hello] ;ArrayList可以存储重复元素
+    
+        //2、public boolean remove(E e) 	把给定的对象在当前集合中删除
+        /*System.out.println(c.remove(&quot;hello&quot;)); //true
+        System.out.println(c.remove(&quot;java&quot;)); //false
+        System.out.println(c); //[hello]*/
+    
+        //3、public void clear() 	清空集合中所有的元素
+        /*c.clear();
+        System.out.println(c); //[]*/
+    
+        //4、public boolean contains(Object obj) 	判断当前集合中是否存在指定的对象
+        /*System.out.println(c.contains(&quot;java&quot;)); //false
+        System.out.println(c.contains(&quot;hello&quot;)); //true*/
+    
+        //5、public boolean isEmpty() 	判断当前集合是否为空
+
+//        System.out.println(c.isEmpty()); //false
+
+        //6、public int size() 	返回集合中元素的个数
+
+//        System.out.println(c.size()); //2
+
+        //7、public Object[] toArray( 	把集合中的元素，储存到数组中
+        Object[] arr = c.toArray();
+        for(int i= 0;i&lt; arr.length;i++) &#123;
+            System.out.print(arr[i]+&quot;,&quot;); //hello,hello
+        &#125;
+        
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="5-3-Collection集合的遍历"><a href="#5-3-Collection集合的遍历" class="headerlink" title="5.3 Collection集合的遍历"></a>5.3 Collection集合的遍历</h2><p>Collection 集合遍历有三种方法：</p>
+<ul>
+<li>迭代器</li>
+<li>foreach(增强for循环)</li>
+<li>DK 1.8 开始的新技术 Lambda 表达式(了解)</li>
+</ul>
+<h3 id="5-3-1-Iterator-‘lɪtəreɪtə-迭代器遍历集合"><a href="#5-3-1-Iterator-‘lɪtəreɪtə-迭代器遍历集合" class="headerlink" title="5.3.1 Iterator[‘lɪtəreɪtə]迭代器遍历集合"></a>5.3.1 Iterator[‘lɪtəreɪtə]迭代器遍历集合</h3><ul>
+<li>lterator:迭代器，集合的专用遍历方式</li>
+<li>Iterator<E> iterator():返回此集合中元素的迭代器，通过集合的iterator()方法得到</li>
+<li>迭代器是通过集合的**iterator()**方法得到的，所以我们说它是依赖于集合而存在的</li>
+</ul>
+<h4 id="Iterator中的常用方法"><a href="#Iterator中的常用方法" class="headerlink" title="Iterator中的常用方法"></a>Iterator中的常用方法</h4><pre><code>方法名	说明
+E next()	获取迭代中的下一个元素
+boolean hasNext()	如果迭代具有更多元素，则返回true
+</code></pre>
+<pre><code>package ceshi;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+
+public class IteratorDemo &#123;
+    public static void main(String[] args) &#123;
+        Collection&lt;String&gt;  c = new ArrayList&lt;String&gt;();
+
+        c.add(&quot;java&quot;);
+        c.add(&quot;天下&quot;);
+        c.add(&quot;无敌&quot;);
+    
+        //Iterator&lt;E&gt; iterator():返回此集合中元素的迭代器，通过集合的iterator0方法得到
+        Iterator&lt;String&gt; it = c.iterator(); //c.iterator();按下Ctrl+alt+v
+        /*public Iterator&lt;E&gt; iterator() &#123;
+            return new ArrayList.Itr(); //返回的是实现类的对象
+        &#125;
+    
+        private class Itr implements Iterator&lt;E&gt; &#123;...&#125;
+        */
+    
+        //E next()
+        /*System.out.println(it.next()); //java
+        System.out.println(it.next());
+        System.out.println(it.next());
+        System.out.println(it.next()); //NoSuchElementException：表示请求的元素不存在*/
+    
+        //boolean hasNext() 	如果迭代具有更多元素，则返回true
+        /*if(it.hasNext()) &#123;
+            System.out.println(it.next()); //java
+        &#125;
+        if(it.hasNext()) &#123;
+            System.out.println(it.next()); //天下
+        &#125;
+        if(it.hasNext()) &#123;
+            System.out.println(it.next()); //无敌
+        &#125;
+        if(it.hasNext()) &#123;
+            System.out.println(it.next()); //无输出
+        &#125; */
+    
+        //while循环改良
+        while(it.hasNext()) &#123;
+            String s = it.next();
+            System.out.println(s);  //java
+                                    //天下
+                                    //无敌
+        &#125;
+    &#125;
+
+&#125;
+</code></pre>
+<p>案例</p>
+<pre><code>package ceshi;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+
+public class CollectionDemo &#123;
+    public static void main(String[] args) &#123;
+        //2、创建Collection集合对象
+        Collection&lt;Student&gt; c = new ArrayList&lt;Student&gt;();
+
+        //3、创建学生对象
+        Student s1 = new Student(&quot;y1&quot;, 10);
+        Student s2 = new Student(&quot;y2&quot;, 20);
+        Student s3 = new Student(&quot;y3&quot;, 30);
+    
+        //4、把学生添加到集合
+        c.add(s1);
+        c.add(s2);
+        c.add(s3);
+    
+        //5、遍历集合
+        Iterator&lt;Student&gt; it = c.iterator(); //必须集合添加完毕后创建迭代器对象
+        while (it.hasNext()) &#123;
+            Student s = it.next();
+            System.out.println(s.getName() + &quot;,&quot; + s.getAge());
+            /*
+            y1,10
+            y2,20
+            y3,30
+            */
+        &#125;
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="5-4-Collections工具类"><a href="#5-4-Collections工具类" class="headerlink" title="5.4 Collections工具类"></a>5.4 Collections工具类</h2><ul>
+<li>包：java.util.Collections</li>
+<li>Collections 并不属于集合，而是用来操作集合的工具类</li>
+</ul>
+<p>常用方法（全是静态修饰，用类名调用）<br>方法名	说明</p>
+<ul>
+<li>public static &lt;T extends Comparable&lt;?super T&gt;&gt; void sort(List list)	将指定的列表按升序排序</li>
+<li>public static void reverse(List&lt;?&gt; list)	反转指定列表中元素顺序</li>
+<li>public static void shuffle(List&lt;?&gt; list)	使用默认的随机源随机排序指定的列表</li>
+</ul>
+<pre><code>package ceshi;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class MapDemo &#123;
+    public static void main(String[] args) &#123;
+        List&lt;Integer&gt; list = new ArrayList&lt;&gt;();
+
+```
+    list.add(30);
+    list.add(20);
+    list.add(50);
+    list.add(10);
+    list.add(40);
+    System.out.println(list); //[30, 20, 50, 10, 40]
+
+    //1,public static &lt;T extends Comparable&lt;?super T&gt;&gt; void sort(List list) 	将指定的列表按升序排序
+    /*Collections.sort(list);
+    System.out.println(list); //[10, 20, 30, 40, 50]*/
+
+    //2,public static void reverse(List&lt;?&gt; list) 	反转指定列表中元素顺序
+    /*Collections.reverse(list);
+    System.out.println(list); //[40, 10, 50, 20, 30]*/
+
+    //3,public static void shuffle(List&lt;?&gt; list) 	使用默认的随机源随机排序指定的列表
+    Collections.shuffle(list);
+    System.out.println(list);
+    //第一次运行[10, 40, 30, 50, 20]
+    //第二次运行[10, 30, 20, 50, 40]
+&#125;
+```
+
+&#125;
+</code></pre>
+<h1 id="6-List集合"><a href="#6-List集合" class="headerlink" title="6 List集合"></a>6 List集合</h1><ul>
+<li>List系列集合：添加的元素是有序，可重复，有索引</li>
+<li>ArrayList: 添加的元素是有序，可重复，有索引</li>
+<li>LinkedList: 添加的元素是有序，可重复，有索引</li>
+<li>Vector ：是线程安全的，速度慢，开发中很少使用</li>
+</ul>
+<h2 id="6-1-List集合概述和特点"><a href="#6-1-List集合概述和特点" class="headerlink" title="6.1 List集合概述和特点"></a>6.1 List集合概述和特点</h2><p>List集合概述</p>
+<ol>
+<li>有序集合(也称为序列)，用户可以精确控制列表中每个元索的插入位置。用户可以通过整数索引访问元素,并获取列表中的元素</li>
+<li>与Set集合不同，List集合允许重复的元素</li>
+</ol>
+<p>List集合特点</p>
+<ol>
+<li>有序: 存储和取出的元素顺序一致</li>
+<li>可重复: 存储的元素可以重复</li>
+</ol>
+<pre><code>package ceshi;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class ListDemo &#123;
+    public static void main(String[] args) &#123;
+        //创建集合对象
+        List&lt;String&gt; list = new ArrayList&lt;&gt;();
+
+        //添加元素
+        list.add(&quot;java&quot;);
+        list.add(&quot;天下&quot;);
+        list.add(&quot;无敌&quot;);
+        list.add(&quot;java&quot;);
+    
+        System.out.println(list); //[java, 天下, 无敌, java]
+    
+        //迭代器遍历
+        Iterator&lt;String&gt; it = list.iterator();
+        while(it.hasNext()) &#123;
+            String s = it.next();
+            System.out.println(s);
+            /*java
+            天下
+            无敌
+            java*/
+        &#125;
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="6-2-List集合的特有方法"><a href="#6-2-List集合的特有方法" class="headerlink" title="6.2 List集合的特有方法"></a>6.2 List集合的特有方法</h2><p>方法名	说明</p>
+<ul>
+<li>public void add(int index,E element)	该集合中的指定位置上插入元素</li>
+<li>public E remove(int index)	删除列表中指定位置的元素，返回被删除的元素</li>
+<li>public E set(int index,E element)	修改指定索引的元素，返回被修改的元素</li>
+<li>public E get(int index)	返回集合中指定位置的元素</li>
+</ul>
+<pre><code>package ceshi;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class ListDemo &#123;
+    public static void main(String[] args) &#123;
+        //创建集合对象
+        List&lt;String&gt; list = new ArrayList&lt;&gt;();
+
+        //添加元素
+        list.add(&quot;java&quot;);
+        list.add(&quot;天下&quot;);
+        list.add(&quot;无敌&quot;);
+        list.add(&quot;java&quot;);
+        System.out.println(list); //[java, 天下, 无敌, java]
+    
+        //1、public void add(int index,E element) 	该集合中的指定位置上插入元素
+        list.add(1,&quot;javase&quot;);
+        System.out.println(list); //[java, javase, 天下, 无敌, java]
+    
+        //2、public E remove(int index) 	删除列表中指定位置的元素，返回被删除的元素
+        System.out.println(list.remove(1)); //javase
+        System.out.println(list); //[java, 天下, 无敌, java]
+    
+        //3、public E set(int index,E element) 	修改指定索引的元素，返回被修改的元素
+        System.out.println(list.set(0,&quot;java1&quot;)); //java
+        System.out.println(list); //[java1, 天下, 无敌, java]
+    
+        //4、public E get(int index) 	返回集合中指定位置的元素
+        System.out.println(list.get(2)); //无敌
+    
+        //for循环遍历
+        for(int i=0;i&lt; list.size();i++) &#123;
+            //5,public E get(int index)	返回集合中指定位置的元素
+            String s = list.get(i);
+            System.out.println(s);
+            /*java1
+            天下
+            无敌
+            java*/
+        &#125;
+    &#125;
+
+&#125;
+</code></pre>
+<p>案例</p>
+<p>测试类</p>
+<pre><code>package ceshi;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class ListDemo &#123;
+    public static void main(String[] args) &#123;
+        //2、创建集合对象
+        List&lt;Student&gt; list = new ArrayList&lt;Student&gt;();
+        //3、创建学生对象
+        Student s1 = new Student(&quot;y1&quot;,10);
+        Student s2 = new Student(&quot;y2&quot;,20);
+        Student s3 = new Student(&quot;y3&quot;,30);
+        //4、学生对象添加到集合
+        list.add(s1);
+        list.add(s2);
+        list.add(s3);
+
+```
+    //5、遍历集合：迭代器方法
+    Iterator&lt;Student&gt; it = list.iterator();
+    while(it.hasNext()) &#123;
+        Student s = it.next();
+        System.out.println(s.getName()+&quot;,&quot;+s.getAge());
+        /*y1,10
+        y2,20
+        y3,30*/
+    &#125;
+
+    //5、遍历集合：for循环
+    for(int i=0;i&lt;list.size();i++) &#123;
+        Student ss = list.get(i);
+        System.out.println(ss.getName()+&quot;,&quot;+ss.getAge());
+        /*y1,10
+        y2,20
+        y3,30*/
+    &#125;
+&#125;
+```
+
+&#125;
+</code></pre>
+<h2 id="6-3-ListIterator迭代器"><a href="#6-3-ListIterator迭代器" class="headerlink" title="6.3 ListIterator迭代器"></a>6.3 ListIterator迭代器</h2><p>Lstlterator:列表迭代器</p>
+<ul>
+<li>通过List集合的listterator()方法得到，所以说它是List集合特有的迭代器</li>
+<li>用于允许程序员沿任一方向遍历列表的列表迭代器,在迭代期间修改列表,并获取列表中迭代器的当前位置</li>
+</ul>
+<p>常用方法</p>
+<ul>
+<li>list.listIterator()	得到 listIterator 迭代器</li>
+<li>E next()	返回迭代中的下一个元素</li>
+<li>boolean hasNext()	如果迭代具有更多元素，则返回true</li>
+<li>E previous() [ˈpriːviəs]	返回列表中的上一个元素</li>
+<li>boolean hasPrevious()	如果此列表迭代器在相反方向遍历列表时具有更多元索，则返回true</li>
+<li>void add(E e)	将指定的元索插入列表</li>
+</ul>
+<pre><code>package ceshi;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ListIterator;
+
+public class ListIteratorDemo &#123;
+    public static void main(String[] args) &#123;
+        List&lt;String&gt; list = new ArrayList&lt;&gt;();
+
+        list.add(&quot;java&quot;);
+        list.add(&quot;python&quot;);
+        list.add(&quot;scala&quot;);
+    
+        //通过list集合的listIterator() 方法得到迭代器
+        /*ListIterator&lt;String&gt; lit = list.listIterator();
+        while(lit.hasNext()) &#123;
+            String s = lit.next();
+            System.out.println(s);
+            *//*java
+            python
+            scala*//*
+        &#125;
+        System.out.println(&quot;---------&quot;);
+    
+        //逆向遍历
+        *//*E previous0 	返回列表中的上一个元素
+        boolean hasPrevious() 	如果此列表迭代器在相反方向遍历列表时具有更多元索，则返回true*//*
+        while(lit.hasPrevious()) &#123;
+            String s = lit.previous();
+            System.out.println(s);
+            *//*scala
+            python
+            java*//*
+        &#125;*/
+    
+        //获取列表迭代器
+        ListIterator&lt;String&gt; lit = list.listIterator();
+        while(lit.hasNext()) &#123;
+            String s = lit.next();
+            if(s.equals(&quot;java&quot;)) &#123;
+                lit.add(&quot;world&quot;);
+            &#125;
+        &#125;
+        System.out.println(list); //[java, world, python, scala]
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="6-4-foreach（增强for循环）"><a href="#6-4-foreach（增强for循环）" class="headerlink" title="6.4 foreach（增强for循环）"></a>6.4 foreach（增强for循环）</h2><p>增强for：简化数组和Collection集合的遍历</p>
+<p>实现Iterable接口的类允许其对象成为增强型 for语句的目标<br>它是JDK5之后出现的，其内部原理是一个Iterator迭代器<br>格式</p>
+<pre><code>for(元素类型  变量名: 数组名或collection集合)&#123; 
+    
+&#125;
+</code></pre>
+<pre><code>//范例
+int[] arr = &#123;1,2,3,4,5&#125;;
+for(int i : arr) &#123;
+    System.out.println(i);
+&#125;
+</code></pre>
+<p>范例：</p>
+<pre><code>package ceshi;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ForDemo &#123;
+    public static void main(String[] args) &#123;
+        //int类型数组
+        int[] arr = &#123;1,2,3,4,5&#125;;
+        for(int i : arr) &#123;
+            System.out.println(i);
+            /*
+            1
+            2
+            3
+            4
+            5*/
+        &#125;
+        //String类型数组
+        String[] strArray = &#123;&quot;java&quot;,&quot;python&quot;,&quot;scala&quot;&#125;;
+        for(String s : strArray) &#123;
+            System.out.println(s);
+            /*java
+            python
+            scala*/
+        &#125;
+</code></pre>
+<pre><code>    //集合
+    List&lt;String&gt; list = new ArrayList&lt;&gt;();
+    list.add(&quot;y1&quot;);
+    list.add(&quot;y2&quot;);
+    list.add(&quot;y3&quot;);
+    for(String lt:list) &#123;
+        System.out.println(lt);
+        /*y1
+        y2
+        y3*/
+    &#125;
+
+    //判断：内部原理是一个Iterator迭代器
+    for(String s:list) &#123;
+        if(s.equals(&quot;y1&quot;)) &#123;
+            list.add(&quot;y4&quot;); //ConcurrentModificationException:并发修改异常
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p>}</p>
+<h2 id="6-5-案例：List集合存储学生对象用三种方式遍历"><a href="#6-5-案例：List集合存储学生对象用三种方式遍历" class="headerlink" title="6.5 案例：List集合存储学生对象用三种方式遍历"></a>6.5 案例：List集合存储学生对象用三种方式遍历</h2><p>测试类</p>
+<pre><code>package ceshi;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class ListDemo &#123;
+    public static void main(String[] args) &#123;
+        List&lt;Student&gt; list = new ArrayList&lt;&gt;();
+
+        Student s1 = new Student(&quot;y1&quot;,10);
+        Student s2 = new Student(&quot;y2&quot;,20);
+        Student s3 = new Student(&quot;y3&quot;,30);
+    
+        list.add(s1);
+        list.add(s2);
+        list.add(s3);
+    
+        //迭代器方式
+        Iterator&lt;Student&gt; it = list.iterator();
+        while(it.hasNext()) &#123;
+            Student s = it.next();
+            System.out.println(s.getName()+&quot;,&quot;+s.getAge());
+        &#125;
+        System.out.println(&quot;----------&quot;);
+
+
+        //for带索引方式
+        for(int i =0;i&lt;list.size();i++) &#123;
+            Student s = list.get(i);
+            System.out.println(s.getName()+&quot;,&quot;+s.getAge());
+        &#125;
+        System.out.println(&quot;----------&quot;);
+    
+        //增强for
+        for(Student s: list) &#123;
+            System.out.println(s.getName()+&quot;,&quot;+s.getAge());
+        &#125;
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="6-6-List集合子类特点"><a href="#6-6-List集合子类特点" class="headerlink" title="6.6 List集合子类特点"></a>6.6 List集合子类特点</h2><ul>
+<li>ArrayList：底层数据结构数组实现，查询快，增删慢</li>
+<li>LinkedList：底层数据结构链表实现，查询慢，增删快</li>
+</ul>
+<p>范例：分别用ArrayList和LinkedList存储字符串并遍历</p>
+<pre><code>package ceshi;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+
+public class ListDemo &#123;
+    public static void main(String[] args) &#123;
+        //1、创建ArrayList集合对象
+        ArrayList&lt;String&gt; arraylist = new ArrayList&lt;&gt;();
+        arraylist.add(&quot;java&quot;);
+        arraylist.add(&quot;python&quot;);
+        arraylist.add(&quot;scala&quot;);
+
+        //增强for
+        for(String s: arraylist) &#123;
+            System.out.println(s);
+        &#125;
+        System.out.println(&quot;-------&quot;);
+        //普通for循环
+        for(int i=0;i&lt; arraylist.size();i++) &#123;
+            String s = arraylist.get(i);
+            System.out.println(s);
+        &#125;
+        System.out.println(&quot;-------&quot;);
+        //迭代器的方式
+        Iterator&lt;String&gt; it = arraylist.iterator();
+        while(it.hasNext()) &#123;
+            String s = it.next();
+            System.out.println(s);
+        &#125;
+        System.out.println(&quot;-------&quot;);
+
+
+        //2、创建LinkedList集合对象
+        LinkedList&lt;String&gt; linkedList = new LinkedList&lt;&gt;();
+        linkedList.add(&quot;a&quot;);
+        linkedList.add(&quot;b&quot;);
+        linkedList.add(&quot;c&quot;);
+        //增强for
+        for(String s:linkedList) &#123;
+            System.out.println(s);
+        &#125;
+        System.out.println(&quot;-------&quot;);
+        //普通for
+        for(int i=0;i&lt; linkedList.size();i++) &#123;
+            String s = linkedList.get(i);
+            System.out.println(s);
+        &#125;
+        System.out.println(&quot;-------&quot;);
+        //迭代器
+        Iterator&lt;String&gt; it1 = linkedList.iterator();
+        while(it1.hasNext()) &#123;
+            String s = it1.next();
+            System.out.println(s);
+        &#125;
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="6-7-LinkedList集合特有方法"><a href="#6-7-LinkedList集合特有方法" class="headerlink" title="6.7 LinkedList集合特有方法"></a>6.7 LinkedList集合特有方法</h2><p>方法名	说明</p>
+<ul>
+<li>public void addFirst(E,e)	在该列表开头插入指定的元素</li>
+<li>public void addLast(E,e)	将指定的元索追加到此列表的末尾</li>
+<li>public E getFirst()	返回此列表中的第一个元索</li>
+<li>public E getLast()	返回此列表中的最后一个元素</li>
+<li>public E removeFirst	从此列表中删除并返回第一个元素</li>
+<li>public E removeLast	从此列表中删除并返回最后一个元素</li>
+</ul>
+<pre><code>package ceshi;
+
+import java.util.LinkedList;
+
+public class LinkedListDemo &#123;
+    public static void main(String[] args) &#123;
+        //创建集合对象
+        LinkedList&lt;String&gt; linkedList = new LinkedList&lt;&gt;();
+        linkedList.add(&quot;java&quot;);
+        linkedList.add(&quot;python&quot;);
+        linkedList.add(&quot;scala&quot;);
+        System.out.println(linkedList); //[java, python, scala]
+
+        //1、public void addFirst(E,e) 	在该列表开头插入指定的元素
+        linkedList.addFirst(&quot;1&quot;);
+        System.out.println(linkedList); //[1, java, python, scala]
+    
+        //2、public void addLast(E,e) 	将指定的元索追加到此列表的末尾
+        linkedList.addLast(&quot;5&quot;);
+        System.out.println(linkedList); //[1, java, python, scala, 5]
+    
+        //3、public E getFirst() 	返回此列表中的第一个元索
+        System.out.println(linkedList.getFirst()); //1
+    
+        //4、public E getLast() 	返回此列表中的最后一个元素
+        System.out.println(linkedList.getLast()); //5
+    
+        //5、public E removeFirst 	从此列表中删除并返回第一个元素
+        System.out.println(linkedList.removeFirst()); //1
+        System.out.println(linkedList);//[java, python, scala, 5]
+    
+        //6、public E removeLast 	从此列表中删除并返回最后一个元素
+        System.out.println(linkedList.removeLast()); //5
+        System.out.println(linkedList); //[java, python, scala]
+    &#125;
+
+&#125;
+</code></pre>
+<h1 id="7-Set集合"><a href="#7-Set集合" class="headerlink" title="7 Set集合"></a>7 Set集合</h1><h2 id="7-1-Set集合的概述和特点"><a href="#7-1-Set集合的概述和特点" class="headerlink" title="7.1 Set集合的概述和特点"></a>7.1 Set集合的概述和特点</h2><p>Set集合的特点</p>
+<ul>
+<li>不包含重复元素的集合</li>
+<li>没有带索引的方法，所以不能使用普通for循环</li>
+<li>Set集合是接口通过实现类实例化（多态的形式）</li>
+<li>HashSet：添加的元素是无序，不重复，无索引的</li>
+<li>LinkedHashSet: 添加的元素是有序，不重复，无索引的</li>
+<li>TreeSet: 不重复，无索引，按照大小默认升序排列</li>
+</ul>
+<pre><code>package ceshi;
+
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
+public class SetDemo &#123;
+    public static void main(String[] args) &#123;
+        //创建Set集合对象
+        Set&lt;String&gt; set = new HashSet&lt;&gt;();
+
+        //添加元素
+        set.add(&quot;java&quot;);
+        set.add(&quot;python&quot;);
+        set.add(&quot;scala&quot;);
+        //不包含重复元素
+        set.add(&quot;java&quot;);
+    
+        //两种遍历方式
+        for(String s:set) &#123;
+            System.out.println(s);
+            /*python
+            java
+            scala*/
+        &#125;
+        System.out.println(&quot;--------&quot;);
+    
+        Iterator&lt;String&gt; it = set.iterator();
+        while(it.hasNext()) &#123;
+            String s = it.next();
+            System.out.println(s);
+            /*python
+            java
+            scala*/
+        &#125;
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="7-2-哈希值"><a href="#7-2-哈希值" class="headerlink" title="7.2 哈希值"></a>7.2 哈希值</h2><ul>
+<li>哈希值：是JDK根据对象的地址或者字符串或者数字算出来的int类型的数值</li>
+<li>Object类中有一个方法可以获取对象的哈希值</li>
+<li>public int hashCode()：返回对象的哈希码值</li>
+</ul>
+<p>对象的哈希值特点</p>
+<pre><code>同一个对象多次调用hashCode()方法返回的哈希值是相同的
+默认情况下，不同对象的哈希值是不同的。而重写hashCode0方法，可以实现让不同对象的哈希值相同
+</code></pre>
+<pre><code>package ceshi;
+
+public class HashDemo &#123;
+    public static void main(String[] args) &#123;
+        //创建学生对象
+        Student s1 = new Student(&quot;y1&quot;,10);
+
+        //同一个对象多次调用hashCode()方法哈希值相同
+        System.out.println(s1.hashCode()); //460141958
+        System.out.println(s1.hashCode()); //460141958
+        System.out.println(&quot;---------&quot;);
+    
+        //默认情况下，不同对象哈希值不同；重写hashCode()方法就可以使哈希值相同
+        Student s2 = new Student(&quot;y2&quot;,20);
+        System.out.println(s2.hashCode()); //1163157884
+        System.out.println(&quot;---------&quot;);
+    
+        System.out.println(&quot;java&quot;.hashCode()); //3254818
+        System.out.println(&quot;python&quot;.hashCode()); //-973197092
+        System.out.println(&quot;scala&quot;.hashCode()); //109250886
+        System.out.println(&quot;---------&quot;);
+    
+        System.out.println(&quot;无&quot;.hashCode()); //26080
+        System.out.println(&quot;敌&quot;.hashCode()); //25932
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="7-3-数据结构之哈希表"><a href="#7-3-数据结构之哈希表" class="headerlink" title="7.3 数据结构之哈希表"></a>7.3 数据结构之哈希表</h2><pre><code>JDK8之前，底层采用数组+链表实现，可以说是一个元索为链表的数组（哈希表 = 数组 + 链表 + （哈希算法））
+JDK8以后，在长度比较长的时候，底层实现了优化（哈希表 = 数组 + 链表 + 红黑树 + （哈希算法））
+当链表长度超过 8 时，将链表转换为红黑树，这样大大减少了查找时间
+</code></pre>
+<h2 id="7-4-HashSet集合概述和特点"><a href="#7-4-HashSet集合概述和特点" class="headerlink" title="7.4 HashSet集合概述和特点"></a>7.4 HashSet集合概述和特点</h2><p>HashSet集合特点</p>
+<ul>
+<li>底层数据结构是哈希表</li>
+<li>对集合的迭代顺序不作任何保证 ,也就是说不保证存储和取出的元素顺序一致</li>
+<li>没有带索引的方法，所以不能使用普通for循环遍历</li>
+<li>由于是Set集合, 所以是不包含重复元素的集合</li>
+</ul>
+<pre><code>package ceshi;
+
+import java.util.HashSet;
+
+public class HashSetDemo &#123;
+    public static void main(String[] args) &#123;
+        HashSet&lt;String&gt; hs = new HashSet&lt;&gt;();
+
+        hs.add(&quot;java&quot;);
+        hs.add(&quot;python&quot;);
+        hs.add(&quot;scala&quot;);
+    
+        hs.add(&quot;scala&quot;);
+    
+        for(String s:hs) &#123;
+            System.out.println(s);
+            /*python
+            java
+            scala*/
+        &#125;
+    
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="7-5-HashSet集合保证元素唯一性源码分析（重点面试常考）"><a href="#7-5-HashSet集合保证元素唯一性源码分析（重点面试常考）" class="headerlink" title="7.5 HashSet集合保证元素唯一性源码分析（重点面试常考）"></a>7.5 HashSet集合保证元素唯一性源码分析（重点面试常考）</h2><pre><code>HashSet&lt;String&gt; hs = new HashSet&lt;&gt;();
+
+​    hs.add(&quot;java&quot;);
+​    hs.add(&quot;python&quot;);
+​    hs.add(&quot;scala&quot;);
+
+​    hs.add(&quot;scala&quot;);
+
+​    for(String s:hs) &#123;
+​        System.out.println(s);
+​        /*python
+​        java
+​        scala*/
+​    &#125;
+</code></pre>
+<hr>
+<pre><code>public boolean add(E e) &#123;
+   return map.put(e, PRESENT)==null;
+&#125;
+
+static final int hash(Object key) &#123;
+    int h;
+    return (key == null) ? 0 : (h = key.hashCode()) ^ (h &gt;&gt;&gt; 16);
+&#125;
+public V put(K key, V value) &#123;
+    return putVal(hash(key), key, value, false, true); //上个方法的返回的值是hash（key）的值
+&#125;
+//hash值和元素的hashCode()方法
+final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
+              boolean evict) &#123;
+    Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; p; int n, i;
+    //如果哈希表未初始化就对其初始化
+    if ((tab = table) == null || (n = tab.length) == 0)
+        n = (tab = resize()).length;
+    //根据对象的哈希值计算对象的存储位置，
+    if ((p = tab[i = (n - 1) &amp; hash]) == null)
+        tab[i] = newNode(hash, key, value, null); //如果该位置没有元素，就存储新元素
+    //有元素就走else
+    else &#123;
+        Node&lt;K,V&gt; e; K k;
+        //存入的元素和以前的元素比哈希值
+        if (p.hash == hash &amp;&amp; 
+            //二、如果哈希值相同，调用对象的equals()比较内容是否相同
+            //1、如果内容不同equals()返回false,就走一把元素添加到集合
+            //2、如果内容相同返回true，说明元素重复，走e = p;不存储
+            ((k = p.key) == key || (key != null &amp;&amp; key.equals(k))))
+            e = p;
+        else if (p instanceof TreeNode)
+            e = ((TreeNode&lt;K,V&gt;)p).putTreeVal(this, tab, hash, key, value);
+        //一、如果哈希值不同，就走else存储元素到集合
+        else &#123;
+            for (int binCount = 0; ; ++binCount) &#123;
+                if ((e = p.next) == null) &#123;
+                    p.next = newNode(hash, key, value, null); //新元素添加到集合
+                    if (binCount &gt;= TREEIFY_THRESHOLD - 1) // -1 for 1st
+                        treeifyBin(tab, hash);
+                    break;
+                &#125;
+                if (e.hash == hash &amp;&amp;
+                    ((k = e.key) == key || (key != null &amp;&amp; key.equals(k))))
+                    break;
+                p = e;
+            &#125;
+        &#125;
+        if (e != null) &#123; // existing mapping for key
+            V oldValue = e.value;
+            if (!onlyIfAbsent || oldValue == null)
+                e.value = value;
+            afterNodeAccess(e);
+            return oldValue;
+        &#125;
+    &#125;
+    ++modCount;
+    if (++size &gt; threshold)
+        resize();
+    afterNodeInsertion(evict);
+    return null;
+&#125;
+</code></pre>
+<p>HashSet集合存储元素：要保证元素唯一性需要重写hashCode()和equals()方法</p>
+<p>案例</p>
+<pre><code>Student类
+
+package ceshi;
+
+public class Student &#123;
+    private String name;
+    private int age;
+
+```
+public Student() &#123;
+&#125;
+
+public Student(String name, int age) &#123;
+    this.name = name;
+    this.age = age;
+&#125;
+
+public String getName() &#123;
+    return name;
+&#125;
+
+public void setName(String name) &#123;
+    this.name = name;
+&#125;
+
+public int getAge() &#123;
+    return age;
+&#125;
+
+public void setAge(int age) &#123;
+    this.age = age;
+&#125;
+
+//重写快捷键：Fn+Alt+insert，选择equals() and hashCode()
+@Override
+public boolean equals(Object o) &#123;
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    Student student = (Student) o;
+
+    if (age != student.age) return false;
+    return name != null ? name.equals(student.name) : student.name == null;
+&#125;
+
+@Override
+public int hashCode() &#123;
+    int result = name != null ? name.hashCode() : 0;
+    result = 31 * result + age;
+    return result;
+&#125;
+```
+
+&#125;
+</code></pre>
+<p>测试类</p>
+<pre><code>package ceshi;
+
+import java.util.HashSet;
+
+public class HashSetDemo &#123;
+    public static void main(String[] args) &#123;
+        HashSet&lt;Student&gt; hs = new HashSet&lt;&gt;();
+
+        Student s1 = new Student(&quot;y1&quot;,10);
+        Student s2 = new Student(&quot;y2&quot;,20);
+        Student s3 = new Student(&quot;y3&quot;,30);
+        Student s4 = new Student(&quot;y3&quot;,30);
+    
+        hs.add(s1);
+        hs.add(s2);
+        hs.add(s3);
+        hs.add(s4);
+    
+        for(Student s: hs) &#123;
+            System.out.println(s.getName()+&quot;,&quot;+s.getAge());
+            /*y3,30
+            y2,20
+            y1,10
+            y3,30；s4内容和s3重复并存入了，需要重写hashCode()和equals()
+            */
+    
+            //重写后
+            /*
+            y1,10
+            y3,30
+            y2,20*/
+        &#125;
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="7-6-LinkedHashSet集合概述和特点"><a href="#7-6-LinkedHashSet集合概述和特点" class="headerlink" title="7.6 LinkedHashSet集合概述和特点"></a>7.6 LinkedHashSet集合概述和特点</h2><p>LinkedHashSet集合特点</p>
+<ul>
+<li>哈希表和链表实现的Set接口， 具有可预测的迭代次序</li>
+<li>由链表保证元素有序, 也就是说元索的存储和取出顺序是一致的</li>
+<li>由哈希表保证元索唯一， 也就是说没有重复的元素</li>
+</ul>
+<pre><code>package ceshi;
+
+import java.util.LinkedHashSet;
+
+public class LinkedHashSetDemo &#123;
+    public static void main(String[] args) &#123;
+        LinkedHashSet&lt;String&gt; linkedHashSet = new LinkedHashSet&lt;&gt;();
+
+        linkedHashSet.add(&quot;java&quot;);
+        linkedHashSet.add(&quot;python&quot;);
+        linkedHashSet.add(&quot;scala&quot;);
+        linkedHashSet.add(&quot;scala&quot;);
+    
+        for(String s:linkedHashSet) &#123;
+            System.out.println(s);
+            /*java
+            python
+            scala*/
+        &#125;
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="7-7-TreeSet集合概述和特点"><a href="#7-7-TreeSet集合概述和特点" class="headerlink" title="7.7 TreeSet集合概述和特点"></a>7.7 TreeSet集合概述和特点</h2><p>TreeSet集合特点</p>
+<ol>
+<li><p>元素有序, 这里的顺序不是指存储和取出的顺序,而是按照一定的规则进行排序，具体排序方式取决于构造方法</p>
+</li>
+<li><p>TreeSet()：根据其元素的自然排序进行排序</p>
+</li>
+<li><p>TreeSet(Comparator comparator)：根据指定的比较器进行排序</p>
+</li>
+<li><p>没有带索引的方法，所以不能使用普通for循环遍历</p>
+</li>
+<li><p>由于是Set集合，所以不包含重复元素的集合</p>
+</li>
+</ol>
+<pre><code>package ceshi;
+
+import java.util.TreeSet;
+
+public class TreeSetDemo &#123;
+    public static void main(String[] args) &#123;
+        TreeSet&lt;Integer&gt; ts = new TreeSet&lt;&gt;();
+
+```
+    //jdk5以后添加元素自动装箱int》integer
+    ts.add(10);
+    ts.add(40);
+    ts.add(30);
+    ts.add(50);
+    ts.add(20);
+
+    ts.add(30);
+
+    for(Integer i:ts) &#123;
+        System.out.println(i);
+        /*
+        10
+        20
+        30
+        40
+        50*/
+    &#125;
+
+&#125;
+```
+
+&#125;
+</code></pre>
+<h2 id="7-8-自然排序Comarable的使用"><a href="#7-8-自然排序Comarable的使用" class="headerlink" title="7.8 自然排序Comarable的使用"></a>7.8 自然排序Comarable的使用</h2><p>存储学生对象并遍历，创建TreeSet集合使用无参构造方法</p>
+<p>要求:按照年龄从小到大排序，年龄相同时，按照姓名的字母顺序排序</p>
+<p>结论：</p>
+<p>用TreeSet集合存储自定义对象，无参构造方法使用的是自然排序对元素进行排序的<br>自然排序，就是让元素所属的类实现Comparable接口，重写compareTo(T o)方法<br>重写方法时，一定要注意排序规则必须按照要求的主要条件和次要条件来写<br>Student类</p>
+<pre><code>package ceshi;
+
+public class Student implements Comparable&lt;Student&gt;&#123; //实现接口
+    private String name;
+    private int age;
+
+    public Student() &#123;
+    &#125;
+    
+    public Student(String name, int age) &#123;
+        this.name = name;
+        this.age = age;
+    &#125;
+    
+    public String getName() &#123;
+        return name;
+    &#125;
+    
+    public void setName(String name) &#123;
+        this.name = name;
+    &#125;
+    
+    public int getAge() &#123;
+        return age;
+    &#125;
+    
+    public void setAge(int age) &#123;
+        this.age = age;
+    &#125;
+    
+    @Override
+    public int compareTo(Student s) &#123;
+
+//        return 0; //返回0说明元素是重复的，只能存一个元素
+//        return 1; //整数是升序排序
+//        return -1; //负数是倒叙排序
+        //按照年龄排序
+        int num = this.age-s.age; //this是s2,s是s1
+        //年龄相同时，按照名字字母排序
+        int num2 = num==0 ? this.name.compareTo(s.name):num;
+        return num2;
+    &#125;
+&#125;
+</code></pre>
+<p>测试</p>
+<pre><code>package ceshi;
+
+import java.util.TreeSet;
+
+public class TreeSetDemo &#123;
+    public static void main(String[] args) &#123;
+        TreeSet&lt;Student&gt; ts = new TreeSet&lt;&gt;();
+
+        Student s1 = new Student(&quot;y1&quot;,10);
+        Student s2 = new Student(&quot;y3&quot;,30);
+        Student s3 = new Student(&quot;y2&quot;,20);
+        Student s4 = new Student(&quot;y4&quot;,40);
+    
+        Student s5 = new Student(&quot;a4&quot;,40); //判断按字母排序
+    
+        Student s6 = new Student(&quot;y4&quot;,40); //判断会存储重复值吗
+    
+        ts.add(s1);
+        ts.add(s2);
+        ts.add(s3);
+        ts.add(s4);
+        ts.add(s5);
+        ts.add(s6);
+    
+        for(Student s:ts) &#123;
+            System.out.println(s.getName()+&quot;,&quot;+s.getAge());
+            /*y1,10
+            y2,20
+            y3,30
+            a4,40
+            y4,40*/
+        &#125;
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="7-9-比较器排序Comparator-kəmˈpɜrətər-的使用"><a href="#7-9-比较器排序Comparator-kəmˈpɜrətər-的使用" class="headerlink" title="7.9 比较器排序Comparator[kəmˈpɜrətər]的使用"></a>7.9 比较器排序Comparator[kəmˈpɜrətər]的使用</h2><p>存储学生对象并遍历，创建TreeSet集合使用带参构造方法<br>要求:按照年龄从小到大排序，年龄相同时，按照姓名的字母顺序排序<br>结论<br>用TreeSet集合存储自定义对象，带参构造方法使用的是比较器排序对元索进行排序的<br>比较器排序，就是让集合构造方法接收Comparator的实现类对象，重写compare(To1,T o2)方法<br>重写方法时，一定要注意排序规则必须按照要求的主要条件和次要条件来写</p>
+<pre><code>package ceshi;
+
+public class Student &#123;
+    private String name;
+    private int age;
+
+    public Student() &#123;
+    &#125;
+    
+    public Student(String name, int age) &#123;
+        this.name = name;
+        this.age = age;
+    &#125;
+    
+    public String getName() &#123;
+        return name;
+    &#125;
+    
+    public void setName(String name) &#123;
+        this.name = name;
+    &#125;
+    
+    public int getAge() &#123;
+        return age;
+    &#125;
+    
+    public void setAge(int age) &#123;
+        this.age = age;
+    &#125;
+
+&#125;
+</code></pre>
+<p>测试</p>
+<pre><code>package ceshi;
+
+import java.util.Comparator;
+import java.util.TreeSet;
+
+public class TreeSetDemo &#123;
+    public static void main(String[] args) &#123;
+        TreeSet&lt;Student&gt; ts = new TreeSet&lt;&gt;(new Comparator&lt;Student&gt;() &#123;
+            @Override
+            public int compare(Student s1, Student s2) &#123;
+                int num = s1.getAge() - s2.getAge();
+                int num2 = num==0? s1.getName().compareTo(s2.getName()):num;
+                return num2;
+            &#125;
+        &#125;);
+
+        Student s1 = new Student(&quot;y2&quot;,20);
+        Student s2 = new Student(&quot;y1&quot;,10);
+        Student s3 = new Student(&quot;y3&quot;,30);
+        Student s4 = new Student(&quot;y4&quot;,40);
+    
+        ts.add(s1);
+        ts.add(s2);
+        ts.add(s3);
+        ts.add(s4);
+    
+        for(Student s:ts) &#123;
+            System.out.println(s.getName()+&quot;,&quot;+s.getAge());
+        &#125;
+    &#125;
+
+&#125;
+</code></pre>
+<p>7.10 案例：不重复随机数</p>
+<pre><code>package ceshi;
+
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
+import java.util.TreeSet;
+
+public class SetDemo &#123;
+    public static void main(String[] args) &#123;
+//        Set&lt;Integer&gt; set = new HashSet&lt;&gt;();
+        Set&lt;Integer&gt; set = new TreeSet&lt;&gt;();
+
+        Random r = new Random();
+        //判断集合是否《10
+        while(set.size()&lt;10) &#123;
+            int number = r.nextInt(20)+1;
+            set.add(number); //把随机数添加到集合
+        &#125;
+    
+        for (Integer i:set) &#123;
+            System.out.print(i+&quot; &quot;); //1(哈希set集合）：16 17 2 20 8 9 10 11 14 15
+            //2（TreeSet集合)：1 3 4 5 6 7 8 10 16 19 
+        &#125;
+    &#125;
+
+&#125;
+</code></pre>
+<h1 id="8-Map集合"><a href="#8-Map集合" class="headerlink" title="8 Map集合"></a>8 Map集合</h1><ol>
+<li>HashMap: 元素按照键是无序，不重复，无索引，值不做要求</li>
+<li>LinkedHashMap: 元素按照键是有序，不重复，无索引，值不做要求</li>
+</ol>
+<h2 id="8-1-Map集合概述和特点"><a href="#8-1-Map集合概述和特点" class="headerlink" title="8.1 Map集合概述和特点"></a>8.1 Map集合概述和特点</h2><ul>
+<li>Map集合是一种双列集合，每个元素包含两个值</li>
+<li>Interface Map&lt;K,V&gt;； K：键的类型，V：值的类型</li>
+<li>Map集合的每个元素的格式：key &#x3D; value(键值对元素)</li>
+<li>Map集合也被称为“键值对集合”</li>
+<li>Map集合特点：</li>
+<li>Map 集合的键是无序，不重复，无索引的</li>
+<li>Map 集合后面重复的键对应的元素会覆盖前面的整个元素</li>
+</ul>
+<p>创建Map集合对象：<br>多态的方式<br>具体的实现类HashMap</p>
+<pre><code>package ceshi;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class MapDemo &#123;
+    public static void main(String[] args) &#123;
+        Map&lt;String,String&gt; map = new HashMap&lt;&gt;();
+
+        map.put(&quot;y1&quot;,&quot;10&quot;);
+        map.put(&quot;y2&quot;,&quot;20&quot;);
+        map.put(&quot;y2&quot;,&quot;30&quot;); //键和前面相同时，会替换前面的值
+        map.put(&quot;y3&quot;,&quot;30&quot;);
+        System.out.println(map); //&#123;y1=10, y3=30, y2=30&#125;
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="8-2-Map集合的基本方法"><a href="#8-2-Map集合的基本方法" class="headerlink" title="8.2 Map集合的基本方法"></a>8.2 Map集合的基本方法</h2><p>方法名	说明</p>
+<ol>
+<li>public V put(K key, V value)	添加元素</li>
+<li>public V remove(Object key)	根据键删除键值对元素</li>
+<li>public void clear()	移除所有键值对元素</li>
+<li>public boolean containKey(Object key) [kənˈteɪn]	判断集合是否包含指定的键</li>
+<li>public boolean containValue(Object value)	判断集合是否包含指定的值</li>
+<li>public boolean isEmpty()	判断集合是否为空</li>
+<li>public int size()	集合的长度，也就是集合中键值对个数</li>
+</ol>
+<pre><code>package ceshi;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class MapDemo &#123;
+    public static void main(String[] args) &#123;
+        Map&lt;String,String&gt; map = new HashMap&lt;&gt;();
+
+        //1,public V put(K key, V value) 	添加元素
+        map.put(&quot;y1&quot;,&quot;10&quot;);
+        map.put(&quot;y2&quot;,&quot;20&quot;);
+        map.put(&quot;y3&quot;,&quot;30&quot;);
+        System.out.println(map); //&#123;y1=10, y2=20, y3=30&#125;
+    
+        //2,public V remove(Object key) 	根据键删除键值对元素
+        /*map.remove(&quot;y2&quot;);
+        System.out.println(map); //&#123;y1=10, y3=30&#125;
+        */
+    
+        //3,public void clear() 	移除所有键值对元素
+       /* map.clear();
+        System.out.println(map); //&#123;&#125;
+        */
+    
+        //4,public boolean containKey(Object key) [kənˈteɪn] 	判断集合是否包含指定的键
+        /*System.out.println(map.containsKey(&quot;y2&quot;)); //ture
+        System.out.println(map.containsKey(&quot;y4&quot;)); //false*/
+    
+        //5,public boolean containValue(Object value) 	判断集合是否包含指定的值
+
+//        System.out.println(map.containsValue(&quot;10&quot;)); //true
+
+        //6,public boolean isEmpty() 	判断集合是否为空
+
+//        System.out.println(map.isEmpty()); //false
+
+        //7,public int size() 	集合的长度，也就是集合中键值对个数
+        System.out.println(map.size()); //3
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="8-3-Map集合的获取方法（重点）"><a href="#8-3-Map集合的获取方法（重点）" class="headerlink" title="8.3 Map集合的获取方法（重点）"></a>8.3 Map集合的获取方法（重点）</h2><p>方法名	说明</p>
+<ol>
+<li>public V get(Object key)	根据键获取值</li>
+<li>public Set<K> keySet()	获取所有键的集合，存储到Set集合中</li>
+<li>public Collection<V> values()	获取所有值的集合，存储到Collection集合中</li>
+<li>public Set&lt;Map.Entry&lt;K,V&gt;&gt; entrySet()	获取所有键值对对象的集合（Set集合）</li>
+</ol>
+<pre><code>package ceshi;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+public class MapDemo &#123;
+    public static void main(String[] args) &#123;
+        Map&lt;String,String&gt; map = new HashMap&lt;&gt;();
+
+        //public V put(K key, V value) 	添加元素
+        map.put(&quot;y1&quot;,&quot;10&quot;);
+        map.put(&quot;y2&quot;,&quot;20&quot;);
+        map.put(&quot;y3&quot;,&quot;30&quot;);
+        System.out.println(map); //&#123;y1=10, y2=20, y3=30&#125;
+    
+        //1,public V get(Object key) 	根据键获取值
+        System.out.println(map.get(&quot;y1&quot;)); //10
+        System.out.println(map.get(&quot;y4&quot;)); //null
+    
+        //2,public Set&lt;K&gt; keySet() 	获取所有键的集合，存储到Set集合中
+        Set&lt;String&gt; key = map.keySet();
+        for(String s:key) &#123;
+            System.out.println(s);
+            /*y1
+            y2
+            y3*/
+        &#125;
+    
+        //3,public Collection&lt;V&gt; values() 	获取所有值的集合，存储到Collection集合中
+        Collection&lt;String&gt; vlaues = map.values();
+        for(String s:vlaues) &#123;
+            System.out.println(s);
+            /*10
+            20
+            30*/
+        &#125;
+    
+        //4,public Set&lt;Map.Entry&lt;K,V&gt;&gt; entrySet() 	获取所有键值对对象的集合（Set集合）
+        Set&lt;Map.Entry&lt;String, String&gt;&gt; entries = map.entrySet();
+        for(Map.Entry&lt;String, String&gt; s:entries) &#123;
+            System.out.println(s);
+            /*
+            y1=10
+            y2=20
+            y3=30*/
+        &#125;
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="8-4-Map集合的遍历"><a href="#8-4-Map集合的遍历" class="headerlink" title="8.4 Map集合的遍历"></a>8.4 Map集合的遍历</h2><p>Map 集合遍历有三种方式：</p>
+<ol>
+<li>“键找值”的方式遍历</li>
+<li>“键值对”的方式遍历</li>
+<li>Lambda 表达式（JDK1.8开始之后的新技术）</li>
+</ol>
+<h3 id="8-4-1-“键找值”的方式遍历（常用）"><a href="#8-4-1-“键找值”的方式遍历（常用）" class="headerlink" title="8.4.1 “键找值”的方式遍历（常用）"></a>8.4.1 “键找值”的方式遍历（常用）</h3><ol>
+<li>1、获取所有键的集合：用keySet()方法实现</li>
+<li>2、遍历键的集合，获取到每一个键：用增强for遍历实现</li>
+<li>3、根据键去找值：在增强for中，用get(Object key)方法实现</li>
+</ol>
+<pre><code>package ceshi;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+public class MapDemo &#123;
+    public static void main(String[] args) &#123;
+        Map&lt;String, String&gt; map = new HashMap&lt;&gt;();
+
+        //public V put(K key, V value) 	添加元素
+        map.put(&quot;y1&quot;, &quot;10&quot;);
+        map.put(&quot;y2&quot;, &quot;20&quot;);
+        map.put(&quot;y3&quot;, &quot;30&quot;);
+        System.out.println(map); //&#123;y1=10, y2=20, y3=30&#125;
+    
+        //1、获取所有键的集合：用keySet()方法实现
+        Set&lt;String&gt; keySet = map.keySet();
+    
+        //2、遍历键的集合，获取到每一个键：用增强for遍历实现
+        for (String key : keySet) &#123;
+            //3、根据键去找值：在增强for中，用get(Object key)方法实现
+            String value = map.get(key);
+            System.out.println(key + &quot;=&quot; + value);
+            /*
+            y1=10
+            y2=20
+            y3=30*/
+        &#125;
+    &#125;
+
+&#125;
+</code></pre>
+<h3 id="8-4-2-“键值对”的方式遍历"><a href="#8-4-2-“键值对”的方式遍历" class="headerlink" title="8.4.2 “键值对”的方式遍历"></a>8.4.2 “键值对”的方式遍历</h3><ol>
+<li>获取所有键值对对象的集合：Set&lt;Map.Entry&lt;K,V&gt;&gt; entrySet()</li>
+<li>遍历键值对对象的集合，得到每一个键值对对象：用增强for实现，得到每一个Map.Entry</li>
+<li>根据键值对对象获取键和值：在增强for中，用geKey()得到键；用getValue()得到值</li>
+</ol>
+<pre><code>package ceshi;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+public class MapDemo &#123;
+    public static void main(String[] args) &#123;
+        Map&lt;String, String&gt; map = new HashMap&lt;&gt;();
+
+        //public V put(K key, V value) 	添加元素
+        map.put(&quot;y1&quot;, &quot;10&quot;);
+        map.put(&quot;y2&quot;, &quot;20&quot;);
+        map.put(&quot;y3&quot;, &quot;30&quot;);
+        System.out.println(map); //&#123;y1=10, y2=20, y3=30&#125;
+    
+        //1、获取所有键值对对象的集合：Set&lt;Map.Entry&lt;K,V&gt;&gt; entrySet()
+        Set&lt;Map.Entry&lt;String, String&gt;&gt; entrySet = map.entrySet();
+    
+        //2、遍历键值对对象的集合，得到每一个键值对对象：用增强for实现，得到每一个Map.Entry
+        for(Map.Entry&lt;String, String&gt; me:entrySet) &#123;
+            //3、根据键值对对象获取键和值：在增强for中，用geKey()得到键；用getValue()得到值
+            String key = me.getKey();
+            String value = me.getValue();
+            System.out.println(key+&quot;=&quot;+value);
+            /*
+            y1=10
+            y2=20
+            y3=30*/
+        &#125;
+    &#125;
+
+&#125;
+</code></pre>
+<h3 id="8-4-3-Lambda-ˈlaemdə-表达式方式遍历"><a href="#8-4-3-Lambda-ˈlaemdə-表达式方式遍历" class="headerlink" title="8.4.3 Lambda [ˈlæmdə] 表达式方式遍历"></a>8.4.3 Lambda [ˈlæmdə] 表达式方式遍历</h3><pre><code>package ceshi;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+public class MapDemo &#123;
+    public static void main(String[] args) &#123;
+        Map&lt;String, String&gt; map = new HashMap&lt;&gt;();
+
+        //public V put(K key, V value) 	添加元素
+        map.put(&quot;y1&quot;, &quot;10&quot;);
+        map.put(&quot;y2&quot;, &quot;20&quot;);
+        map.put(&quot;y3&quot;, &quot;30&quot;);
+        System.out.println(map); //&#123;y1=10, y2=20, y3=30&#125;
+    
+        map.forEach((k , v) -&gt; &#123;
+            System.out.println(k+&quot;=&quot;+v);
+            /*
+            y1=10
+            y2=20
+            y3=30*/
+        &#125;);
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="8-5-Map集合存储自定义类型"><a href="#8-5-Map集合存储自定义类型" class="headerlink" title="8.5 Map集合存储自定义类型"></a>8.5 Map集合存储自定义类型</h2><p>Map集合的键和值都可以存储自定义类型<br>如果希望Map集合认为自定义类型的键对象重复了，必须重写对象的hashCode()和equals()方法</p>
+<h2 id="8-6-LinkedHashMap（HashMap子类）"><a href="#8-6-LinkedHashMap（HashMap子类）" class="headerlink" title="8.6 LinkedHashMap（HashMap子类）"></a>8.6 LinkedHashMap（HashMap子类）</h2><p>LinkedHashMap集合是有序不重复的键值对集合</p>
+<pre><code>public class LinkedHashMapDemo &#123;
+    public static void main(String[] args) &#123;
+        Map&lt;String , Integer&gt; map = new LinkedHashMap&lt;&gt;();
+        map.put(&quot;y1&quot;,10);
+        map.put(&quot;y2&quot;,20);
+        map.put(&quot;y3&quot;,30); 
+        map.put(&quot;y3&quot;,100); //键不变，只是替换其值
+        
+
+        System.out.println(map);// &#123;y1=10, y2=20, y3=100&#125;   
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="8-7-TreeMap"><a href="#8-7-TreeMap" class="headerlink" title="8.7 TreeMap"></a>8.7 TreeMap</h2><p>TreeMap 集合按照键是可排序不重复的键值对集合(默认升序)</p>
+<h2 id="8-8-案例"><a href="#8-8-案例" class="headerlink" title="8.8 案例"></a>8.8 案例</h2><h3 id="8-8-1-集合遍历"><a href="#8-8-1-集合遍历" class="headerlink" title="8.8.1 集合遍历"></a>8.8.1 集合遍历</h3><pre><code>package ceshi;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+public class MapDemo &#123;
+    public static void main(String[] args) &#123;
+        //创建HashMap集合对象
+        HashMap&lt;String,Student&gt; hm =new HashMap&lt;&gt;();
+
+        Student s1 = new Student(&quot;y1&quot;,10);
+        Student s2 = new Student(&quot;y2&quot;,20);
+        Student s3 = new Student(&quot;y3&quot;,30);
+    
+        hm.put(&quot;itheima1&quot;,s1);
+        hm.put(&quot;itheima2&quot;,s2);
+        hm.put(&quot;itheima3&quot;,s3);
+    
+        //键找值
+        Set&lt;String&gt; keySet = hm.keySet();
+        for(String key:keySet) &#123;
+            Student value = hm.get(key);
+            System.out.println(key+&quot;,&quot;+value.getName()+&quot;,&quot;+value.getAge());
+            /*itheima3,y3,30
+            itheima1,y1,10
+            itheima2,y2,20*/
+        &#125;
+        System.out.println(&quot;---------&quot;);
+    
+        //键值对
+        Set&lt;Map.Entry&lt;String, Student&gt;&gt; entrySet= hm.entrySet();
+        for(Map.Entry&lt;String, Student&gt; me:entrySet) &#123;
+            String key = me.getKey();
+            Student value = me.getValue();
+            System.out.println(key+&quot;,&quot;+value.getName()+&quot;,&quot;+value.getAge());
+            /*itheima3,y3,30
+            itheima1,y1,10
+            itheima2,y2,20*/
+        &#125;
+    
+    &#125;
+
+&#125;
+</code></pre>
+<h3 id="8-8-2-集合嵌套之-ArrayList嵌套HashMap"><a href="#8-8-2-集合嵌套之-ArrayList嵌套HashMap" class="headerlink" title="8.8.2 集合嵌套之 ArrayList嵌套HashMap"></a>8.8.2 集合嵌套之 ArrayList嵌套HashMap</h3><pre><code>package ceshi;
+
+import java.util.*;
+
+public class MapDemo &#123;
+    public static void main(String[] args) &#123;
+        //1,创建ArrayList集合对象
+        ArrayList&lt;HashMap&lt;String,String&gt;&gt; array = new ArrayList&lt;&gt;();
+
+        //2,创建HashMap集合，并添加键值对元素
+        HashMap&lt;String,String&gt; hm1 = new HashMap&lt;&gt;();
+        hm1.put(&quot;y1&quot;,&quot;10&quot;);
+        HashMap&lt;String,String&gt; hm2 = new HashMap&lt;&gt;();
+        hm1.put(&quot;y2&quot;,&quot;20&quot;);
+        HashMap&lt;String,String&gt; hm3 = new HashMap&lt;&gt;();
+        hm1.put(&quot;y3&quot;,&quot;30&quot;);
+    
+        //3,把HashMap作为元素添加到Arraylist
+        array.add(hm1);
+        array.add(hm2);
+        array.add(hm3);
+    
+        //遍历Arraylist
+        for(HashMap&lt;String,String&gt; hm:array) &#123;
+            Set&lt;String&gt; keySet = hm.keySet();
+            for(String key:keySet) &#123;
+                String value = hm.get(key);
+                System.out.println(key+&quot;,&quot;+value);
+                /*y1,10
+                y2,20
+                y3,30*/
+            &#125;
+        &#125;
+    &#125;
+
+&#125;
+</code></pre>
+<h3 id="8-8-3-统计字符串中每个字符出现的次数"><a href="#8-8-3-统计字符串中每个字符出现的次数" class="headerlink" title="8.8.3 统计字符串中每个字符出现的次数"></a>8.8.3 统计字符串中每个字符出现的次数</h3><h1 id="9-泛型"><a href="#9-泛型" class="headerlink" title="9 泛型"></a>9 泛型</h1><h2 id="9-1-泛型的概述和好处"><a href="#9-1-泛型的概述和好处" class="headerlink" title="9.1 泛型的概述和好处"></a>9.1 泛型的概述和好处</h2><p>泛型：是JDK5中引入的特性，它提供了编译时类型安全检测机制，该机制允许在编译时检测到非法的类型它的本质是参数化类型，也就是说所操作的数据类型被指定为一个参数</p>
+<p>一提到参数，最熟悉的就是定义方法时有形参，然后调用此方法时传递实参。那么参数化类型怎么理解呢?顾名思义，就是将类型由原来的具体的类型参数化，然后在使用&#x2F;调用时传入具体的类型</p>
+<p>这种参数类型可以用在类、方法和接口中,分别被称为泛型类、泛型方法、泛型接口</p>
+<p>泛型定义格式：</p>
+<pre><code>&lt;类型&gt;:指定一种类型的格式。这里的类型可以看成是形参
+&lt;类型1,类型2…&gt;:指定多种类型的格式，多种类型之间用逗号隔开。这里的类型可以看成是形参
+将来具体调用时候给定的类型可以看成是实参, 并粗实参的类型只能是引用数据类型
+JDK 1.7开始之后，泛型后面的申明可以省略不写
+</code></pre>
+<p>泛型和集合都只能支持引用数据类型，不支持基本数据类型</p>
+<pre><code>ArrayList&lt;String&gt; lists = new ArrayList&lt;String&gt;();
+ArrayList&lt;String&gt; lists = new ArrayList&lt;&gt;(); 
+// JDK 1.7开始之后，泛型后面的申明可以省略不写!!
+</code></pre>
+<p>泛型的好处：<br>把运行的错误提前到编译时期<br>避免了强制类型转换</p>
+<pre><code>Collection&lt;String&gt; c = new ArrayList&lt;&gt;();
+
+        c.add(&quot;java&quot;);
+
+//        c.add(100); //报错
+//        c.add(false); //报错
+</code></pre>
+<h2 id="9-2-泛型类"><a href="#9-2-泛型类" class="headerlink" title="9.2 泛型类"></a>9.2 泛型类</h2><p>泛型类的概念：使用了泛型定义的类就是泛型类<br>常用泛型变量：T、E、V、K等形式的参数用来表示泛型<br>格式</p>
+<pre><code>修饰符 class 类名&lt;泛型变量&gt;&#123;&#125;
+</code></pre>
+<pre><code>//范例
+public class Generic&lt;T&gt; &#123;&#125;
+</code></pre>
+<ol>
+<li>泛型类的核心思想：是把出现泛型变量的地方全部替换成传输的真实数据类型</li>
+</ol>
+<p>泛型类</p>
+<pre><code>package ceshi;
+
+public class Generic&lt;T&gt; &#123;
+    private T t;
+
+    public T getT() &#123;
+        return t;
+    &#125;
+    public void setT(T t) &#123;
+        this.t = t;
+    &#125;
+
+&#125;
+</code></pre>
+<p>测试类</p>
+<pre><code>package ceshi;
+
+public class GenericDemo &#123;
+    public static void main(String[] args) &#123;
+        Generic&lt;String&gt; g1 = new Generic&lt;&gt;();
+        g1.setT(&quot;y1&quot;);
+
+        Generic&lt;Integer&gt; g2 = new Generic&lt;&gt;();
+        g2.setT(20);
+    
+        System.out.println(g1.getT()+&quot;,&quot;+g2.getT()); //y1,20
+    
+        Generic&lt;Boolean&gt; g3 = new Generic&lt;&gt;();
+        g3.setT(true);
+        System.out.println(g3.getT()); //true
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="9-3-泛型方法"><a href="#9-3-泛型方法" class="headerlink" title="9.3 泛型方法"></a>9.3 泛型方法</h2><p>泛型方法定义格式</p>
+<pre><code>修饰符 &lt;类型&gt; 返回值类型 方法名(类型 变量名)&#123;&#125;
+//范例
+public &lt;T&gt; void show(T t) &#123;&#125;
+</code></pre>
+<p>泛型方法定义</p>
+<pre><code>package ceshi;
+
+/*public class Generic &#123;
+    public void show(String s) &#123;
+        System.out.println(s);
+    &#125;
+    public void show(Integer i) &#123;
+        System.out.println(i);
+    &#125;
+    public void show(Boolean b) &#123;
+        System.out.println(b);
+    &#125;
+&#125;*/
+
+//泛型类改进
+/*
+public class Generic&lt;T&gt; &#123;
+    public void show(T t) &#123;
+        System.out.println(t);
+    &#125;
+&#125;
+*/
+
+//泛型方法
+public class Generic &#123;
+    public &lt;T&gt; void show (T t) &#123;
+        System.out.println(t);
+    &#125;
+&#125;
+</code></pre>
+<pre><code>
+
+测试类
+package ceshi;
+
+public class GenericDemo &#123;
+    public static void main(String[] args) &#123;
+        /*Generic g1 = new Generic();
+        g1.show(&quot;y1&quot;);
+        g1.show(30);
+        g1.show(true);*/
+
+        //泛型类
+        /*Generic&lt;String&gt; g1 = new Generic&lt;&gt;();
+        g1.show(&quot;y1&quot;);
+    
+        Generic&lt;Integer&gt; g2 = new Generic&lt;&gt;();
+        g2.show(10);*/
+    
+        //泛型方法
+        Generic g = new Generic();
+        g.show(&quot;y1&quot;);
+        g.show(10);
+        g.show(true);
+        g.show(13.14);
+        /*y1
+        10
+        true
+        13.14*/
+    
+    &#125;
+
+&#125;
+</code></pre>
+<h2 id="9-4-泛型接口"><a href="#9-4-泛型接口" class="headerlink" title="9.4 泛型接口"></a>9.4 泛型接口</h2><p>泛型接口定义格式</p>
+<pre><code>修饰符 interface 接口名称&lt;类型&gt; &#123;&#125;
+//范例
+public interface Generic&lt;T&gt; &#123;&#125;
+</code></pre>
+<p>泛型接口</p>
+<pre><code>package ceshi;
+
+public interface Generic&lt;T&gt; &#123;
+    void show(T t);
+&#125;
+</code></pre>
+<p>实现类</p>
+<pre><code>package ceshi;
+
+public class GenericImpl&lt;T&gt; implements Generic&lt;T&gt;&#123;
+    @Override
+    public void show(T t) &#123;
+        System.out.println(t);
+    &#125;
+&#125;
+</code></pre>
+<p>测试类</p>
+<pre><code>package ceshi;
+
+public class GenericDemo &#123;
+    public static void main(String[] args) &#123;
+        GenericImpl g1 = new GenericImpl();
+        g1.show(&quot;y1&quot;);
+        g1.show(10);
+    &#125;
+&#125;
+</code></pre>
+<h2 id="9-5-类型通配符"><a href="#9-5-类型通配符" class="headerlink" title="9.5 类型通配符"></a>9.5 类型通配符</h2><p>为了表示各种泛型List的父类，可以使用类型通配符</p>
+<p>类型通配符: &lt;?&gt;</p>
+<pre><code>List&lt;?&gt;：表示元素类型未知的List,它的元素可以匹配任何的类型
+这种带通配符的List仅表示它是各种泛型List的父类,并不能把元素添加到其中
+如果说我们不希望List&lt;?&gt;是任何泛型List的父类,只希望它代表某一类泛型List的父类，可以使用类型通配符的上限
+</code></pre>
+<p>类型通配符 上限: &lt;? extends类型&gt;<br>List&lt;? extends Number&gt;：它表示的类型是Number或者其子类型<br>除了可以指定类型通配符的上限，我们也可以指定类型通配符的下限</p>
+<p>类型通配符 下限:：&lt;?super 类型&gt;<br>List&lt;? super Number&gt;：它表示的类型是Number或者其父类型</p>
+<pre><code>package ceshi;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class GenericDemo &#123;
+    public static void main(String[] args) &#123;
+        //类型通配符: &lt;?&gt;
+        List&lt;?&gt; list1 = new ArrayList&lt;Number&gt;();
+        List&lt;?&gt; list2 = new ArrayList&lt;String&gt;();
+        List&lt;?&gt; list3 = new ArrayList&lt;Integer&gt;();
+
+        //类型通配符上限: &lt;? extends类型&gt;
+
+//        List&lt;? extends Number&gt; list4 = new ArrayList&lt;Object&gt;(); 报错，超过上限
+        List&lt;? extends Number&gt; list5 = new ArrayList&lt;Number&gt;();
+        List&lt;? extends Number&gt; list6 = new ArrayList&lt;Integer&gt;();
+
+        //类型通配符 下限:：&lt;?super 类型&gt;
+        List&lt;? super Number&gt; list7 = new ArrayList&lt;Object&gt;();
+        List&lt;? super Number&gt; list8 = new ArrayList&lt;Number&gt;();
+
+//        List&lt;? super Number&gt; list9 = new ArrayList&lt;Integer&gt;(); 报错
+    &#125;
+&#125;
+</code></pre>
+<h2 id="9-6-可变参数"><a href="#9-6-可变参数" class="headerlink" title="9.6 可变参数"></a>9.6 可变参数</h2><p>可变参数又称参数个数可变,用作方法的形参出现，那么方法参数个数就是可变的了<br>格式：修饰符 返回值类型 方法名(数据类型…变量名){ }<br>范例：public static int sum(int…a) {}<br>注意事项<br>这里的变量其实是一个数组<br>一个方法有多个参数，包含可变参数，可变参数放最后<br>范例：public static int sum(int b,int…a) {}</p>
+<pre><code>package ceshi;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class GenericDemo &#123;
+    public static void main(String[] args) &#123;
+        System.out.println(sum(10,20));
+        System.out.println(sum(10,20,30));
+        System.out.println(sum(10,20,30,40));
+        /*
+        30
+        60
+        100*/
+    &#125;
+    public static int sum(int...a) &#123; //a为数组
+        int sum =0;
+        for(int i:a) &#123;
+            sum +=i;
+        &#125;
+        return sum;
+    &#125;
+    //一个方法有多个参数，可变参数放最后
+    /*public static int sum(int b,int...a) &#123;
+        return 0;
+    &#125;*/
+&#125;
+</code></pre>
+<h2 id="9-7-可变参数的使用"><a href="#9-7-可变参数的使用" class="headerlink" title="9.7 可变参数的使用"></a>9.7 可变参数的使用</h2><p>1、Arrays工具类中有一个静态方法:</p>
+<p>public static <T> List<T> asList(T… a)：返回由指定数组支持的固定大小的列表<br>返回的集合不能做增删操作，可以做修改<br>2、List接口中有一个静态方法:（JDK9以上）</p>
+<p>public static <E> List<E> of(E… elements)：返回包含任意数元素的不可变列表<br>返回的集合不能做增删改操作<br>3、Set接口中有一个静态方法: （JDK9以上）</p>
+<ul>
+<li>public static <E> Set<E> of(E…. elements)：返回一个包含任意数量元素的不可变集合</li>
+</ul>
+<p>在给元素的时候，不能给重复值<br>返回的集合不能做增删操作，没有修改方法</p>
+<pre><code>package ceshi;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
+
+public class GenericDemo &#123;
+    public static void main(String[] args) &#123;
+        //1、public static &lt;T&gt; List&lt;T&gt; asList(T... a)：返回由指定数组支持的固定大小的列表
+/*        List&lt;String&gt; list = Arrays.asList(&quot;java&quot;, &quot;python&quot;, &quot;scala&quot;);
+        System.out.println(list); //[java, python, scala]
+
+//        list.add(&quot;javase&quot;); //UnsupportedOperationException;不支持请求操作
+//        list.remove(&quot;java&quot;); //UnsupportedOperationException;不支持请求操作
+        list.set(0,&quot;javase&quot;);
+        System.out.println(list); //[javase, python, scala]*/
+
+        //2、public static &lt;E&gt; List&lt;E&gt; of(E... elements)：返回包含任意数元素的不可变列表
+        List&lt;String&gt; list = List.of(&quot;java&quot;,&quot;python&quot;,&quot;scala&quot;,&quot;java&quot;)
+        System.out.println(list); //[javase, python, scala,java]
+        
+        //list.add(&quot;javaee&quot;); //UnsupportedOperationException
+        //list.remove(&quot;java&quot;); //UnsupportedOperationException
+        //list.set(0,&quot;javaee&quot;) //UnsupportedOperationException
+        
+        //3、public static &lt;E&gt; Set&lt;E&gt; of(E.... elements)：返回-一个包含任意数量元素的不可变集合
+        //Set&lt;String&gt; set = Arrays.of(&quot;java&quot;, &quot;python&quot;, &quot;scala&quot;,&quot;java&quot;); //set集合不能重复
+        Set&lt;String&gt; set = Arrays.of(&quot;java&quot;, &quot;python&quot;, &quot;scala&quot;);
+        System.out.println(set); //[java, python, scala]
+        
+        //set.add(&quot;javaee&quot;); //UnsupportedOperationException
+        //set.remove(&quot;java&quot;); //UnsupportedOperationException
+    
+    &#125;
+
+&#125;****
+</code></pre>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://linkailang.github.io">涂良湘</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://linkailang.github.io/2024/03/11/java%E5%B8%B8%E7%94%A8API/">https://linkailang.github.io/2024/03/11/java%E5%B8%B8%E7%94%A8API/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://linkailang.github.io" target="_blank">涂良湘</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%93%9D%E6%A1%A5/">-- 蓝桥</a></div><div class="post_share"><div class="social-share" data-image="/img/QQ%E5%9B%BE%E7%89%8720230422000755.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/03/19/Ros/" title="Ros"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Ros</div></div></a></div><div class="next-post pull-right"><a href="/2024/03/10/1-0linux%E5%9F%BA%E7%A1%80/" title="1.0linux基础"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">1.0linux基础</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/loading.gif" data-original="/img/QQ%E5%9B%BE%E7%89%8720230422000755.jpg" onerror="this.onerror=null;this.src='/img/avatar.png'" alt="avatar"/></div><div class="author-info__name">涂良湘</div><div class="author-info__description">涂良湘的个人博客</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:2698508226@qq.com" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">涂良湘的博客</div><timing></timing></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%B8%B8%E7%94%A8API"><span class="toc-number">1.</span> <span class="toc-text">1 常用API</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-Math%E7%B1%BB-java-lang"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 Math类(java.lang)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-System%E7%B1%BB"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 System类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-Object%E7%B1%BB-java-lang"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 Object类(java.lang)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81public-String-toString"><span class="toc-number">1.3.1.</span> <span class="toc-text">1、public String toString()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81public-boolean-equals-Object-o"><span class="toc-number">1.3.2.</span> <span class="toc-text">2、public boolean equals(Object o)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-Objects%E7%B1%BB-java-util"><span class="toc-number">1.4.</span> <span class="toc-text">1.4 Objects类 (java.util)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-Arrays%E7%B1%BB-java-util"><span class="toc-number">1.5.</span> <span class="toc-text">1.5 Arrays类 (java.util)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-6-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%8C%85%E8%A3%85%E7%B1%BB"><span class="toc-number">1.6.</span> <span class="toc-text">1.6 基本类型包装类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%85%E8%A3%85%E7%B1%BB%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.6.1.</span> <span class="toc-text">包装类和基本数据类型的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-1-Integer%E7%B1%BB%E6%A6%82%E8%BF%B0%E5%92%8C%E4%BD%BF%E7%94%A8"><span class="toc-number">1.6.2.</span> <span class="toc-text">1.6.1 Integer类概述和使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-2-int-%E5%92%8C-String-%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.6.3.</span> <span class="toc-text">1.6.2 int 和 String 的相互转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-3-%E6%A1%88%E4%BE%8B%EF%BC%9A%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E6%95%B0%E6%8D%AE%E6%8E%92%E5%BA%8F"><span class="toc-number">1.6.4.</span> <span class="toc-text">1.6.3 案例：字符串中数据排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-4-%E8%87%AA%E5%8A%A8%E8%A3%85%E7%AE%B1%E5%92%8C%E6%8B%86%E7%AE%B1"><span class="toc-number">1.6.5.</span> <span class="toc-text">1.6.4 自动装箱和拆箱</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-7-%E6%97%A5%E6%9C%9F%E7%B1%BB"><span class="toc-number">1.7.</span> <span class="toc-text">1.7 日期类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-1-Date%E7%B1%BB"><span class="toc-number">1.7.1.</span> <span class="toc-text">1.7.1 Date类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-2-SimpleDateFormat%E7%B1%BB-%CB%88s%C9%AAmpl"><span class="toc-number">1.7.2.</span> <span class="toc-text">1.7.2 SimpleDateFormat类 [ˈsɪmpl]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A5%E6%9C%9F%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="toc-number">1.7.3.</span> <span class="toc-text">日期工具类</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-7-3Calendar%E6%97%A5%E5%8E%86"><span class="toc-number">1.7.3.0.1.</span> <span class="toc-text">1.7.3Calendar日历</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-String%E7%B1%BB"><span class="toc-number">2.</span> <span class="toc-text">2 String类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-String%E6%A6%82%E6%8B%AC"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 String概括</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-String%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 String构造方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E5%8A%9F%E8%83%BD%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">2.3.</span> <span class="toc-text">判断功能的方法:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%8A%9F%E8%83%BD%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">2.4.</span> <span class="toc-text">获取功能的方法:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BD%AC%E6%8D%A2%E5%8A%9F%E8%83%BD%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">2.5.</span> <span class="toc-text">转换功能的方法:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%89%B2%E5%8A%9F%E8%83%BD%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">2.6.</span> <span class="toc-text">分割功能的方法:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-String%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.7.</span> <span class="toc-text">2.3 String对象的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-String%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E8%BE%83"><span class="toc-number">2.8.</span> <span class="toc-text">2.5 String字符串比较</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#StringBuilder"><span class="toc-number">3.</span> <span class="toc-text">StringBuilder</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-StringBuilder-%E5%92%8C-String-%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2"><span class="toc-number">3.1.</span> <span class="toc-text">3.3 StringBuilder 和 String 相互转换</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E9%9B%86%E5%90%88%E7%BB%93%E6%9E%84%E4%BD%93%E7%B3%BB"><span class="toc-number">4.</span> <span class="toc-text">4 集合结构体系</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E9%9B%86%E5%90%88%E5%9F%BA%E7%A1%80"><span class="toc-number">5.</span> <span class="toc-text">4 集合基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E9%9B%86%E5%90%88%E4%B8%8E%E6%95%B0%E7%BB%84%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">5.1.</span> <span class="toc-text">4.1 集合与数组的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-ArrayList-%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95%E5%92%8C%E6%B7%BB%E5%8A%A0%E6%96%B9%E6%B3%95"><span class="toc-number">5.2.</span> <span class="toc-text">4.2 ArrayList 构造方法和添加方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-ArrayList-%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">5.3.</span> <span class="toc-text">4.3 ArrayList 常用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8C%83%E4%BE%8B%EF%BC%9A"><span class="toc-number">5.3.1.</span> <span class="toc-text">范例：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-%E6%A1%88%E4%BE%8B"><span class="toc-number">5.4.</span> <span class="toc-text">4.4 案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-1-%E6%A1%88%E4%BE%8B1%EF%BC%9A%E5%AD%98%E5%82%A8%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B9%B6%E9%81%8D%E5%8E%86"><span class="toc-number">5.4.1.</span> <span class="toc-text">4.4.1 案例1：存储字符串并遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-2-%E6%A1%88%E4%BE%8B2%EF%BC%9A%E5%AD%98%E5%82%A8%E5%AD%A6%E7%94%9F%E5%AF%B9%E8%B1%A1%E5%B9%B6%E9%81%8D%E5%8E%86"><span class="toc-number">5.4.2.</span> <span class="toc-text">4.4.2 案例2：存储学生对象并遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%B1%BB"><span class="toc-number">5.4.2.1.</span> <span class="toc-text">测试类</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-Collection%E9%9B%86%E5%90%88"><span class="toc-number">6.</span> <span class="toc-text">5 Collection集合</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-Collection%E9%9B%86%E5%90%88%E6%A6%82%E8%BF%B0"><span class="toc-number">6.1.</span> <span class="toc-text">5.1 Collection集合概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-Collection%E9%9B%86%E5%90%88%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%EF%BC%88%E6%9F%A5%E7%9C%8B%E6%89%80%E6%9C%89%E6%BA%90%E7%A0%81%E5%BF%AB%E6%8D%B7%E9%94%AE%EF%BC%89"><span class="toc-number">6.2.</span> <span class="toc-text">5.2 Collection集合常用方法（查看所有源码快捷键）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-Collection%E9%9B%86%E5%90%88%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-number">6.3.</span> <span class="toc-text">5.3 Collection集合的遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-1-Iterator-%E2%80%98l%C9%AAt%C9%99re%C9%AAt%C9%99-%E8%BF%AD%E4%BB%A3%E5%99%A8%E9%81%8D%E5%8E%86%E9%9B%86%E5%90%88"><span class="toc-number">6.3.1.</span> <span class="toc-text">5.3.1 Iterator[‘lɪtəreɪtə]迭代器遍历集合</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Iterator%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">6.3.1.1.</span> <span class="toc-text">Iterator中的常用方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-Collections%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="toc-number">6.4.</span> <span class="toc-text">5.4 Collections工具类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-List%E9%9B%86%E5%90%88"><span class="toc-number">7.</span> <span class="toc-text">6 List集合</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-List%E9%9B%86%E5%90%88%E6%A6%82%E8%BF%B0%E5%92%8C%E7%89%B9%E7%82%B9"><span class="toc-number">7.1.</span> <span class="toc-text">6.1 List集合概述和特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-List%E9%9B%86%E5%90%88%E7%9A%84%E7%89%B9%E6%9C%89%E6%96%B9%E6%B3%95"><span class="toc-number">7.2.</span> <span class="toc-text">6.2 List集合的特有方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-ListIterator%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-number">7.3.</span> <span class="toc-text">6.3 ListIterator迭代器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-4-foreach%EF%BC%88%E5%A2%9E%E5%BC%BAfor%E5%BE%AA%E7%8E%AF%EF%BC%89"><span class="toc-number">7.4.</span> <span class="toc-text">6.4 foreach（增强for循环）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-5-%E6%A1%88%E4%BE%8B%EF%BC%9AList%E9%9B%86%E5%90%88%E5%AD%98%E5%82%A8%E5%AD%A6%E7%94%9F%E5%AF%B9%E8%B1%A1%E7%94%A8%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F%E9%81%8D%E5%8E%86"><span class="toc-number">7.5.</span> <span class="toc-text">6.5 案例：List集合存储学生对象用三种方式遍历</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-6-List%E9%9B%86%E5%90%88%E5%AD%90%E7%B1%BB%E7%89%B9%E7%82%B9"><span class="toc-number">7.6.</span> <span class="toc-text">6.6 List集合子类特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-7-LinkedList%E9%9B%86%E5%90%88%E7%89%B9%E6%9C%89%E6%96%B9%E6%B3%95"><span class="toc-number">7.7.</span> <span class="toc-text">6.7 LinkedList集合特有方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-Set%E9%9B%86%E5%90%88"><span class="toc-number">8.</span> <span class="toc-text">7 Set集合</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#7-1-Set%E9%9B%86%E5%90%88%E7%9A%84%E6%A6%82%E8%BF%B0%E5%92%8C%E7%89%B9%E7%82%B9"><span class="toc-number">8.1.</span> <span class="toc-text">7.1 Set集合的概述和特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-2-%E5%93%88%E5%B8%8C%E5%80%BC"><span class="toc-number">8.2.</span> <span class="toc-text">7.2 哈希值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-3-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="toc-number">8.3.</span> <span class="toc-text">7.3 数据结构之哈希表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-4-HashSet%E9%9B%86%E5%90%88%E6%A6%82%E8%BF%B0%E5%92%8C%E7%89%B9%E7%82%B9"><span class="toc-number">8.4.</span> <span class="toc-text">7.4 HashSet集合概述和特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-5-HashSet%E9%9B%86%E5%90%88%E4%BF%9D%E8%AF%81%E5%85%83%E7%B4%A0%E5%94%AF%E4%B8%80%E6%80%A7%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%EF%BC%88%E9%87%8D%E7%82%B9%E9%9D%A2%E8%AF%95%E5%B8%B8%E8%80%83%EF%BC%89"><span class="toc-number">8.5.</span> <span class="toc-text">7.5 HashSet集合保证元素唯一性源码分析（重点面试常考）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-6-LinkedHashSet%E9%9B%86%E5%90%88%E6%A6%82%E8%BF%B0%E5%92%8C%E7%89%B9%E7%82%B9"><span class="toc-number">8.6.</span> <span class="toc-text">7.6 LinkedHashSet集合概述和特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-7-TreeSet%E9%9B%86%E5%90%88%E6%A6%82%E8%BF%B0%E5%92%8C%E7%89%B9%E7%82%B9"><span class="toc-number">8.7.</span> <span class="toc-text">7.7 TreeSet集合概述和特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-8-%E8%87%AA%E7%84%B6%E6%8E%92%E5%BA%8FComarable%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">8.8.</span> <span class="toc-text">7.8 自然排序Comarable的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-9-%E6%AF%94%E8%BE%83%E5%99%A8%E6%8E%92%E5%BA%8FComparator-k%C9%99m%CB%88p%C9%9Cr%C9%99t%C9%99r-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">8.9.</span> <span class="toc-text">7.9 比较器排序Comparator[kəmˈpɜrətər]的使用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-Map%E9%9B%86%E5%90%88"><span class="toc-number">9.</span> <span class="toc-text">8 Map集合</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#8-1-Map%E9%9B%86%E5%90%88%E6%A6%82%E8%BF%B0%E5%92%8C%E7%89%B9%E7%82%B9"><span class="toc-number">9.1.</span> <span class="toc-text">8.1 Map集合概述和特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-2-Map%E9%9B%86%E5%90%88%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95"><span class="toc-number">9.2.</span> <span class="toc-text">8.2 Map集合的基本方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-3-Map%E9%9B%86%E5%90%88%E7%9A%84%E8%8E%B7%E5%8F%96%E6%96%B9%E6%B3%95%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89"><span class="toc-number">9.3.</span> <span class="toc-text">8.3 Map集合的获取方法（重点）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-4-Map%E9%9B%86%E5%90%88%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-number">9.4.</span> <span class="toc-text">8.4 Map集合的遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-4-1-%E2%80%9C%E9%94%AE%E6%89%BE%E5%80%BC%E2%80%9D%E7%9A%84%E6%96%B9%E5%BC%8F%E9%81%8D%E5%8E%86%EF%BC%88%E5%B8%B8%E7%94%A8%EF%BC%89"><span class="toc-number">9.4.1.</span> <span class="toc-text">8.4.1 “键找值”的方式遍历（常用）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-4-2-%E2%80%9C%E9%94%AE%E5%80%BC%E5%AF%B9%E2%80%9D%E7%9A%84%E6%96%B9%E5%BC%8F%E9%81%8D%E5%8E%86"><span class="toc-number">9.4.2.</span> <span class="toc-text">8.4.2 “键值对”的方式遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-4-3-Lambda-%CB%88laemd%C9%99-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%96%B9%E5%BC%8F%E9%81%8D%E5%8E%86"><span class="toc-number">9.4.3.</span> <span class="toc-text">8.4.3 Lambda [ˈlæmdə] 表达式方式遍历</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-5-Map%E9%9B%86%E5%90%88%E5%AD%98%E5%82%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%9E%8B"><span class="toc-number">9.5.</span> <span class="toc-text">8.5 Map集合存储自定义类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-6-LinkedHashMap%EF%BC%88HashMap%E5%AD%90%E7%B1%BB%EF%BC%89"><span class="toc-number">9.6.</span> <span class="toc-text">8.6 LinkedHashMap（HashMap子类）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-7-TreeMap"><span class="toc-number">9.7.</span> <span class="toc-text">8.7 TreeMap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-8-%E6%A1%88%E4%BE%8B"><span class="toc-number">9.8.</span> <span class="toc-text">8.8 案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-8-1-%E9%9B%86%E5%90%88%E9%81%8D%E5%8E%86"><span class="toc-number">9.8.1.</span> <span class="toc-text">8.8.1 集合遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-8-2-%E9%9B%86%E5%90%88%E5%B5%8C%E5%A5%97%E4%B9%8B-ArrayList%E5%B5%8C%E5%A5%97HashMap"><span class="toc-number">9.8.2.</span> <span class="toc-text">8.8.2 集合嵌套之 ArrayList嵌套HashMap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-8-3-%E7%BB%9F%E8%AE%A1%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E6%AF%8F%E4%B8%AA%E5%AD%97%E7%AC%A6%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0"><span class="toc-number">9.8.3.</span> <span class="toc-text">8.8.3 统计字符串中每个字符出现的次数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-%E6%B3%9B%E5%9E%8B"><span class="toc-number">10.</span> <span class="toc-text">9 泛型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#9-1-%E6%B3%9B%E5%9E%8B%E7%9A%84%E6%A6%82%E8%BF%B0%E5%92%8C%E5%A5%BD%E5%A4%84"><span class="toc-number">10.1.</span> <span class="toc-text">9.1 泛型的概述和好处</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-2-%E6%B3%9B%E5%9E%8B%E7%B1%BB"><span class="toc-number">10.2.</span> <span class="toc-text">9.2 泛型类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-3-%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95"><span class="toc-number">10.3.</span> <span class="toc-text">9.3 泛型方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-4-%E6%B3%9B%E5%9E%8B%E6%8E%A5%E5%8F%A3"><span class="toc-number">10.4.</span> <span class="toc-text">9.4 泛型接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-5-%E7%B1%BB%E5%9E%8B%E9%80%9A%E9%85%8D%E7%AC%A6"><span class="toc-number">10.5.</span> <span class="toc-text">9.5 类型通配符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-6-%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0"><span class="toc-number">10.6.</span> <span class="toc-text">9.6 可变参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-7-%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">10.7.</span> <span class="toc-text">9.7 可变参数的使用</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/27/%E7%A4%BA%E6%B3%A2%E5%99%A8%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/" title="示波器使用方法">示波器使用方法</a><time datetime="2025-03-27T13:45:42.000Z" title="发表于 2025-03-27 21:45:42">2025-03-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/27/%E6%89%8B%E7%AE%97%E9%A2%98/" title="无题">无题</a><time datetime="2025-03-27T13:44:14.935Z" title="发表于 2025-03-27 21:44:14">2025-03-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/22/%E6%96%B0%E7%94%B5%E8%84%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" title="新电脑环境配置">新电脑环境配置</a><time datetime="2025-03-22T02:21:06.000Z" title="发表于 2025-03-22 10:21:06">2025-03-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/07/ROS2%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%BC%80%E5%8F%91/" title="ROS2机器人开发">ROS2机器人开发</a><time datetime="2025-02-07T10:53:36.000Z" title="发表于 2025-02-07 18:53:36">2025-02-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/18/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/" title="算法刷题">算法刷题</a><time datetime="2025-01-18T12:08:44.000Z" title="发表于 2025-01-18 20:08:44">2025-01-18</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By 涂良湘</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div><div class="container" id="jsi-flying-fish-container"><script src="js/fish.js"></script></div><style>   @media only screen and (max-width: 767px){
+   #sidebar_search_box input[type=text]{width:calc(100% - 24px)}
+}</style></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.12.0"></script><script src="/js/main.js?v=4.12.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.32/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/gh/xiabo2/CDN@latest/fish.js"></script><script src="https://cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script><script src="/js/sakura.js"></script><script src="/js/timing.js"></script><script src="/js/yunxing.js"></script><script defer src="https://rmt.dogedoge.com/fetch/~/source/jsdelivr/npm/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="https://cdn.jsdelivr.net/gh/sirxemic/jquery.ripples/dist/jquery.ripples.js"></script><script defer data-pjax src="/js/ripples.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.12.0"></script></div><div class="pjax-reload"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__fadeInLeft');
+    arr[i].setAttribute('data-wow-duration', '600ms');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__fadeInRightBig');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer="defer" src="https://cdn.jsdelivr.net/gh/graingert/wow@1.3.0/dist/wow.min.js"></script><script defer="defer" src="/js/wow_init.js"></script></div><!-- hexo injector body_end start --><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__fadeInLeft');
+    arr[i].setAttribute('data-wow-duration', '600ms');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__fadeInRightBig');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script>
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body></html>
